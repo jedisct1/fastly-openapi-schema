@@ -5,7 +5,7 @@ info:
     The Fastly API allows you to manage Fastly services via a REST-like interface.
     This API provides comprehensive control over Fastly CDN services, including configuration management, 
     content purging, real-time analytics, and advanced edge computing features.
-  version: '1.0'
+  version: "1.0"
   contact:
     name: Fastly Support
     url: https://www.fastly.com/support
@@ -13,11 +13,11 @@ info:
   license:
     name: MIT
   termsOfService: https://www.fastly.com/terms
-    
+
 servers:
   - url: https://api.fastly.com
     description: Fastly API production server
-    
+
 externalDocs:
   description: Fastly API Documentation
   url: https://developer.fastly.com/reference/api
@@ -34,16 +34,16 @@ paths:
       tags:
         - Service
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Service'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                  $ref: "#/components/schemas/Service"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
     post:
       summary: Create service
       description: Creates a new service configuration. A service is the top-level resource that represents your web application or site in Fastly. This operation initializes the container for your CDN configurations including domains, backends, and caching rules.
@@ -54,23 +54,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ServiceCreate'
+              $ref: "#/components/schemas/ServiceCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Service'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/Service"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
 
   /service/{service_id}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     get:
       summary: Get service details
       description: Retrieves detailed information about a specific service identified by its unique ID. This returns the service's configuration metadata, active version details, and core properties needed for further configuration operations.
@@ -78,16 +78,16 @@ paths:
       tags:
         - Service
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Service'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Service"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     put:
       summary: Update service
       description: Updates the configuration of an existing service. This allows modification of service properties such as name and comments. Note that this operation updates service metadata, not the version-specific configurations like domains or backends.
@@ -98,21 +98,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ServiceUpdate'
+              $ref: "#/components/schemas/ServiceUpdate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Service'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Service"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     delete:
       summary: Delete service
       description: Permanently removes a service and all its associated configurations, including all versions, domains, and backend configurations. This action cannot be undone, so use with caution.
@@ -120,7 +120,7 @@ paths:
       tags:
         - Service
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -130,14 +130,14 @@ paths:
                   status:
                     type: string
                     example: ok
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/domain:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     get:
       summary: List domains
       description: List all domains for a service
@@ -145,18 +145,18 @@ paths:
       tags:
         - Domain
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Domain'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/Domain"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create domain
       description: Create a new domain for a service
@@ -167,26 +167,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DomainCreate'
+              $ref: "#/components/schemas/DomainCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Domain'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Domain"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/domain/{domain_id}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/domain_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/domain_id"
     get:
       summary: Get domain details
       description: Get details of a specific domain
@@ -194,16 +194,16 @@ paths:
       tags:
         - Domain
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Domain'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Domain"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     put:
       summary: Update domain
       description: Update a specific domain
@@ -214,21 +214,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DomainUpdate'
+              $ref: "#/components/schemas/DomainUpdate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Domain'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Domain"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     delete:
       summary: Delete domain
       description: Delete a specific domain
@@ -236,7 +236,7 @@ paths:
       tags:
         - Domain
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -246,14 +246,14 @@ paths:
                   status:
                     type: string
                     example: ok
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     get:
       summary: List versions
       description: List all versions for a service
@@ -261,23 +261,23 @@ paths:
       tags:
         - Version
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Version'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/Version"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version/{version_id}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: Get version details
       description: Get details of a specific version
@@ -285,21 +285,21 @@ paths:
       tags:
         - Version
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Version'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Version"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version/{version_id}/activate:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     put:
       summary: Activate version
       description: Activates a specific service version, making it the production version that serves live traffic. Once activated, the version becomes locked and cannot be modified further without cloning. This is a critical operation that impacts production traffic, so it should be performed after thorough testing.
@@ -307,21 +307,21 @@ paths:
       tags:
         - Version
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Version'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Version"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version/{version_id}/clone:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     put:
       summary: Clone version
       description: Clone a specific version
@@ -329,21 +329,21 @@ paths:
       tags:
         - Version
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Version'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Version"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version/{version_id}/backend:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List backends
       description: List all backends for a service version
@@ -351,18 +351,18 @@ paths:
       tags:
         - Backend
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Backend'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/Backend"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create backend
       description: Create a new backend for a service version
@@ -373,27 +373,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BackendCreate'
+              $ref: "#/components/schemas/BackendCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Backend'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Backend"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version/{version_id}/backend/{backend_name}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
-      - $ref: '#/components/parameters/backend_name'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+      - $ref: "#/components/parameters/backend_name"
     get:
       summary: Get backend details
       description: Get details of a specific backend
@@ -401,16 +401,16 @@ paths:
       tags:
         - Backend
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Backend'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Backend"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     put:
       summary: Update backend
       description: Update a specific backend
@@ -421,21 +421,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BackendUpdate'
+              $ref: "#/components/schemas/BackendUpdate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Backend'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/Backend"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     delete:
       summary: Delete backend
       description: Delete a specific backend
@@ -443,7 +443,7 @@ paths:
       tags:
         - Backend
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -453,14 +453,14 @@ paths:
                   status:
                     type: string
                     example: ok
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/purge_all:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     post:
       summary: Purge all content
       description: Immediately purges all cached content for a service across the global Fastly network. This operation is resource-intensive and should be used judiciously. It's useful for emergency situations where stale content must be removed immediately, such as after a significant data update or security incident. For more targeted cache invalidation, use surrogate keys or specific URL purges instead.
@@ -468,7 +468,7 @@ paths:
       tags:
         - Purge
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -478,11 +478,11 @@ paths:
                   status:
                     type: string
                     example: ok
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /purge/{url}:
     parameters:
       - name: url
@@ -499,20 +499,20 @@ paths:
       tags:
         - Purge
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PurgeResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/PurgeResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/purge:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     post:
       summary: Purge by key
       description: Purges content from the Fastly cache by cache key or surrogate key. This is a flexible purging mechanism that allows for targeted invalidation of multiple related resources at once using a shared key. This is more efficient than purging individual URLs when groups of content need to be refreshed simultaneously.
@@ -535,19 +535,19 @@ paths:
               required:
                 - surrogate_keys
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PurgeResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/PurgeResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /purge/soft:
     post:
       summary: Soft purge by URL
@@ -569,21 +569,21 @@ paths:
               required:
                 - url
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PurgeResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-          
+                $ref: "#/components/schemas/PurgeResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
   /service/{service_id}/purge/{purge_id}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/purge_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/purge_id"
     get:
       summary: Get purge status
       description: Checks the status of a previously initiated purge request. Purge requests are processed asynchronously across the Fastly network. This endpoint allows for monitoring the progress of a purge as it propagates through the global cache infrastructure.
@@ -591,21 +591,21 @@ paths:
       tags:
         - Purge
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PurgeStatus'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/PurgeStatus"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version/{version_id}/vcl:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List VCL files
       description: List all VCL files for a service version
@@ -613,18 +613,18 @@ paths:
       tags:
         - VCL
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/VCL'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/VCL"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create VCL file
       description: Create a new VCL file for a service version
@@ -635,26 +635,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VCLCreate'
+              $ref: "#/components/schemas/VCLCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VCL'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/VCL"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/cache_settings:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List cache settings
       description: List all cache settings for a service version
@@ -662,18 +662,18 @@ paths:
       tags:
         - CacheSettings
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/CacheSetting'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/CacheSetting"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create cache setting
       description: Create a new cache setting for a service version
@@ -684,27 +684,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CacheSettingCreate'
+              $ref: "#/components/schemas/CacheSettingCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CacheSetting'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/CacheSetting"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/cache_settings/{cache_setting_name}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
-      - $ref: '#/components/parameters/cache_setting_name'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+      - $ref: "#/components/parameters/cache_setting_name"
     get:
       summary: Get cache setting
       description: Get a specific cache setting
@@ -712,16 +712,16 @@ paths:
       tags:
         - CacheSettings
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CacheSetting'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/CacheSetting"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     put:
       summary: Update cache setting
       description: Update a specific cache setting
@@ -732,21 +732,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CacheSettingUpdate'
+              $ref: "#/components/schemas/CacheSettingUpdate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CacheSetting'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/CacheSetting"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     delete:
       summary: Delete cache setting
       description: Delete a specific cache setting
@@ -754,7 +754,7 @@ paths:
       tags:
         - CacheSettings
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -764,15 +764,15 @@ paths:
                   status:
                     type: string
                     example: ok
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-  
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/dictionary:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List dictionaries
       description: List all edge dictionaries for a service version
@@ -780,18 +780,18 @@ paths:
       tags:
         - Dictionary
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Dictionary'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/Dictionary"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create dictionary
       description: Create a new edge dictionary for a service version
@@ -802,27 +802,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DictionaryCreate'
+              $ref: "#/components/schemas/DictionaryCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dictionary'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/Dictionary"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/dictionary/{dictionary_id}/items:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
-      - $ref: '#/components/parameters/dictionary_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+      - $ref: "#/components/parameters/dictionary_id"
     get:
       summary: List dictionary items
       description: List all items in an edge dictionary
@@ -830,18 +830,18 @@ paths:
       tags:
         - DictionaryItem
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/DictionaryItem'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/DictionaryItem"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create dictionary item
       description: Create a new dictionary item
@@ -852,26 +852,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DictionaryItemCreate'
+              $ref: "#/components/schemas/DictionaryItemCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DictionaryItem'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/DictionaryItem"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/acl:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List ACLs
       description: List all ACLs for a service version
@@ -879,18 +879,18 @@ paths:
       tags:
         - ACL
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ACL'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/ACL"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create ACL
       description: Create a new ACL for a service version
@@ -901,27 +901,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ACLCreate'
+              $ref: "#/components/schemas/ACLCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ACL'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/ACL"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/acl/{acl_id}/entries:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
-      - $ref: '#/components/parameters/acl_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+      - $ref: "#/components/parameters/acl_id"
     get:
       summary: List ACL entries
       description: List all entries in an ACL
@@ -929,18 +929,18 @@ paths:
       tags:
         - ACLEntry
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ACLEntry'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/ACLEntry"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create ACL entry
       description: Create a new ACL entry
@@ -951,26 +951,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ACLEntryCreate'
+              $ref: "#/components/schemas/ACLEntryCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ACLEntry'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/ACLEntry"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/healthcheck:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List health checks
       description: List all health checks for a service version
@@ -978,18 +978,18 @@ paths:
       tags:
         - Healthcheck
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Healthcheck'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/Healthcheck"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create health check
       description: Create a new health check for a service version
@@ -1000,26 +1000,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/HealthcheckCreate'
+              $ref: "#/components/schemas/HealthcheckCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Healthcheck'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/Healthcheck"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/logging/s3:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List S3 log endpoints
       description: List all S3 log endpoints for a service version
@@ -1027,18 +1027,18 @@ paths:
       tags:
         - Logging
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/LoggingS3'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/LoggingS3"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create S3 log endpoint
       description: Create a new S3 log endpoint for a service version
@@ -1049,26 +1049,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoggingS3Create'
+              $ref: "#/components/schemas/LoggingS3Create"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoggingS3'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/LoggingS3"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/waf:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: Get WAF settings
       description: Retrieves the Web Application Firewall (WAF) configuration for a specific service version. The WAF provides protection against common web vulnerabilities and attacks like SQL injection, cross-site scripting (XSS), and OWASP Top 10 threats. This endpoint returns the complete WAF configuration including rule status counts and associated conditions.
@@ -1076,16 +1076,16 @@ paths:
       tags:
         - WAF
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WAF'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/WAF"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create WAF
       description: Creates a new Web Application Firewall (WAF) configuration for a service version. The WAF provides protection against attacks like SQL injection, cross-site scripting, and other OWASP Top 10 threats. This endpoint provisions the initial WAF with default settings, which can then be customized through rule management endpoints. A prefetch condition must be specified to determine which requests are inspected by the WAF.
@@ -1096,27 +1096,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/WAFCreate'
+              $ref: "#/components/schemas/WAFCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WAF'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/WAF"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/waf/firewall/{firewall_id}/rule/{rule_id}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/firewall_id'
-      - $ref: '#/components/parameters/rule_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/firewall_id"
+      - $ref: "#/components/parameters/rule_id"
     get:
       summary: Get WAF rule
       description: Get a specific WAF rule
@@ -1124,16 +1124,16 @@ paths:
       tags:
         - WAF
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WAFRule'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/WAFRule"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     patch:
       summary: Update WAF rule
       description: Update a specific WAF rule
@@ -1144,26 +1144,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/WAFRuleUpdate'
+              $ref: "#/components/schemas/WAFRuleUpdate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WAFRule'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/WAFRule"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/rate-limiting:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: List rate limiting configurations
       description: List all rate limiting configurations for a service version
@@ -1171,18 +1171,18 @@ paths:
       tags:
         - RateLimiting
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RateLimit'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                  $ref: "#/components/schemas/RateLimit"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     post:
       summary: Create rate limiting
       description: Create a new rate limiting configuration for a service version
@@ -1193,27 +1193,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RateLimitCreate'
+              $ref: "#/components/schemas/RateLimitCreate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RateLimit'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/RateLimit"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/version/{version_id}/rate-limiting/{rate_limit_id}:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
-      - $ref: '#/components/parameters/rate_limit_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+      - $ref: "#/components/parameters/rate_limit_id"
     get:
       summary: Get rate limit
       description: Get a specific rate limit configuration
@@ -1221,16 +1221,16 @@ paths:
       tags:
         - RateLimiting
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RateLimit'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/RateLimit"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     put:
       summary: Update rate limit
       description: Update a specific rate limit configuration
@@ -1241,21 +1241,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RateLimitUpdate'
+              $ref: "#/components/schemas/RateLimitUpdate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RateLimit'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/RateLimit"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     delete:
       summary: Delete rate limit
       description: Delete a specific rate limit configuration
@@ -1263,7 +1263,7 @@ paths:
       tags:
         - RateLimiting
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -1273,11 +1273,11 @@ paths:
                   status:
                     type: string
                     example: ok
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /resources/compute/package:
     get:
       summary: List Compute@Edge packages
@@ -1286,16 +1286,16 @@ paths:
       tags:
         - Compute
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ComputePackage'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+                  $ref: "#/components/schemas/ComputePackage"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
     post:
       summary: Upload Compute@Edge package
       description: Upload a new Compute@Edge package
@@ -1316,21 +1316,21 @@ paths:
                 - package
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ComputePackage'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-          
+                $ref: "#/components/schemas/ComputePackage"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
   /service/{service_id}/version/{version_id}/compute:
     parameters:
-      - $ref: '#/components/parameters/service_id'
-      - $ref: '#/components/parameters/version_id'
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
     get:
       summary: Get Compute@Edge configuration
       description: Get Compute@Edge configuration for a service version
@@ -1338,16 +1338,16 @@ paths:
       tags:
         - Compute
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ComputeConfig'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
+                $ref: "#/components/schemas/ComputeConfig"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
     put:
       summary: Update Compute@Edge configuration
       description: Update Compute@Edge configuration for a service version
@@ -1358,22 +1358,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ComputeConfigUpdate'
+              $ref: "#/components/schemas/ComputeConfigUpdate"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ComputeConfig'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/ComputeConfig"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /stats:
     get:
       summary: Get real-time stats
@@ -1407,20 +1407,20 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Stats'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '422':
+                $ref: "#/components/schemas/Stats"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "422":
           description: Unprocessable Entity - Invalid parameters
-          
+
   /service/{service_id}/stats/summary:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     get:
       summary: Get service stats summary
       description: Retrieves a summary of statistics for a specific service. This endpoint returns aggregated data for high-level metrics like hits, misses, and bandwidth usage. It's useful for dashboards that need a quick overview of service performance without the granularity of time-series data.
@@ -1441,20 +1441,20 @@ paths:
             type: string
             format: date-time
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StatsSummary'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        
+                $ref: "#/components/schemas/StatsSummary"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/stats:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     get:
       summary: Get service stats
       description: Retrieves detailed statistics for a specific service. This endpoint provides comprehensive time-series data on cache performance, origin shields, and content delivery metrics. Use this for detailed analysis of a service's performance over time, troubleshooting, and capacity planning.
@@ -1487,20 +1487,20 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Stats'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-          
+                $ref: "#/components/schemas/Stats"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /service/{service_id}/realtime:
     parameters:
-      - $ref: '#/components/parameters/service_id'
+      - $ref: "#/components/parameters/service_id"
     get:
       summary: Get real-time metrics
       description: Streams real-time metrics for a specific service. This endpoint provides up-to-the-second data on cache performance, request rates, and error rates. It's ideal for live dashboards, automated alerting systems, and immediate visibility into the impact of configuration changes or traffic spikes.
@@ -1508,17 +1508,17 @@ paths:
       tags:
         - Metrics
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RealtimeMetrics'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        
+                $ref: "#/components/schemas/RealtimeMetrics"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /historical:
     get:
       summary: Get historical stats
@@ -1561,16 +1561,206 @@ paths:
             type: string
             enum: [requests, bandwidth, hits, miss, errors]
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HistoricalStats'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '422':
+                $ref: "#/components/schemas/HistoricalStats"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "422":
           description: Unprocessable Entity - Invalid parameters
+
+  /service/{service_id}/version/{version_id}/origin:
+    parameters:
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+    get:
+      summary: List origins
+      description: Retrieves all origins for a particular service and version. Origins define the source servers where Fastly fetches content. This endpoint returns a list of all configured origins with their complete configuration details, including host information, SSL settings, and connection timeouts.
+      operationId: listOrigins
+      tags:
+        - Origin
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Origin"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      summary: Create origin
+      description: Creates a new origin for the specified service and version. Origins define where Fastly should fetch your content from. This endpoint allows configuration of various origin properties including hostname, port, SSL settings, and connection timeouts. Properly configured origins are essential for content delivery performance.
+      operationId: createOrigin
+      tags:
+        - Origin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OriginCreate"
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Origin"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /service/{service_id}/version/{version_id}/origin/{origin_name}:
+    parameters:
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+      - $ref: "#/components/parameters/origin_name"
+    get:
+      summary: Get origin details
+      description: Retrieves the details of a specific origin. This endpoint provides comprehensive information about an origin's configuration, including hostname, port, connection settings, and SSL options. Use this endpoint when you need to inspect or verify the configuration of a specific origin.
+      operationId: getOrigin
+      tags:
+        - Origin
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Origin"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    put:
+      summary: Update origin
+      description: Updates an existing origin configuration. This endpoint allows modification of origin properties including hostname, port, SSL settings, and connection parameters. Use this endpoint to adjust origin settings when your backend infrastructure changes or to optimize origin connection parameters.
+      operationId: updateOrigin
+      tags:
+        - Origin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OriginUpdate"
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Origin"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      summary: Delete origin
+      description: Removes an origin from the service version. This endpoint permanently deletes the specified origin configuration. Use caution when deleting origins, as it may impact the availability of content if not properly managed.
+      operationId: deleteOrigin
+      tags:
+        - Origin
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /service/{service_id}/version/{version_id}/shield:
+    parameters:
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+    get:
+      summary: List shields
+      description: Retrieves all shield configurations for a service version. Shields are Fastly's globally distributed points of presence (POPs) that can serve as an additional layer between clients and origins. This endpoint returns information about configured shields including their locations and settings.
+      operationId: listShields
+      tags:
+        - Shield
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Shield"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /service/{service_id}/version/{version_id}/backend/{backend_name}/shield:
+    parameters:
+      - $ref: "#/components/parameters/service_id"
+      - $ref: "#/components/parameters/version_id"
+      - $ref: "#/components/parameters/backend_name"
+    get:
+      summary: Get backend shield
+      description: Retrieves the shield configuration for a specific backend. Shields act as intermediary Fastly POPs that sit between the edge and the origin, offering another layer of caching. This endpoint returns the shield location and settings for the specified backend.
+      operationId: getBackendShield
+      tags:
+        - Shield
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BackendShield"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    put:
+      summary: Update backend shield
+      description: Updates the shield configuration for a specific backend. This endpoint allows you to change the shield POP assigned to a backend, or enable/disable shielding. Shielding can reduce the load on your origin servers by serving requests from a consistent POP closer to your origin, improving performance and reliability.
+      operationId: updateBackendShield
+      tags:
+        - Shield
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BackendShieldUpdate"
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BackendShield"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
 components:
   schemas:
@@ -1618,7 +1808,7 @@ components:
         - id
         - name
         - customer_id
-    
+
     ServiceCreate:
       type: object
       properties:
@@ -1638,7 +1828,7 @@ components:
       required:
         - name
         - type
-    
+
     ServiceUpdate:
       type: object
       properties:
@@ -1650,7 +1840,7 @@ components:
           type: string
           description: A freeform descriptive note.
           example: Updated service
-    
+
     Domain:
       type: object
       properties:
@@ -1679,7 +1869,7 @@ components:
         - service_id
         - version
         - name
-    
+
     DomainCreate:
       type: object
       properties:
@@ -1693,7 +1883,7 @@ components:
           example: Domain for website
       required:
         - name
-    
+
     DomainUpdate:
       type: object
       properties:
@@ -1705,7 +1895,7 @@ components:
           type: string
           description: A freeform descriptive note.
           example: Updated domain for website
-    
+
     Version:
       type: object
       properties:
@@ -1751,7 +1941,7 @@ components:
         - number
         - service_id
         - active
-    
+
     Backend:
       type: object
       properties:
@@ -1825,7 +2015,7 @@ components:
         - name
         - address
         - port
-    
+
     BackendCreate:
       type: object
       properties:
@@ -1873,7 +2063,7 @@ components:
         - name
         - address
         - port
-    
+
     BackendUpdate:
       type: object
       properties:
@@ -1917,7 +2107,7 @@ components:
           type: boolean
           description: Whether or not this backend should be automatically load balanced.
           example: true
-    
+
     VCL:
       type: object
       properties:
@@ -1956,7 +2146,7 @@ components:
         - version
         - name
         - content
-    
+
     VCLCreate:
       type: object
       properties:
@@ -1975,7 +2165,7 @@ components:
       required:
         - name
         - content
-        
+
     CacheSetting:
       type: object
       properties:
@@ -2013,7 +2203,7 @@ components:
         - version
         - name
         - action
-        
+
     CacheSettingCreate:
       type: object
       properties:
@@ -2041,7 +2231,7 @@ components:
       required:
         - name
         - action
-        
+
     CacheSettingUpdate:
       type: object
       properties:
@@ -2066,7 +2256,7 @@ components:
           type: string
           description: Name of the cache condition controlling when this configuration applies.
           example: production
-          
+
     Dictionary:
       type: object
       properties:
@@ -2105,7 +2295,7 @@ components:
         - version
         - id
         - name
-        
+
     DictionaryCreate:
       type: object
       properties:
@@ -2119,7 +2309,7 @@ components:
           example: false
       required:
         - name
-        
+
     DictionaryItem:
       type: object
       properties:
@@ -2154,7 +2344,7 @@ components:
         - service_id
         - item_key
         - item_value
-        
+
     DictionaryItemCreate:
       type: object
       properties:
@@ -2169,7 +2359,7 @@ components:
       required:
         - item_key
         - item_value
-        
+
     ACL:
       type: object
       properties:
@@ -2204,7 +2394,7 @@ components:
         - version
         - id
         - name
-        
+
     ACLCreate:
       type: object
       properties:
@@ -2214,7 +2404,7 @@ components:
           example: my_acl
       required:
         - name
-        
+
     ACLEntry:
       type: object
       properties:
@@ -2261,7 +2451,7 @@ components:
         - service_id
         - id
         - ip
-        
+
     ACLEntryCreate:
       type: object
       properties:
@@ -2283,7 +2473,7 @@ components:
           example: ACL entry for office
       required:
         - ip
-        
+
     Healthcheck:
       type: object
       properties:
@@ -2345,7 +2535,7 @@ components:
         - name
         - host
         - path
-        
+
     HealthcheckCreate:
       type: object
       properties:
@@ -2397,7 +2587,7 @@ components:
         - name
         - host
         - path
-        
+
     LoggingS3:
       type: object
       properties:
@@ -2444,7 +2634,7 @@ components:
         format:
           type: string
           description: Apache style log formatting.
-          example: '%h %l %u %t %r %>s'
+          example: "%h %l %u %t %r %>s"
         format_version:
           type: integer
           description: The version of the custom logging format used for the configured endpoint.
@@ -2475,7 +2665,7 @@ components:
         - bucket_name
         - access_key
         - secret_key
-        
+
     LoggingS3Create:
       type: object
       properties:
@@ -2514,7 +2704,7 @@ components:
         format:
           type: string
           description: Apache style log formatting.
-          example: '%h %l %u %t %r %>s'
+          example: "%h %l %u %t %r %>s"
         format_version:
           type: integer
           description: The version of the custom logging format used for the configured endpoint.
@@ -2543,7 +2733,7 @@ components:
         - bucket_name
         - access_key
         - secret_key
-        
+
     WAF:
       type: object
       properties:
@@ -2596,7 +2786,7 @@ components:
         - service_id
         - version
         - id
-        
+
     WAFCreate:
       type: object
       properties:
@@ -2610,7 +2800,7 @@ components:
           example: WAF_Response
       required:
         - prefetch_condition
-        
+
     WAFRule:
       type: object
       properties:
@@ -2636,7 +2826,13 @@ components:
           description: List of rule tags.
           items:
             type: string
-          example: ["application-multi", "language-multi", "platform-multi", "attack-sqli"]
+          example:
+            [
+              "application-multi",
+              "language-multi",
+              "platform-multi",
+              "attack-sqli",
+            ]
         message:
           type: string
           description: Rule message.
@@ -2655,7 +2851,7 @@ components:
         - id
         - rule_id
         - status
-        
+
     WAFRuleUpdate:
       type: object
       properties:
@@ -2666,7 +2862,7 @@ components:
           example: block
       required:
         - status
-        
+
     RateLimit:
       type: object
       properties:
@@ -2754,7 +2950,7 @@ components:
         - uri
         - rps_limit
         - action
-        
+
     RateLimitCreate:
       type: object
       properties:
@@ -2817,7 +3013,7 @@ components:
         - uri
         - rps_limit
         - action
-        
+
     RateLimitUpdate:
       type: object
       properties:
@@ -2849,7 +3045,12 @@ components:
           description: Array of VCL variables used to generate a counter key to identify a client.
           items:
             type: string
-          example: ["req.http.Fastly-Client-IP", "req.http.User-Agent", "req.http.Authorization"]
+          example:
+            [
+              "req.http.Fastly-Client-IP",
+              "req.http.User-Agent",
+              "req.http.Authorization",
+            ]
         penalty_box_duration:
           type: integer
           description: Length of time in seconds that the rate limit client entry is kept in the penalty box.
@@ -2875,7 +3076,7 @@ components:
               type: string
               description: Response body content.
               example: '{"error": "too many requests", "retry_after": 60}'
-              
+
     ComputePackage:
       type: object
       properties:
@@ -2927,7 +3128,7 @@ components:
         - name
         - size
         - hashsum
-        
+
     ComputeConfig:
       type: object
       properties:
@@ -2967,7 +3168,7 @@ components:
         - service_id
         - version
         - package_id
-        
+
     ComputeConfigUpdate:
       type: object
       properties:
@@ -2987,7 +3188,7 @@ components:
                 example: api.example.com
       required:
         - package_id
-        
+
     Stats:
       type: object
       properties:
@@ -3066,7 +3267,7 @@ components:
                 format: date-time
                 description: Timestamp for this data point.
                 example: "2020-04-01T12:00:00Z"
-        
+
     StatsSummary:
       type: object
       properties:
@@ -3123,7 +3324,7 @@ components:
                 "301": 300000
                 "404": 435000
                 "500": 15000
-                
+
     RealtimeMetrics:
       type: object
       properties:
@@ -3203,7 +3404,7 @@ components:
                 type: integer
                 description: Number of errors.
                 example: 4
-                
+
     HistoricalStats:
       type: object
       properties:
@@ -3260,7 +3461,7 @@ components:
                 format: date-time
                 description: Timestamp for this data point.
                 example: "2020-01-01T00:00:00Z"
-                
+
     PurgeResponse:
       type: object
       properties:
@@ -3281,7 +3482,7 @@ components:
       required:
         - status
         - id
-        
+
     PurgeStatus:
       type: object
       properties:
@@ -3327,7 +3528,284 @@ components:
         - id
         - created_at
         - service_id
-      
+
+    Origin:
+      type: object
+      properties:
+        service_id:
+          type: string
+          description: Alphanumeric string identifying the service.
+          example: SU1Z0isxPaozGVKXdv0eY
+        version:
+          type: integer
+          description: Integer identifying a service version.
+          example: 1
+        name:
+          type: string
+          description: Name for the origin server.
+          example: My Origin Server
+        address:
+          type: string
+          description: A hostname, IPv4, or IPv6 address for the origin server.
+          example: origin.example.com
+        port:
+          type: integer
+          description: Port number of the origin server.
+          example: 443
+        use_ssl:
+          type: boolean
+          description: Whether or not to use SSL to reach the origin.
+          example: true
+        override_host:
+          type: string
+          description: The hostname to override the Host header.
+          example: override-origin.example.com
+        connect_timeout:
+          type: integer
+          description: How long to wait for a timeout in milliseconds.
+          example: 5000
+        first_byte_timeout:
+          type: integer
+          description: How long to wait for the first byte in milliseconds.
+          example: 15000
+        between_bytes_timeout:
+          type: integer
+          description: How long to wait between bytes in milliseconds.
+          example: 10000
+        shield:
+          type: string
+          description: The shield POP designated to reduce inbound load.
+          example: iad-va-us
+        shield_region:
+          type: string
+          description: Geographic region of the shield.
+          example: us-east
+        ssl_cert_hostname:
+          type: string
+          description: Overrides ssl_hostname, but only for cert verification.
+          example: cert.example.com
+        ssl_check_cert:
+          type: boolean
+          description: Be strict on checking SSL certs.
+          example: true
+        ssl_sni_hostname:
+          type: string
+          description: Overrides ssl_hostname, but only for SNI in the handshake.
+          example: sni.example.com
+        ssl_ca_cert:
+          type: string
+          description: CA certificate to validate against.
+          example: "-----BEGIN CERTIFICATE-----\nMIIDhTCCAm2gAwIBAgIJAJmAT7S..."
+        created_at:
+          type: string
+          format: date-time
+          description: Time-stamp (GMT) when the origin was created.
+          example: "2020-04-01T12:00:00Z"
+        updated_at:
+          type: string
+          format: date-time
+          description: Time-stamp (GMT) when the origin was last updated.
+          example: "2020-04-01T12:00:00Z"
+      required:
+        - service_id
+        - version
+        - name
+        - address
+
+    OriginCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name for the origin server.
+          example: My Origin Server
+        address:
+          type: string
+          description: A hostname, IPv4, or IPv6 address for the origin server.
+          example: origin.example.com
+        port:
+          type: integer
+          description: Port number of the origin server.
+          example: 443
+        use_ssl:
+          type: boolean
+          description: Whether or not to use SSL to reach the origin.
+          example: true
+        override_host:
+          type: string
+          description: The hostname to override the Host header.
+          example: override-origin.example.com
+        connect_timeout:
+          type: integer
+          description: How long to wait for a timeout in milliseconds.
+          example: 5000
+        first_byte_timeout:
+          type: integer
+          description: How long to wait for the first byte in milliseconds.
+          example: 15000
+        between_bytes_timeout:
+          type: integer
+          description: How long to wait between bytes in milliseconds.
+          example: 10000
+        shield:
+          type: string
+          description: The shield POP designated to reduce inbound load.
+          example: iad-va-us
+        ssl_cert_hostname:
+          type: string
+          description: Overrides ssl_hostname, but only for cert verification.
+          example: cert.example.com
+        ssl_check_cert:
+          type: boolean
+          description: Be strict on checking SSL certs.
+          example: true
+        ssl_sni_hostname:
+          type: string
+          description: Overrides ssl_hostname, but only for SNI in the handshake.
+          example: sni.example.com
+        ssl_ca_cert:
+          type: string
+          description: CA certificate to validate against.
+          example: "-----BEGIN CERTIFICATE-----\nMIIDhTCCAm2gAwIBAgIJAJmAT7S..."
+      required:
+        - name
+        - address
+
+    OriginUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name for the origin server.
+          example: Updated Origin Server
+        address:
+          type: string
+          description: A hostname, IPv4, or IPv6 address for the origin server.
+          example: updated-origin.example.com
+        port:
+          type: integer
+          description: Port number of the origin server.
+          example: 443
+        use_ssl:
+          type: boolean
+          description: Whether or not to use SSL to reach the origin.
+          example: true
+        override_host:
+          type: string
+          description: The hostname to override the Host header.
+          example: override-updated.example.com
+        connect_timeout:
+          type: integer
+          description: How long to wait for a timeout in milliseconds.
+          example: 6000
+        first_byte_timeout:
+          type: integer
+          description: How long to wait for the first byte in milliseconds.
+          example: 20000
+        between_bytes_timeout:
+          type: integer
+          description: How long to wait between bytes in milliseconds.
+          example: 15000
+        shield:
+          type: string
+          description: The shield POP designated to reduce inbound load.
+          example: dca-dc-us
+        ssl_cert_hostname:
+          type: string
+          description: Overrides ssl_hostname, but only for cert verification.
+          example: cert-updated.example.com
+        ssl_check_cert:
+          type: boolean
+          description: Be strict on checking SSL certs.
+          example: false
+        ssl_sni_hostname:
+          type: string
+          description: Overrides ssl_hostname, but only for SNI in the handshake.
+          example: sni-updated.example.com
+        ssl_ca_cert:
+          type: string
+          description: CA certificate to validate against.
+          example: "-----BEGIN CERTIFICATE-----\nMIIDhTCCAm2gAwIBAgIJAJmAT7S..."
+
+    Shield:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the shield location.
+          example: iad-va-us
+        region:
+          type: string
+          description: Geographic region of the shield.
+          example: us-east
+        description:
+          type: string
+          description: Human-readable description of the shield location.
+          example: Ashburn, VA, USA
+        datacenter:
+          type: string
+          description: Physical datacenter where the shield resides.
+          example: IAD
+        coordinates:
+          type: object
+          description: Geographic coordinates of the shield.
+          properties:
+            latitude:
+              type: number
+              description: Latitude coordinate.
+              example: 38.934
+            longitude:
+              type: number
+              description: Longitude coordinate.
+              example: -77.448
+      required:
+        - name
+        - region
+        - description
+
+    BackendShield:
+      type: object
+      properties:
+        service_id:
+          type: string
+          description: Alphanumeric string identifying the service.
+          example: SU1Z0isxPaozGVKXdv0eY
+        version:
+          type: integer
+          description: Integer identifying a service version.
+          example: 1
+        backend_name:
+          type: string
+          description: The name of the backend.
+          example: My Backend
+        shield:
+          type: string
+          description: The shield POP designated to reduce inbound load.
+          example: iad-va-us
+        enabled:
+          type: boolean
+          description: Whether shielding is enabled for this backend.
+          example: true
+      required:
+        - service_id
+        - version
+        - backend_name
+        - shield
+
+    BackendShieldUpdate:
+      type: object
+      properties:
+        shield:
+          type: string
+          description: The shield POP designated to reduce inbound load.
+          example: dca-dc-us
+        enabled:
+          type: boolean
+          description: Whether shielding is enabled for this backend.
+          example: true
+      required:
+        - shield
+
   parameters:
     service_id:
       name: service_id
@@ -3336,7 +3814,7 @@ components:
       required: true
       schema:
         type: string
-    
+
     version_id:
       name: version_id
       in: path
@@ -3344,7 +3822,7 @@ components:
       required: true
       schema:
         type: string
-    
+
     domain_id:
       name: domain_id
       in: path
@@ -3352,7 +3830,7 @@ components:
       required: true
       schema:
         type: string
-    
+
     backend_name:
       name: backend_name
       in: path
@@ -3360,7 +3838,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     cache_setting_name:
       name: cache_setting_name
       in: path
@@ -3368,7 +3846,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     dictionary_id:
       name: dictionary_id
       in: path
@@ -3376,7 +3854,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     acl_id:
       name: acl_id
       in: path
@@ -3384,7 +3862,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     firewall_id:
       name: firewall_id
       in: path
@@ -3392,7 +3870,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     rule_id:
       name: rule_id
       in: path
@@ -3400,7 +3878,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     rate_limit_id:
       name: rate_limit_id
       in: path
@@ -3408,7 +3886,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     purge_id:
       name: purge_id
       in: path
@@ -3416,7 +3894,15 @@ components:
       required: true
       schema:
         type: string
-  
+
+    origin_name:
+      name: origin_name
+      in: path
+      description: Name of the origin.
+      required: true
+      schema:
+        type: string
+
   responses:
     BadRequest:
       description: Bad request
@@ -3428,7 +3914,7 @@ components:
               msg:
                 type: string
                 example: Bad request
-    
+
     Unauthorized:
       description: Unauthorized
       content:
@@ -3439,7 +3925,7 @@ components:
               msg:
                 type: string
                 example: Unauthorized
-    
+
     NotFound:
       description: Resource not found
       content:
@@ -3450,7 +3936,7 @@ components:
               msg:
                 type: string
                 example: Record not found
-  
+
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
