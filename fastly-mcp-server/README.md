@@ -12,20 +12,30 @@ This package provides an MCP server that allows AI models to interact with the F
 npm install fastly-mcp-server
 ```
 
-## Usage
+## Usage with Bun
 
-### As a Command Line Tool
-
-After installation, you can run the server directly:
-
-```bash
-npx fastly-mcp-server
+```json
+{
+ "mcpServers": {
+    "fastly api": {
+      "command": "bunx",
+      "args": ["fastly-mcp-server@latest", "run"]
+    },
+ }
+}
 ```
 
-### In Your Code
+## Usage with Node
 
-```javascript
-import { Server, SERVER_NAME, SERVER_VERSION } from 'fastly-mcp-server';
+```json
+{
+ "mcpServers": {
+    "fastly api": {
+      "command": "npx",
+      "args": ["-y", "fastly-mcp-server@latest", "run"]
+    },
+ }
+}
 ```
 
 ## Authentication
