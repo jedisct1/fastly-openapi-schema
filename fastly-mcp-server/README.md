@@ -73,6 +73,33 @@ The server provides numerous tools for interacting with the Fastly API, includin
 - VCL management
 - Statistics and metrics
 
+## Using Tools with Path Parameters
+
+Many API endpoints require path parameters such as `service_id` or `version_id`. When using these tools, you must provide these parameters in your request. For example:
+
+```json
+// To get service details
+{
+  "service_id": "3ELXhLGOuQTQvW9NR3wlWD"
+}
+
+// To list versions for a service
+{
+  "service_id": "3ELXhLGOuQTQvW9NR3wlWD"
+}
+
+// To activate a version
+{
+  "service_id": "3ELXhLGOuQTQvW9NR3wlWD",
+  "version_id": "2"
+}
+
+// To purge a specific URL
+{
+  "url": "www.example.com/path/to/resource"
+}
+```
+
 ## License
 
 MIT
