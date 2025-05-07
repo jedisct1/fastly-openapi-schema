@@ -19,7 +19,10 @@ npm install fastly-mcp-server
  "mcpServers": {
     "fastly api": {
       "command": "bunx",
-      "args": ["fastly-mcp-server@latest", "run"]
+      "args": ["fastly-mcp-server@latest", "run"],
+      "env": {
+        "API_KEY_APIKEYAUTH": "your-fastly-api-key"
+      }
     },
  }
 }
