@@ -1,6 +1,6 @@
 {
   "name": "fastly-mcp-server",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MCP Server for the Fastly API",
   "license": "MIT",
   "keywords": ["fastly", "cdn", "api", "mcp", "model-context-protocol", "ai"],
