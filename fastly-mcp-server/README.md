@@ -32,25 +32,30 @@ npm install fastly-mcp-server
  "mcpServers": {
     "fastly": {
       "command": "npx",
-      "args": ["-y", "fastly-mcp-server@latest", "run"]
-    },
+      "args": ["-y", "fastly-mcp-server@latest", "run"],
+      "env": {
+        "API_KEY_APIKEYAUT": "your-fastly-api-key"
+      }
+    }
  }
 }
 ```
 
 ## Authentication
 
-The server requires a Fastly API key to authenticate with the Fastly API. Set the following environment variable:
+The server requires a Fastly API key to authenticate with the Fastly API. It can be set as in the above example if your AI agent supports it, or in the following environment variable:
 
 ```bash
-export ApiKeyAuth=your-fastly-api-key
+export API_KEY_APIKEYAUTH=your-fastly-api-key
 ```
 
 Alternatively, you can create a `.env` file in your project root:
 
 ```
-ApiKeyAuth=your-fastly-api-key
+API_KEY_APIKEYAUTH=your-fastly-api-key
 ```
+
+This will set the `Fastly-Key` header with your API key for all requests.
 
 ## Available Tools
 
