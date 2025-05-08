@@ -1,4 +1,4 @@
-# Fastly API - Unofficial OpenAPI Specification
+# Fastly API - OpenAPI Specification
 
 This repository contains a comprehensive, unofficial OpenAPI 3.0 specification for the [Fastly API](https://www.fastly.com/documentation/reference/api/index/), created by reverse engineering the publicly available API documentation. It features significantly enhanced documentation compared to the official web docs, with detailed descriptions, examples, and structured schemas optimized for both human developers and AI agents.
 
