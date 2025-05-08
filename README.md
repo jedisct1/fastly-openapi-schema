@@ -150,6 +150,22 @@ For specific use cases for the MCP specification, see [subset.md](./subset.md) w
 
 To use the MCP server with your AI assistant configuration:
 
+### Bun (Recommended)
+
+```json
+{
+ "mcpServers": {
+    "fastly api": {
+      "command": "bunx",
+      "args": ["fastly-mcp-server@latest", "run"],
+      "env": {
+        "API_KEY_APIKEYAUTH": "your-fastly-api-key"
+      }
+    }
+ }
+}
+```
+
 ### Node.js
 
 ```json
@@ -166,21 +182,7 @@ To use the MCP server with your AI assistant configuration:
 }
 ```
 
-### Bun
-
-```json
-{
- "mcpServers": {
-    "fastly api": {
-      "command": "bunx",
-      "args": ["fastly-mcp-server@latest", "run"],
-      "env": {
-        "API_KEY_APIKEYAUTH": "your-fastly-api-key"
-      }
-    }
- }
-}
-```
+> **Note**: Bun is the preferred runtime for fastly-mcp-server due to its superior performance and startup time.
 
 See the [fastly-mcp-server documentation](./fastly-mcp-server/README.md) for more details on configuration and usage.
 
