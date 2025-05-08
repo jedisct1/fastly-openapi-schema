@@ -133,6 +133,29 @@ As shown in the usage examples above, you can provide the API key in the environ
 
 The server will automatically set the `Fastly-Key` header with your API key for all requests to the Fastly API.
 
+### Obtaining a Fastly API Key
+
+To get a Fastly API key for use with the MCP server:
+
+1. Log in to your Fastly account at [https://manage.fastly.com](https://manage.fastly.com)
+2. Navigate to "Account" in the top right menu
+3. Select "Personal API tokens" from the sidebar
+4. Click the "Create token" button
+5. Provide a name for your token (e.g., "MCP Server")
+6. Select the appropriate scope for your needs:
+   - For read-only access: Select "global:read"
+   - For full access: Select "global:write"
+7. Set an expiration date if desired (or leave as "never" for permanent tokens)
+8. Click "Create" to generate your API token
+9. Copy the displayed token immediately (it will only be shown once)
+10. Use this token as the value for `API_KEY_APIKEYAUTH` in your configuration
+
+**Important Security Notes:**
+- Store your API key securely and never commit it to version control
+- Consider using environment variables or a secure secrets manager
+- Use the most restrictive scope necessary for your application
+- Rotate API keys regularly following security best practices
+
 ## Available Tools
 
 The server provides comprehensive tools for interacting with the Fastly API:
