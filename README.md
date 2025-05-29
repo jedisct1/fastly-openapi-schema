@@ -54,7 +54,7 @@ This is an **unofficial** specification and is not endorsed, supported, or guara
   - WAF security
   - Logging endpoints
   - Stats and metrics
-  - Compute@Edge
+  - Compute
 
 ## Specifications
 
