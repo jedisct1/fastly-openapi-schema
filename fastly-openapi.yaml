@@ -3,7 +3,7 @@ info:
   title: Fastly API
   description: |
     The Fastly API allows you to manage Fastly services via a REST-like interface.
-    This API provides comprehensive control over Fastly CDN services, including configuration management, 
+    This API provides comprehensive control over Fastly CDN services, including configuration management,
     content purging, real-time analytics, and advanced edge computing features.
   version: "1.0"
   contact:
@@ -1280,8 +1280,8 @@ paths:
 
   /resources/compute/package:
     get:
-      summary: List Compute@Edge packages
-      description: List all Compute@Edge packages
+      summary: List Compute packages
+      description: List all Compute packages
       operationId: listComputePackages
       tags:
         - Compute
@@ -1297,8 +1297,8 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
     post:
-      summary: Upload Compute@Edge package
-      description: Upload a new Compute@Edge package
+      summary: Upload Compute package
+      description: Upload a new Compute package
       operationId: uploadComputePackage
       tags:
         - Compute
@@ -1311,7 +1311,7 @@ paths:
                 package:
                   type: string
                   format: binary
-                  description: The compiled Compute@Edge package file (.wasm)
+                  description: The compiled Compute package file (.wasm)
               required:
                 - package
         required: true
@@ -1332,8 +1332,8 @@ paths:
       - $ref: "#/components/parameters/service_id"
       - $ref: "#/components/parameters/version_id"
     get:
-      summary: Get Compute@Edge configuration
-      description: Get Compute@Edge configuration for a service version
+      summary: Get Compute configuration
+      description: Get Compute configuration for a service version
       operationId: getComputeConfig
       tags:
         - Compute
@@ -1349,8 +1349,8 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
     put:
-      summary: Update Compute@Edge configuration
-      description: Update Compute@Edge configuration for a service version
+      summary: Update Compute configuration
+      description: Update Compute configuration for a service version
       operationId: updateComputeConfig
       tags:
         - Compute
@@ -3082,7 +3082,7 @@ components:
       properties:
         id:
           type: string
-          description: Alphanumeric string identifying the Compute@Edge package.
+          description: Alphanumeric string identifying the Compute package.
           example: b2Z8b3UjhuJYtUTztFYEpi
         service_id:
           type: string
@@ -3094,7 +3094,7 @@ components:
           example: 1
         name:
           type: string
-          description: Name of the Compute@Edge package.
+          description: Name of the Compute package.
           example: my-compute-package
         metadata:
           type: object
@@ -3142,11 +3142,11 @@ components:
           example: 1
         package_id:
           type: string
-          description: Alphanumeric string identifying the Compute@Edge package.
+          description: Alphanumeric string identifying the Compute package.
           example: b2Z8b3UjhuJYtUTztFYEpi
         backend_configs:
           type: object
-          description: Configuration for backend used by the Compute@Edge service.
+          description: Configuration for backend used by the Compute service.
           additionalProperties:
             type: object
             properties:
@@ -3174,11 +3174,11 @@ components:
       properties:
         package_id:
           type: string
-          description: Alphanumeric string identifying the Compute@Edge package.
+          description: Alphanumeric string identifying the Compute package.
           example: b2Z8b3UjhuJYtUTztFYEpi
         backend_configs:
           type: object
-          description: Configuration for backend used by the Compute@Edge service.
+          description: Configuration for backend used by the Compute service.
           additionalProperties:
             type: object
             properties:
