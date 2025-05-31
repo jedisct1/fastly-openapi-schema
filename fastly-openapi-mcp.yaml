@@ -2385,7 +2385,7 @@ components:
                     description: |
                         Service type indicating the Fastly platform and features available.
                         - vcl: Traditional VCL-based service with full customization
-                        - wasm: Compute@Edge service using WebAssembly
+                        - wasm: Fastly Compute service using WebAssembly
                     enum:
                         - vcl
                         - wasm
