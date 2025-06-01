@@ -705,32 +705,6 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
-  /purge/{url}:
-    parameters:
-      - name: url
-        in: path
-        description: URL to purge (without the scheme)
-        required: true
-        schema:
-          type: string
-          example: www.example.com/path/to/resource
-    post:
-      summary: Purge URL
-      description: Purges a specific URL from the Fastly cache. This is the most direct way to remove a single resource from the cache. The URL should be provided without the scheme (http:// or https://). This is a targeted operation that only affects the specified URL and is more efficient than purging all content when only specific resources need to be refreshed.
-      operationId: purgeUrl
-      tags:
-        - Purge
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PurgeResponse"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/purge:
     parameters:
@@ -770,37 +744,6 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
-  /purge/soft:
-    post:
-      summary: Soft purge by URL
-      description: Performs a "soft purge" on a specific URL, which expires the content but allows stale content to be served while fresh content is being fetched from the origin. This is useful for high-traffic resources where you want to avoid potential origin overload and maintain some level of performance during purge operations.
-      operationId: softPurgeUrl
-      tags:
-        - Purge
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                  description: URL to soft purge
-                  example: https://www.example.com/path/to/resource
-              required:
-                - url
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PurgeResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
 
   /service/{service_id}/purge/{purge_id}:
     parameters:
@@ -1334,53 +1277,6 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
-  /service/{service_id}/waf/firewall/{firewall_id}/rule/{rule_id}:
-    parameters:
-      - $ref: "#/components/parameters/service_id"
-      - $ref: "#/components/parameters/firewall_id"
-      - $ref: "#/components/parameters/rule_id"
-    get:
-      summary: Get WAF rule
-      description: Get a specific WAF rule
-      operationId: getWafRule
-      tags:
-        - WAF
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/WAFRule"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    patch:
-      summary: Update WAF rule
-      description: Update a specific WAF rule
-      operationId: updateWafRule
-      tags:
-        - WAF
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/WAFRuleUpdate"
-        required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/WAFRule"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /service/{service_id}/version/{version_id}/rate-limiting:
     parameters:
@@ -1500,54 +1396,6 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
-  /resources/compute/package:
-    get:
-      summary: List Compute packages
-      description: List all Compute packages
-      operationId: listComputePackages
-      tags:
-        - Compute
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/ComputePackage"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-    post:
-      summary: Upload Compute package
-      description: Upload a new Compute package
-      operationId: uploadComputePackage
-      tags:
-        - Compute
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                package:
-                  type: string
-                  format: binary
-                  description: The compiled Compute package file (.wasm)
-              required:
-                - package
-        required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ComputePackage"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
 
   /service/{service_id}/version/{version_id}/compute:
     parameters:
@@ -1741,58 +1589,6 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
-  /historical:
-    get:
-      summary: Get historical stats
-      description: Retrieves historical analytics data across all services. This endpoint provides aggregated metrics over longer time periods, allowing for trend analysis and historical comparisons. It supports various aggregation methods and filters to customize the returned data for specific analysis needs.
-      operationId: getHistoricalStats
-      tags:
-        - Historical
-      parameters:
-        - name: from
-          in: query
-          description: Timestamp from which to begin gathering stats (UTC)
-          required: true
-          schema:
-            type: string
-            format: date-time
-        - name: to
-          in: query
-          description: Timestamp to end gathering stats (UTC)
-          required: true
-          schema:
-            type: string
-            format: date-time
-        - name: by
-          in: query
-          description: Duration of sample windows
-          schema:
-            type: string
-            enum: [day, hour, minute]
-            default: day
-        - name: region
-          in: query
-          description: Filter stats by geographic region
-          schema:
-            type: string
-        - name: metric
-          in: query
-          description: The metric to get data for
-          required: true
-          schema:
-            type: string
-            enum: [requests, bandwidth, hits, miss, errors]
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/HistoricalStats"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "422":
-          description: Unprocessable Entity - Invalid parameters
 
   /service/{service_id}/version/{version_id}/origin:
     parameters:
@@ -1985,193 +1781,6 @@ paths:
           $ref: "#/components/responses/NotFound"
 
   # Account Management Endpoints
-  /customer/{customer_id}/billing_address:
-    parameters:
-      - name: customer_id
-        in: path
-        required: true
-        description: Unique identifier for the customer account. This is typically provided during account setup or can be retrieved from the customer management endpoints.
-        schema:
-          type: string
-          pattern: '^[A-Za-z0-9]+$'
-          example: "x4xCwxxJxGCx123Rx5xTx"
-    get:
-      summary: Retrieve customer billing address
-      description: |
-        Retrieves the current billing address associated with a customer account. The billing address is used for invoice generation, tax calculation, and compliance with regional billing requirements.
-
-        **Purpose**: Access billing address information for invoice processing, tax compliance, account verification, or address validation workflows.
-
-        **When to use**:
-        - Before processing payments or subscriptions
-        - Validating customer account information
-        - Generating invoices or tax documents
-        - Account management dashboard displays
-        - Compliance reporting requirements
-
-        **Response includes**:
-        - Complete street address (address_1, address_2)
-        - City, state/province, and postal code
-        - Country code (ISO format)
-        - Address validation status
-
-        **Business rules**:
-        - Tax calculations depend on the billing address
-        - Address must be valid for invoice generation
-        - Some features may be restricted based on country
-
-        **Privacy note**: This endpoint requires appropriate permissions as billing addresses contain PII (Personally Identifiable Information).
-      operationId: getBillingAddress
-      tags:
-        - Account
-      responses:
-        "200":
-          description: Successfully retrieved billing address
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BillingAddress"
-              examples:
-                us_address:
-                  summary: US business address
-                  value:
-                    address_1: "123 Business St"
-                    address_2: "Suite 456"
-                    city: "San Francisco"
-                    state: "CA"
-                    postal_code: "94102"
-                    country: "US"
-                international_address:
-                  summary: International address
-                  value:
-                    address_1: "456 Tech Avenue"
-                    city: "London"
-                    state: "England"
-                    postal_code: "SW1A 1AA"
-                    country: "GB"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          description: Insufficient permissions to access billing information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  msg:
-                    type: string
-                    example: "Insufficient permissions to access billing address"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    patch:
-      summary: Update customer billing address
-      description: |
-        Updates the billing address for a customer account. This operation affects tax calculations, invoice generation, and regional compliance requirements.
-
-        **Purpose**: Maintain accurate billing information for tax compliance, invoice generation, and account management.
-
-        **When to use**:
-        - Customer relocates or changes business address
-        - Correcting address information for tax compliance
-        - Setting up new billing arrangements
-        - Responding to payment processing requirements
-
-        **Important considerations**:
-        - Address changes may affect tax rates for future billing
-        - Some regions have specific validation requirements
-        - Changes take effect immediately for new invoices
-        - Historical invoices retain the previous address
-
-        **Validation requirements**:
-        - Country code must be valid ISO 3166-1 alpha-2
-        - Postal codes are validated against country formats
-        - Address fields have length and character restrictions
-        - Some countries require state/province information
-
-        **Best practices**:
-        - Validate addresses before submission
-        - Update addresses before billing cycles
-        - Maintain audit logs of address changes
-        - Coordinate with accounting teams for tax implications
-      operationId: updateBillingAddress
-      tags:
-        - Account
-      requestBody:
-        description: Updated billing address information. Only provided fields will be updated; omitted fields remain unchanged.
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/BillingAddressUpdate"
-            examples:
-              complete_update:
-                summary: Complete address update
-                value:
-                  address_1: "789 New Business Blvd"
-                  address_2: "Floor 12"
-                  city: "New York"
-                  state: "NY"
-                  postal_code: "10001"
-                  country: "US"
-              postal_code_only:
-                summary: Update postal code only
-                value:
-                  postal_code: "10002"
-        required: true
-      responses:
-        "200":
-          description: Billing address updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BillingAddress"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          description: Insufficient permissions to modify billing information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  msg:
-                    type: string
-                    example: "Insufficient permissions to modify billing address"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "422":
-          description: Address validation failed
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  msg:
-                    type: string
-                    example: "Invalid postal code for specified country"
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        field:
-                          type: string
-                        message:
-                          type: string
-    delete:
-      summary: Delete billing address
-      description: Delete billing address for a customer
-      operationId: deleteBillingAddress
-      tags:
-        - Account
-      responses:
-        "204":
-          description: No Content
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /billing/v3/service-usage-metrics:
     get:
@@ -2234,23 +1843,6 @@ paths:
         required: true
         schema:
           type: string
-    get:
-      summary: List customer contacts
-      description: Get all contacts for a customer
-      operationId: listCustomerContacts
-      tags:
-        - Account
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/CustomerContact"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
     post:
       summary: Add customer contact
       description: Add a new customer contact
@@ -2275,31 +1867,6 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
 
-  /customer/{customer_id}/contacts/{contact_id}:
-    parameters:
-      - name: customer_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: contact_id
-        in: path
-        required: true
-        schema:
-          type: string
-    delete:
-      summary: Delete customer contact
-      description: Delete a contact
-      operationId: deleteCustomerContact
-      tags:
-        - Account
-      responses:
-        "204":
-          description: No Content
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /customer/{customer_id}:
     parameters:
@@ -2308,23 +1875,6 @@ paths:
         required: true
         schema:
           type: string
-    get:
-      summary: Get customer details
-      description: Get details of a customer
-      operationId: getCustomer
-      tags:
-        - Account
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Customer"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
     put:
       summary: Update customer
       description: Update a customer
@@ -2346,19 +1896,6 @@ paths:
                 $ref: "#/components/schemas/Customer"
         "400":
           $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    delete:
-      summary: Delete customer
-      description: Delete a customer
-      operationId: deleteCustomer
-      tags:
-        - Account
-      responses:
-        "204":
-          description: No Content
         "401":
           $ref: "#/components/responses/Unauthorized"
         "404":
@@ -2392,30 +1929,6 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
 
-  /events/{event_id}:
-    parameters:
-      - name: event_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get event details
-      description: Get an event
-      operationId: getEvent
-      tags:
-        - Account
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Event"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   # Authentication Token Endpoints
   /automation-tokens:
@@ -2621,70 +2134,6 @@ paths:
                         message:
                           type: string
 
-  /automation-tokens/{id}:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get automation token
-      description: Retrieve an automation token by ID
-      operationId: getAutomationToken
-      tags:
-        - Authentication
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AutomationToken"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    delete:
-      summary: Revoke automation token
-      description: Revoke an automation token by ID
-      operationId: revokeAutomationToken
-      tags:
-        - Authentication
-      responses:
-        "204":
-          description: No Content
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-
-  /automation-tokens/{id}/services:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: List automation token services
-      description: List services associated with an automation token
-      operationId: listAutomationTokenServices
-      tags:
-        - Authentication
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Service"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /tokens:
     get:
@@ -2728,43 +2177,6 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
 
-  /tokens/{token_id}:
-    parameters:
-      - name: token_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get user token
-      description: Get a token
-      operationId: getUserToken
-      tags:
-        - Authentication
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserToken"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    delete:
-      summary: Revoke user token
-      description: Revoke a token
-      operationId: revokeUserToken
-      tags:
-        - Authentication
-      responses:
-        "204":
-          description: No Content
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /current_user:
     get:
@@ -2782,54 +2194,7 @@ paths:
                 $ref: "#/components/schemas/User"
         "401":
           $ref: "#/components/responses/Unauthorized"
-    put:
-      summary: Update current user
-      description: Update the current user
-      operationId: updateCurrentUser
-      tags:
-        - Authentication
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UserUpdate"
-        required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/User"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
 
-  /user/{user_id}:
-    parameters:
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get user
-      description: Get a user
-      operationId: getUser
-      tags:
-        - Authentication
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/User"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   # Security Endpoints
   /ddos-protection/v1/events:
@@ -2851,57 +2216,6 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
 
-  /ddos-protection/v1/events/{event_id}:
-    parameters:
-      - name: event_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get DDoS protection event
-      description: Get a specific DDoS protection event
-      operationId: getDdosEvent
-      tags:
-        - Security
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DdosEvent"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-
-  /ddos-protection/v1/events/{event_id}/rules:
-    parameters:
-      - name: event_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get DDoS protection event rules
-      description: Get all rules for a DDoS protection event
-      operationId: getDdosEventRules
-      tags:
-        - Security
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/DdosRule"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /tls/certificates:
     get:
@@ -2945,68 +2259,6 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
 
-  /tls/certificates/{certificate_id}:
-    parameters:
-      - name: certificate_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get TLS certificate
-      description: Get a TLS certificate
-      operationId: getTlsCertificate
-      tags:
-        - Security
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TlsCertificate"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    patch:
-      summary: Update TLS certificate
-      description: Update a TLS certificate
-      operationId: updateTlsCertificate
-      tags:
-        - Security
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TlsCertificateUpdate"
-        required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TlsCertificate"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    delete:
-      summary: Delete TLS certificate
-      description: Delete a TLS certificate
-      operationId: deleteTlsCertificate
-      tags:
-        - Security
-      responses:
-        "204":
-          description: No Content
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /tls/activations:
     get:
@@ -3050,55 +2302,6 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
 
-  /tls/activations/{tls_activation_id}:
-    parameters:
-      - name: tls_activation_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get TLS activation
-      description: Get a TLS activation
-      operationId: getTlsActivation
-      tags:
-        - Security
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TlsActivation"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    patch:
-      summary: Update TLS activation
-      description: Update Mutual TLS on a TLS activation
-      operationId: updateTlsActivation
-      tags:
-        - Security
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TlsActivationUpdate"
-        required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TlsActivation"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   /tls/mutual_authentications:
     get:
@@ -3142,68 +2345,6 @@ paths:
         "401":
           $ref: "#/components/responses/Unauthorized"
 
-  /tls/mutual_authentications/{mutual_authentication_id}:
-    parameters:
-      - name: mutual_authentication_id
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get mutual TLS configuration
-      description: Get a mutual TLS configuration
-      operationId: getMutualAuthentication
-      tags:
-        - Security
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/MutualAuthentication"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    patch:
-      summary: Update mutual TLS configuration
-      description: Update a mutual TLS configuration
-      operationId: updateMutualAuthentication
-      tags:
-        - Security
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/MutualAuthenticationUpdate"
-        required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/MutualAuthentication"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-    delete:
-      summary: Delete mutual TLS configuration
-      description: Delete a mutual TLS configuration
-      operationId: deleteMutualAuthentication
-      tags:
-        - Security
-      responses:
-        "204":
-          description: No Content
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
 
   # VCL Object Endpoints
   /service/{service_id}/version/{version_id}/condition:
