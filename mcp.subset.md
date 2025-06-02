@@ -1,108 +1,124 @@
-# Fastly API Priority Endpoints
+# MCP Subset Selection Justification
 
-This document contains the 42 most frequently used Fastly API endpoints, organized by usage priority and common workflows. These endpoints represent the core operations that developers and systems most commonly need when working with Fastly's CDN services.
+This document justifies the selection of 42 Fastly API endpoints optimized for MCP servers used by AI LLM coding agents.
 
-## Critical Service Management (10 endpoints)
-Essential for basic service operations and deployment workflows.
+## Selection Criteria
 
-1. `listServices` - Discover and list all services in account
-2. `createService` - Create new CDN service
-3. `getService` - Get detailed service information
-4. `updateService` - Update service metadata
-5. `deleteService` - Remove service (critical operation)
-6. `listVersions` - List all versions for a service
-7. `getVersion` - Get specific version details
-8. `cloneVersion` - Create new version from existing
-9. `activateVersion` - Deploy version to production
-10. `getStats` - Get real-time service statistics
+The endpoints were selected based on their importance for AI agents performing common Fastly management tasks:
 
-## Domain and Backend Configuration (8 endpoints)
-Core configuration for traffic routing and origin servers.
+1. **Essential CRUD Operations**: Complete lifecycle management capabilities
+2. **Developer Workflow Efficiency**: Operations that enable automated deployment and configuration
+3. **Production Readiness**: Monitoring, debugging, and maintenance capabilities
+4. **Security & Compliance**: Basic security configuration requirements
+5. **Content Delivery Core**: Essential CDN functionality
 
-11. `listDomains` - List domains for service version
-12. `createDomain` - Add domain to service
-13. `getDomain` - Get domain configuration details
-14. `updateDomain` - Modify domain settings
-15. `deleteDomain` - Remove domain from service
-16. `listBackends` - List backend servers
-17. `createBackend` - Add new backend server
-18. `getBackend` - Get backend configuration
+## Selected Endpoints by Category
 
-## Cache and Content Management (8 endpoints)
-Essential for cache control and content delivery optimization.
+### Core Service Management (8 endpoints)
+- `listServices` - Discover and inventory existing services
+- `createAService` - Provision new services programmatically
+- `getAService` - Retrieve service details and configuration
+- `updateAService` - Modify service settings and metadata
+- `deleteAService` - Clean up and decommission services
+- `listVersionsOfAService` - Track configuration history
+- `createAServiceVersion` - Enable configuration changes
+- `getAVersionOfAService` - Inspect version-specific configuration
 
-19. `updateBackend` - Modify backend settings
-20. `deleteBackend` - Remove backend server
-21. `purgeAll` - Purge all cached content
-22. `purgeUrl` - Purge specific URL from cache
-23. `purgeByKey` - Purge content by surrogate key
-24. `softPurgeUrl` - Soft purge for graceful invalidation
-25. `listCacheSettings` - List cache configuration rules
-26. `createCacheSetting` - Add cache behavior rule
+**Justification**: These form the foundation of any Fastly automation, enabling AI agents to manage the complete service lifecycle from creation to deletion.
 
-## VCL and Configuration Objects (8 endpoints)
-Core VCL configuration and request/response manipulation.
+### Service Configuration - Backends & Domains (8 endpoints)
+- `listBackends` - Inventory origin servers
+- `createABackend` - Configure origin connections
+- `describeABackend` - Inspect backend configuration
+- `updateABackend` - Modify origin settings
+- `deleteABackend` - Remove unused backends
+- `listServiceDomains` - Inventory served domains
+- `addADomainNameToAService` - Configure new domains
+- `describeADomain` - Verify domain configuration
 
-27. `getCacheSetting` - Get cache rule details
-28. `updateCacheSetting` - Modify cache behavior
-29. `listVcls` - List VCL files for version
-30. `createVcl` - Upload custom VCL code
-31. `listConditions` - List conditional logic rules
-32. `createCondition` - Add conditional rule
-33. `listHeaders` - List header manipulation rules
-34. `createHeader` - Add header modification
+**Justification**: Backend and domain management are critical for content delivery configuration. AI agents need these to establish the basic routing and origin connectivity.
 
-## Authentication and Access Management (4 endpoints)
-Security and API access control.
+### Version Management & Deployment (6 endpoints)
+- `updateAServiceVersion` - Modify configuration drafts
+- `validateAServiceVersion` - Pre-deployment validation
+- `activateAServiceVersion` - Deploy configurations to production
+- `deactivateAServiceVersion` - Rollback capabilities
+- `cloneAServiceVersion` - Create configuration branches
+- `lockAServiceVersion` - Prevent accidental changes
 
-35. `listAutomationTokens` - List automation tokens for CI/CD
-36. `createAutomationToken` - Create token for automated systems
-37. `getCurrentUser` - Get current user information
-38. `listUserTokens` - List personal API tokens
+**Justification**: These enable safe, controlled deployments with validation and rollback capabilities - essential for production automation by AI agents.
 
-## Monitoring and Analytics (4 endpoints)
-Performance monitoring and operational insights.
+### VCL Configuration (6 endpoints)
+- `listCustomVclFiles` - Inventory custom logic
+- `createACustomVclFile` - Deploy custom edge logic
+- `getACustomVclFile` - Inspect VCL content
+- `updateACustomVclFile` - Modify edge behavior
+- `deleteACustomVclFile` - Clean up unused VCL
+- `setACustomVclFileAsMain` - Activate custom logic
 
-39. `getServiceStats` - Get detailed service metrics
-40. `getRealtimeMetrics` - Get real-time performance data
-41. `getServiceStatsSummary` - Get service performance summary
-42. `checkContentStatus` - Check content cache status across POPs
+**Justification**: VCL is Fastly's primary customization mechanism. AI agents need these endpoints to implement complex edge logic and custom behaviors.
 
----
+### Content Delivery Essentials (4 endpoints)
+- `purgeAUrl` - Invalidate specific content
+- `purgeEverythingFromAService` - Full cache invalidation
+- `purgeBySurrogateKeyTag` - Targeted cache invalidation
+- `listCacheSettingsObjects` - Inspect caching configuration
 
-## Usage Priority Categories
+**Justification**: Cache management is core to CDN operations. These endpoints provide both surgical and broad cache invalidation capabilities.
 
-### **Tier 1 - Daily Operations (1-20)**
-These endpoints are used in typical daily development and deployment workflows, including service configuration, version management, and basic cache operations.
+### Basic Monitoring & Stats (4 endpoints)
+- `getStatsForAService` - Service performance metrics
+- `getHistoricalStatsForASingleService` - Trend analysis
+- `getRealtimeDomainDataForTheLast120Seconds` - Real-time monitoring
+- `getHistoricalDomainDataForAService` - Domain-specific analytics
 
-### **Tier 2 - Regular Configuration (21-35)**
-These endpoints are used for ongoing service optimization, VCL customization, and content delivery fine-tuning.
+**Justification**: AI agents need visibility into service performance to make informed optimization decisions and detect issues.
 
-### **Tier 3 - Monitoring & Security (36-42)**
-These endpoints are essential for operational monitoring, security management, and performance optimization.
+### Security Fundamentals (4 endpoints)
+- `createATlsConfiguration` - Configure SSL/TLS
+- `getATlsConfiguration` - Inspect TLS settings
+- `createANewServiceAcl` - Set up access control
+- `createAnAclEntry` - Manage access rules
 
-## Common Workflow Patterns
+**Justification**: Basic security configuration is essential for production services. These endpoints enable AI agents to implement fundamental security controls.
 
-### **Initial Service Setup**
-```
-createService → createDomain → createBackend → createCacheSetting → cloneVersion → activateVersion
-```
+### Additional Configuration (2 endpoints)
+- `createACacheSettingsObject` - Configure caching behavior
+- `createAHeaderObject` - Manipulate HTTP headers
 
-### **Content Deployment**
-```
-cloneVersion → createVcl → createCondition → createHeader → activateVersion
-```
+**Justification**: These provide additional configuration flexibility for common customization needs.
 
-### **Cache Management**
-```
-purgeAll | purgeUrl | purgeByKey → checkContentStatus
-```
+## Rationale for 42 Endpoint Limit
 
-### **Monitoring & Analytics**
-```
-getStats → getServiceStats → getRealtimeMetrics
-```
+The selection of 42 endpoints balances comprehensive functionality with practical constraints:
 
----
+1. **Coverage**: Sufficient endpoints to handle most common Fastly management scenarios
+2. **Complexity**: Manageable scope for AI agents to understand and utilize effectively
+3. **Focus**: Prioritizes high-impact, frequently-used operations over specialized features
+4. **Efficiency**: Reduces API surface area while maintaining essential capabilities
 
-*This priority list is based on common usage patterns in CDN operations, CI/CD pipelines, and typical developer workflows with Fastly services.*
+## Use Cases Enabled
+
+With these 42 endpoints, AI agents can:
+
+- ✅ Set up new services from scratch
+- ✅ Configure domains and SSL certificates
+- ✅ Implement custom edge logic with VCL
+- ✅ Manage backend origins and load balancing
+- ✅ Deploy and rollback configurations safely
+- ✅ Monitor service performance and health
+- ✅ Implement basic security controls
+- ✅ Manage content caching and purging
+- ✅ Troubleshoot common issues
+
+## Excluded Categories
+
+The following endpoint categories were deprioritized for this subset:
+
+- **Billing & Account Management**: Typically handled by humans, not automation
+- **Advanced Logging**: Beyond basic monitoring needs
+- **Specialized Security**: WAF, bot detection (advanced use cases)
+- **Edge Storage**: Specialized data storage features
+- **Advanced Analytics**: Detailed reporting beyond basic metrics
+
+This focused subset provides AI agents with the core capabilities needed for effective Fastly service management while maintaining simplicity and avoiding rarely-used specialized features.
