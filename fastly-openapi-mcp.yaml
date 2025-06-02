@@ -35,164 +35,6 @@ info:
     version: 1.0.0
 openapi: 3.0.3
 paths:
-    /billing/v3/service-usage-metrics:
-        get:
-            description: |
-                Returns product usage, broken down by service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Billing](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: retrieveServiceUsageMetricsWithNonzeroUnits
-            parameters:
-                - description: Pagination cursor for retrieving the next set of results. Use the cursor value from a previous response to continue pagination.
-                  in: query
-                  name: cursor
-                  schema:
-                    example: eyJpZCI6IjEyMzQ1Njc4OTAifQ==
-                    type: string
-                - description: End month for usage data query in YYYY-MM format. Must be in the past or current month.
-                  in: query
-                  name: end_month
-                  schema:
-                    example: 2024-12
-                    pattern: ^\d{4}-\d{2}$
-                    type: string
-                - description: Maximum number of usage records to return per page. Used for pagination to control response size.
-                  in: query
-                  name: limit
-                  schema:
-                    default: 100
-                    example: 50
-                    maximum: 1000
-                    minimum: 1
-                    type: integer
-                - description: Filter usage data by specific Fastly product ID. Common values include cdn_usage, compute_requests, bandwidth.
-                  in: query
-                  name: product_id
-                  schema:
-                    example: cdn_usage
-                    type: string
-                - description: Filter usage data by specific service ID. Service IDs are alphanumeric strings that identify a Fastly service.
-                  in: query
-                  name: service
-                  schema:
-                    example: SU1Z0isxPaozGVKXdv0eY
-                    type: string
-                - description: Start month for usage data query in YYYY-MM format. Cannot be more than 12 months in the past.
-                  in: query
-                  name: start_month
-                  schema:
-                    example: 2024-01
-                    pattern: ^\d{4}-\d{2}$
-                    type: string
-                - description: Filter usage data by specific usage type. Determines what metric to retrieve (requests, bandwidth, compute usage, etc.).
-                  in: query
-                  name: usage_type_name
-                  schema:
-                    enum:
-                        - requests
-                        - bandwidth
-                        - compute_requests
-                        - compute_execution_time
-                        - compute_ram_used
-                        - image_optimizer_requests
-                        - video_on_demand_requests
-                    example: requests
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Paginated usage data with metrics and cursor for next page
-                                example:
-                                    data:
-                                        - last_updated_at: "2024-01-31T23:59:59Z"
-                                          product_id: cdn_usage
-                                          quantity: 1.25e+06
-                                          raw_quantity: 1.25e+06
-                                          unit: requests
-                                          usage_type: requests
-                                        - last_updated_at: "2024-01-31T23:59:59Z"
-                                          product_id: cdn_usage
-                                          quantity: 5.24288e+11
-                                          raw_quantity: 5.24288e+11
-                                          unit: bytes
-                                          usage_type: bandwidth
-                                    meta:
-                                        next_cursor: eyJpZCI6IjEyMzQ1Njc4OTEifQ==
-                                        total: 25
-                                type: object
-                    description: A response containing usage elements.
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Retrieve service-level usage metrics for services with non-zero usage units
-            tags:
-                - Account
-    /billing/v3/usage-metrics:
-        get:
-            description: |
-                Returns monthly usage metrics for customer by product.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Billing](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getMonthlyUsageMetrics
-            parameters:
-                - description: 'Query parameter: end_month'
-                  in: query
-                  name: end_month
-                  schema:
-                    type: string
-                - description: 'Query parameter: start_month'
-                  in: query
-                  name: start_month
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 A response containing usage metric elements.
-                                type: object
-                    description: A response containing usage metric elements.
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get monthly usage metrics
-            tags:
-                - Account
     /content/edge_check:
         get:
             description: |
@@ -236,110 +78,25 @@ paths:
             summary: Check status of content in each POP's cache
             tags:
                 - Utilities
-    /current_customer:
-        get:
-            description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/customer/#get-logged-in-customer)**\n\n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
-            operationId: getTheLoggedInCustomer
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get the logged in customer
-            tags:
-                - Account
-    /customer/{customer_id}/billing_address:
-        get:
+    /purge/{cached_url}:
+        post:
             description: |
-                Get a customer's billing address.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getABillingAddress
-            parameters:
-                - description: Alphanumeric string identifying the customer account
-                  in: path
-                  name: customer_id
-                  required: true
-                  schema:
-                    example: x4xCwxxJxGCx123Rx5xTx
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Billing address information for the customer
-                                example:
-                                    attributes:
-                                        address_1: 123 Main Street
-                                        address_2: Suite 100
-                                        city: San Francisco
-                                        country: US
-                                        postal_code: "94105"
-                                        state: CA
-                                        type: billing
-                                    id: x4xCwxxJxGCx123Rx5xTx
-                                    type: billing_address
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get a billing address
-            tags:
-                - Account
-    /enabled-products/v1/bot_management/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the Bot Management product on a service.
+                Instant Purge an individual URL.
                 > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getBotManagementEnablementStatus
+            operationId: purgeAUrl
             parameters:
-                - description: The service_id identifier
+                - description: The cached_url identifier
                   in: path
-                  name: service_id
+                  name: cached_url
                   required: true
                   schema:
                     type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Purge a URL
+                            type: object
             responses:
                 "200":
                     content:
@@ -368,710 +125,9 @@ paths:
                     description: Internal Server Error
             security:
                 - fastly_api_key: []
-            summary: Get product enablement status
+            summary: Purge a URL
             tags:
-                - Products
-    /enabled-products/v1/brotli_compression/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the Brotli Compression product on a service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getBrotliCompressionEnablementStatus
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get product enablement status
-            tags:
-                - Products
-    /enabled-products/v1/ddos_protection/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the DDoS Protection product on a service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getDdosProtectionEnablementStatus
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get product enablement status
-            tags:
-                - Products
-    /enabled-products/v1/domain_inspector/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the Domain Inspector product on a service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getDomainInspectorEnablementStatus
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get product enablement status
-            tags:
-                - Products
-    /enabled-products/v1/image_optimizer/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the Image Optimizer product on a service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getImageOptimizerEnablementStatus
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get product enablement status
-            tags:
-                - Products
-    /enabled-products/v1/log_explorer_insights/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the Log Explorer & Insights product on a service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getLogExplorerInsightsEnablementStatus
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get product enablement status
-            tags:
-                - Products
-    /enabled-products/v1/ngwaf/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the Next-Gen WAF product on a service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getNgwafEnablementStatus
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get product enablement status
-            tags:
-                - Products
-    /enabled-products/v1/origin_inspector/services/{service_id}:
-        get:
-            description: |
-                Get the enablement status of the Origin Inspector product on a service.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getOriginInspectorEnablementStatus
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get product enablement status
-            tags:
-                - Products
-    /events:
-        get:
-            description: |
-                List all events for a particular customer. Events can be filtered by user, customer and event type. Events can be sorted by date.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: listCustomerEvents
-            parameters:
-                - description: 'Query parameter: filter[created_at][gt]'
-                  in: query
-                  name: filter[created_at][gt]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[created_at][gte]'
-                  in: query
-                  name: filter[created_at][gte]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[created_at][lt]'
-                  in: query
-                  name: filter[created_at][lt]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[created_at][lte]'
-                  in: query
-                  name: filter[created_at][lte]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[created_at]'
-                  in: query
-                  name: filter[created_at]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[customer_id]'
-                  in: query
-                  name: filter[customer_id]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[event_type]'
-                  in: query
-                  name: filter[event_type]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[service_id]'
-                  in: query
-                  name: filter[service_id]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[token_id]'
-                  in: query
-                  name: filter[token_id]
-                  schema:
-                    type: string
-                - description: 'Query parameter: filter[user_id]'
-                  in: query
-                  name: filter[user_id]
-                  schema:
-                    type: string
-                - description: 'Query parameter: page[number]'
-                  in: query
-                  name: page[number]
-                  schema:
-                    type: string
-                - description: 'Query parameter: page[size]'
-                  in: query
-                  name: page[size]
-                  schema:
-                    type: string
-                - description: Field on which to sort. Defaults to "created" if not specified.
-                  in: query
-                  name: sort
-                  schema:
-                    default: created
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: List events
-            tags:
-                - Account
-    /events/{event_id}:
-        get:
-            description: |
-                Get a specific event.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getAnEvent
-            parameters:
-                - description: The event_id identifier
-                  in: path
-                  name: event_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get an event
-            tags:
-                - Account
-    /metrics/domains/services/{service_id}:
-        get:
-            description: |
-                Fetches historical domain metrics for a given Fastly service, optionally filtering and grouping the results by domain, region, or POP.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getHistoricalDomainDataForAService
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: 'Query parameter: cursor'
-                  in: query
-                  name: cursor
-                  schema:
-                    type: string
-                - description: 'Query parameter: datacenter'
-                  in: query
-                  name: datacenter
-                  schema:
-                    type: string
-                - description: 'Query parameter: domain'
-                  in: query
-                  name: domain
-                  schema:
-                    type: string
-                - description: 'Query parameter: downsample'
-                  in: query
-                  name: downsample
-                  schema:
-                    type: string
-                - description: 'Query parameter: end'
-                  in: query
-                  name: end
-                  schema:
-                    type: string
-                - description: 'Query parameter: group_by'
-                  in: query
-                  name: group_by
-                  schema:
-                    type: string
-                - description: 'Query parameter: limit'
-                  in: query
-                  name: limit
-                  schema:
-                    type: string
-                - description: 'Query parameter: metric'
-                  in: query
-                  name: metric
-                  schema:
-                    type: string
-                - description: 'Query parameter: region'
-                  in: query
-                  name: region
-                  schema:
-                    type: string
-                - description: 'Query parameter: start'
-                  in: query
-                  name: start
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get historical domain data for a service
-            tags:
-                - Domain metrics
-    /metrics/origins/services/{service_id}:
-        get:
-            description: |
-                Fetches historical origin metrics for a given Fastly service, optionally filtering and grouping the results by origin host, region, or POP.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getHistoricalOriginDataForAService
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: 'Query parameter: cursor'
-                  in: query
-                  name: cursor
-                  schema:
-                    type: string
-                - description: 'Query parameter: datacenter'
-                  in: query
-                  name: datacenter
-                  schema:
-                    type: string
-                - description: 'Query parameter: downsample'
-                  in: query
-                  name: downsample
-                  schema:
-                    type: string
-                - description: 'Query parameter: end'
-                  in: query
-                  name: end
-                  schema:
-                    type: string
-                - description: 'Query parameter: group_by'
-                  in: query
-                  name: group_by
-                  schema:
-                    type: string
-                - description: 'Query parameter: host'
-                  in: query
-                  name: host
-                  schema:
-                    type: string
-                - description: 'Query parameter: limit'
-                  in: query
-                  name: limit
-                  schema:
-                    type: string
-                - description: 'Query parameter: metric'
-                  in: query
-                  name: metric
-                  schema:
-                    type: string
-                - description: 'Query parameter: region'
-                  in: query
-                  name: region
-                  schema:
-                    type: string
-                - description: 'Query parameter: start'
-                  in: query
-                  name: start
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get historical origin data for a service
-            tags:
-                - Origin metrics
-    /security/workspaces/{workspace_id}/timeseries:
-        get:
-            description: |
-                Get timeseries metrics in a workspace.
-                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: retrieveTimeseriesMetrics
-            parameters:
-                - description: The workspace_id identifier
-                  in: path
-                  name: workspace_id
-                  required: true
-                  schema:
-                    type: string
-                - description: 'Query parameter: end'
-                  in: query
-                  name: end
-                  schema:
-                    type: string
-                - description: 'Query parameter: granularity'
-                  in: query
-                  name: granularity
-                  schema:
-                    type: string
-                - description: 'Query parameter: metrics'
-                  in: query
-                  name: metrics
-                  schema:
-                    type: string
-                - description: 'Query parameter: start'
-                  in: query
-                  name: start
-                  schema:
-                    type: string
-            responses:
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Retrieve timeseries metrics
-            tags:
-                - Security
+                - Purging
     /service:
         get:
             description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#list-services)**\n\n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\") permissions.\n"
@@ -1133,7 +189,88 @@ paths:
             summary: List services
             tags:
                 - Services
+        post:
+            description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#create-service)**\n\n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\") permissions.\n"
+            operationId: createAService
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create a service
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create a service
+            tags:
+                - Services
     /service/{service_id}:
+        delete:
+            description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#delete-service)**\n\n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\") permissions.\n"
+            operationId: deleteAService
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Delete a service
+            tags:
+                - Services
         get:
             description: |
                 Get a specific service by id.
@@ -1177,6 +314,301 @@ paths:
             summary: Get a service
             tags:
                 - Services
+        put:
+            description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#update-service)**\n\n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\") permissions.\n"
+            operationId: updateAService
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a service
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a service
+            tags:
+                - Services
+    /service/{service_id}/acl/{acl_id}/entries:
+        get:
+            description: |
+                List ACL entries for a specified ACL.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: listAclEntries
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The acl_id identifier
+                  in: path
+                  name: acl_id
+                  required: true
+                  schema:
+                    type: string
+                - description: Direction in which to sort results. Accepts "ascend" for ascending order or "descend" for descending order.
+                  in: query
+                  name: direction
+                  schema:
+                    default: ascend
+                    enum:
+                        - ascend
+                        - descend
+                    type: string
+                - description: 'Query parameter: page'
+                  in: query
+                  name: page
+                  schema:
+                    type: string
+                - description: 'Query parameter: per_page'
+                  in: query
+                  name: per_page
+                  schema:
+                    type: string
+                - description: Field on which to sort. Defaults to "created" if not specified.
+                  in: query
+                  name: sort
+                  schema:
+                    default: created
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: List ACL entries
+            tags:
+                - Access control lists
+    /service/{service_id}/acl/{acl_id}/entry:
+        post:
+            description: |
+                Add an ACL entry to an ACL.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: createAnAclEntry
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The acl_id identifier
+                  in: path
+                  name: acl_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create an ACL entry
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create an ACL entry
+            tags:
+                - Access control lists
+    /service/{service_id}/acl/{acl_id}/entry/{acl_entry_id}:
+        delete:
+            description: |
+                Delete an ACL entry from a specified ACL.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: deleteAnAclEntry
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The acl_id identifier
+                  in: path
+                  name: acl_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The acl_entry_id identifier
+                  in: path
+                  name: acl_entry_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Delete an ACL entry
+            tags:
+                - Access control lists
+        patch:
+            description: |
+                Update an ACL entry for a specified ACL.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: updateAnAclEntry
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The acl_id identifier
+                  in: path
+                  name: acl_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The acl_entry_id identifier
+                  in: path
+                  name: acl_entry_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update an ACL entry
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update an ACL entry
+            tags:
+                - Access control lists
     /service/{service_id}/details:
         get:
             description: |
@@ -1226,6 +658,173 @@ paths:
             summary: Get service details
             tags:
                 - Services
+    /service/{service_id}/purge:
+        post:
+            description: |
+                Instant Purge a particular service of items tagged with surrogate keys. Up to 256 surrogate keys can be purged in one batch request. As an alternative to sending the keys in a JSON object in the body of the request, this endpoint also supports listing keys in a Surrogate-Key request header, e.g. Surrogate-Key: key_1 key_2 key_3.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: purgeMultipleSurrogateKeyTags
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: fastly-soft-purge header
+                  in: header
+                  name: fastly-soft-purge
+                  schema:
+                    type: string
+                - description: surrogate-key header
+                  in: header
+                  name: surrogate-key
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Purge multiple surrogate key tags
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Purge multiple surrogate key tags
+            tags:
+                - Purging
+    /service/{service_id}/purge/{surrogate_key}:
+        post:
+            description: |
+                Instant Purge a particular service of items tagged with a Surrogate Key. Only one surrogate key can be purged at a time. Multiple keys can be purged using a batch surrogate key purge request.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: purgeBySurrogateKeyTag
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The surrogate_key identifier
+                  in: path
+                  name: surrogate_key
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Purge by surrogate key tag
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Purge by surrogate key tag
+            tags:
+                - Purging
+    /service/{service_id}/purge_all:
+        post:
+            description: |
+                Instant Purge everything from a service.
+                Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant surrogate key tag (e.g., "all") to all objects.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: purgeEverythingFromAService
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Purge everything from a service
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Purge everything from a service
+            tags:
+                - Purging
     /service/{service_id}/stats/summary:
         get:
             description: |
@@ -1290,6 +889,99 @@ paths:
             summary: Get stats for a service
             tags:
                 - Metrics and stats
+    /service/{service_id}/version:
+        get:
+            description: |
+                List the versions for a particular service.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: listVersionsOfAService
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: List versions of a service
+            tags:
+                - Services
+        post:
+            description: |
+                Create a version for a particular service.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: createAServiceVersion
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create a service version
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create a service version
+            tags:
+                - Services
     /service/{service_id}/version/{version_id}:
         get:
             description: |
@@ -1338,6 +1030,339 @@ paths:
             security:
                 - fastly_api_key: []
             summary: Get a version of a service
+            tags:
+                - Services
+        put:
+            description: |
+                Update a particular version for a particular service.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: updateAServiceVersion
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a service version
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a service version
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/activate:
+        put:
+            description: |
+                Activate the current version.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: activateAServiceVersion
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Activate a service version
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Activate a service version
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/backend:
+        get:
+            description: |
+                List all backends for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: listBackends
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: List backends
+            tags:
+                - Services
+        post:
+            description: |
+                Create a backend for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: createABackend
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create a backend
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create a backend
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/backend/{backend_name}:
+        delete:
+            description: |
+                Delete the backend for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: deleteABackend
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The backend_name identifier
+                  in: path
+                  name: backend_name
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Delete a backend
+            tags:
+                - Services
+        put:
+            description: |
+                Update the backend for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: updateABackend
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The backend_name identifier
+                  in: path
+                  name: backend_name
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a backend
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a backend
             tags:
                 - Services
     /service/{service_id}/version/{version_id}/cache_settings:
@@ -1390,12 +1415,294 @@ paths:
             summary: List cache settings objects
             tags:
                 - VCL objects
-    /service/{service_id}/version/{version_id}/settings:
+        post:
+            description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/vcl-services/cache-settings/#create-cache-settings)**\n\n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\") permissions.\n"
+            operationId: createACacheSettingsObject
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create a cache settings object
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create a cache settings object
+            tags:
+                - VCL objects
+    /service/{service_id}/version/{version_id}/cache_settings/{cache_settings_name}:
+        delete:
+            description: |
+                Delete a specific cache settings object.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: deleteACacheSettingsObject
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The cache_settings_name identifier
+                  in: path
+                  name: cache_settings_name
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Delete a cache settings object
+            tags:
+                - VCL objects
+        put:
+            description: |
+                Update a specific cache settings object.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: updateACacheSettingsObject
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The cache_settings_name identifier
+                  in: path
+                  name: cache_settings_name
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a cache settings object
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a cache settings object
+            tags:
+                - VCL objects
+    /service/{service_id}/version/{version_id}/clone:
+        put:
+            description: |
+                Clone the current configuration into a new version.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: cloneAServiceVersion
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Clone a service version
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Clone a service version
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/deactivate:
+        put:
+            description: |
+                Deactivate the current version.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: deactivateAServiceVersion
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Deactivate a service version
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Deactivate a service version
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/domain:
         get:
             description: |
-                Get the settings for a particular service and version.
+                List all the domains for a particular service and version.
                 > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: getServiceSettings
+            operationId: listServiceDomains
             parameters:
                 - description: The service_id identifier
                   in: path
@@ -1437,156 +1744,87 @@ paths:
                     description: Internal Server Error
             security:
                 - fastly_api_key: []
-            summary: Get service settings
+            summary: List domains
             tags:
-                - VCL objects
-    /stats:
-        get:
+                - Services
+        post:
             description: |
-                Fetches historical stats for each of your Fastly services and groups the results by service ID.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getHistoricalStats
+                Create a domain for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: addADomainNameToAService
             parameters:
-                - description: 'Query parameter: by'
-                  in: query
-                  name: by
-                  schema:
-                    type: string
-                - description: 'Query parameter: from'
-                  in: query
-                  name: from
-                  schema:
-                    type: string
-                - description: 'Query parameter: region'
-                  in: query
-                  name: region
-                  schema:
-                    type: string
-                - description: 'Query parameter: to'
-                  in: query
-                  name: to
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get historical stats
-            tags:
-                - Metrics and stats
-    /stats/aggregate:
-        get:
-            description: |
-                Fetches historical stats information aggregated across all of your Fastly services.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getAggregatedHistoricalStats
-            parameters:
-                - description: 'Query parameter: by'
-                  in: query
-                  name: by
-                  schema:
-                    type: string
-                - description: 'Query parameter: from'
-                  in: query
-                  name: from
-                  schema:
-                    type: string
-                - description: 'Query parameter: region'
-                  in: query
-                  name: region
-                  schema:
-                    type: string
-                - description: 'Query parameter: to'
-                  in: query
-                  name: to
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get aggregated historical stats
-            tags:
-                - Metrics and stats
-    /stats/field/{field}:
-        get:
-            description: |
-                Fetches the specified field from the historical stats for each of your services and groups the results by service ID.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getHistoricalStatsForASingleField
-            parameters:
-                - description: The field identifier
+                - description: The service_id identifier
                   in: path
-                  name: field
+                  name: service_id
                   required: true
                   schema:
                     type: string
-                - description: 'Query parameter: by'
-                  in: query
-                  name: by
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
                   schema:
                     type: string
-                - description: 'Query parameter: from'
-                  in: query
-                  name: from
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Add a domain name to a service
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Add a domain name to a service
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/domain/{domain_name}:
+        delete:
+            description: |
+                Delete the domain for a particular service and versions.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: removeADomainFromAService
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
                   schema:
                     type: string
-                - description: 'Query parameter: region'
-                  in: query
-                  name: region
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
                   schema:
                     type: string
-                - description: 'Query parameter: to'
-                  in: query
-                  name: to
+                - description: The domain_name identifier
+                  in: path
+                  name: domain_name
+                  required: true
                   schema:
                     type: string
             responses:
@@ -1617,9 +1855,799 @@ paths:
                     description: Internal Server Error
             security:
                 - fastly_api_key: []
-            summary: Get historical stats for a single field
+            summary: Remove a domain from a service
             tags:
-                - Metrics and stats
+                - Services
+        put:
+            description: |
+                Update the domain for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: updateAServiceDomain
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The domain_name identifier
+                  in: path
+                  name: domain_name
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a domain
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a domain
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/healthcheck:
+        get:
+            description: |
+                List all of the health checks for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: listHealthChecks
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: List health checks
+            tags:
+                - Services
+        post:
+            description: |
+                Create a health check for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: createAHealthCheck
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create a health check
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create a health check
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/healthcheck/{healthcheck_name}:
+        delete:
+            description: |
+                Delete the health check for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: deleteAHealthCheck
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The healthcheck_name identifier
+                  in: path
+                  name: healthcheck_name
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Delete a health check
+            tags:
+                - Services
+        put:
+            description: |
+                Update the health check for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: updateAHealthCheck
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The healthcheck_name identifier
+                  in: path
+                  name: healthcheck_name
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a health check
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a health check
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/package:
+        put:
+            description: |
+                Upload a Compute package associated with the specified service version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: uploadAComputePackage
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: expect header
+                  in: header
+                  name: expect
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Upload a Compute package
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Upload a Compute package
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/snippet:
+        get:
+            description: |
+                List all snippets for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: listSnippets
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: List snippets
+            tags:
+                - VCL objects
+        post:
+            description: |
+                Create a snippet for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: createASnippet
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create a snippet
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create a snippet
+            tags:
+                - VCL objects
+    /service/{service_id}/version/{version_id}/snippet/{name}:
+        put:
+            description: |
+                Update a specific snippet for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: updateAVersionedSnippet
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The name identifier
+                  in: path
+                  name: name
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a versioned snippet
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a versioned snippet
+            tags:
+                - VCL objects
+    /service/{service_id}/version/{version_id}/validate:
+        get:
+            description: |
+                Validate the version for a particular service and version.
+                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
+            operationId: validateAServiceVersion
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Validate a service version
+            tags:
+                - Services
+    /service/{service_id}/version/{version_id}/vcl:
+        get:
+            description: |
+                List the uploaded VCLs for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: listCustomVclFiles
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: List custom VCL files
+            tags:
+                - VCL objects
+        post:
+            description: |
+                Upload a VCL for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: createACustomVclFile
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Create a custom VCL file
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Create a custom VCL file
+            tags:
+                - VCL objects
+    /service/{service_id}/version/{version_id}/vcl/{vcl_name}:
+        put:
+            description: |
+                Update the uploaded VCL for a particular service and version.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: updateACustomVclFile
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The vcl_name identifier
+                  in: path
+                  name: vcl_name
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Update a custom VCL file
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Update a custom VCL file
+            tags:
+                - VCL objects
+    /service/{service_id}/version/{version_id}/vcl/{vcl_name}/main:
+        put:
+            description: |
+                Set the specified VCL as the main.
+                > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
+            operationId: setACustomVclFileAsMain
+            parameters:
+                - description: The service_id identifier
+                  in: path
+                  name: service_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The version_id identifier
+                  in: path
+                  name: version_id
+                  required: true
+                  schema:
+                    type: string
+                - description: The vcl_name identifier
+                  in: path
+                  name: vcl_name
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            description: Request body for Set a custom VCL file as main
+                            type: object
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                description: Response for 200 OK
+                                type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unauthorized
+                "500":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Internal Server Error
+            security:
+                - fastly_api_key: []
+            summary: Set a custom VCL file as main
+            tags:
+                - VCL objects
     /stats/service/{service_id}:
         get:
             description: |
@@ -1684,275 +2712,6 @@ paths:
             summary: Get historical stats for a single service
             tags:
                 - Metrics and stats
-    /stats/service/{service_id}/field/{field}:
-        get:
-            description: |
-                Fetches the specified field from the historical stats for a given service.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getHistoricalStatsForServiceFieldCombo
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: The field identifier
-                  in: path
-                  name: field
-                  required: true
-                  schema:
-                    type: string
-                - description: 'Query parameter: by'
-                  in: query
-                  name: by
-                  schema:
-                    type: string
-                - description: 'Query parameter: from'
-                  in: query
-                  name: from
-                  schema:
-                    type: string
-                - description: 'Query parameter: region'
-                  in: query
-                  name: region
-                  schema:
-                    type: string
-                - description: 'Query parameter: to'
-                  in: query
-                  name: to
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get historical stats for a single service/field combination
-            tags:
-                - Metrics and stats
-    /stats/usage:
-        get:
-            description: |
-                Returns usage information aggregated across all Fastly services and grouped by region. To aggregate across all Fastly services by time period, see /stats/aggregate.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getUsageStatistics
-            parameters:
-                - description: 'Query parameter: from'
-                  in: query
-                  name: from
-                  schema:
-                    type: string
-                - description: 'Query parameter: to'
-                  in: query
-                  name: to
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get usage statistics
-            tags:
-                - Metrics and stats
-    /stats/usage_by_month:
-        get:
-            description: |
-                Returns month-to-date usage details for a given month and year. Usage details are aggregated by service and across all Fastly services, and then grouped by region. This endpoint does not use the from or to fields for selecting the date for which data is requested. Instead, it uses month and year integer fields. Both fields are optional and default to the current month and year respectively. When set, an optional billable_units field will convert bandwidth to GB and divide requests by 10,000.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens), Requires [API token](/reference/api/auth-tokens).
-            operationId: getMonthtodateUsageStatistics
-            parameters:
-                - description: 'Query parameter: billable_units'
-                  in: query
-                  name: billable_units
-                  schema:
-                    type: string
-                - description: 'Query parameter: month'
-                  in: query
-                  name: month
-                  schema:
-                    type: string
-                - description: 'Query parameter: year'
-                  in: query
-                  name: year
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get month-to-date usage statistics
-            tags:
-                - Metrics and stats
-    /stats/usage_by_service:
-        get:
-            description: |
-                Returns usage information aggregated by service and grouped by service and region. For service stats by time period, see /stats and /stats/field/:field.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getUsageStatisticsPerService
-            parameters:
-                - description: 'Query parameter: from'
-                  in: query
-                  name: from
-                  schema:
-                    type: string
-                - description: 'Query parameter: to'
-                  in: query
-                  name: to
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get usage statistics per service
-            tags:
-                - Metrics and stats
-    /v1/channel/{service_id}/ts/{timestamp_in_seconds}:
-        get:
-            description: |
-                Get real-time data for the specified reporting period. Specify 0 to get a single entry for the last complete second. The Timestamp field included in the response provides the time index of the latest entry in the dataset and can be provided as the start_timestamp of the next request for a seamless continuation of the dataset from one request to the next.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getRealtimeDataFromSpecifiedTime
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: The timestamp_in_seconds identifier
-                  in: path
-                  name: timestamp_in_seconds
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get real-time data from specified time
-            tags:
-                - Metrics and stats
     /v1/channel/{service_id}/ts/h:
         get:
             description: |
@@ -1997,346 +2756,6 @@ paths:
             summary: Get real-time data for the last 120 seconds
             tags:
                 - Metrics and stats
-    /v1/channel/{service_id}/ts/h/limit/{max_entries}:
-        get:
-            description: |
-                Get data for the 120 seconds preceding the latest timestamp available for a service, up to a maximum of max_entries entries.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getALimitedNumberOfRealtimeDataEntries
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: The max_entries identifier
-                  in: path
-                  name: max_entries
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get a limited number of real-time data entries
-            tags:
-                - Metrics and stats
-    /v1/domains/{service_id}/ts/{start_timestamp}:
-        get:
-            description: |
-                Get real-time domain data for the specified reporting period. Specify 0 to get a single entry for the last complete second. The Timestamp field included in the response provides the time index of the latest entry in the dataset and can be provided as the start_timestamp of the next request for a seamless continuation of the dataset from one request to the next.
-                Due to processing latency, the earliest entry in the response dataset may be earlier than start_timestamp by the value of AggregateDelay.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getRealtimeDomainDataFromASpecifiedTime
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: The start_timestamp identifier
-                  in: path
-                  name: start_timestamp
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get real-time domain data from a specified time
-            tags:
-                - Domain metrics
-    /v1/domains/{service_id}/ts/h:
-        get:
-            description: |
-                Get data for the 120 seconds preceding the latest timestamp available for a service.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getRealtimeDomainDataForTheLast120Seconds
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get real-time domain data for the last 120 seconds
-            tags:
-                - Domain metrics
-    /v1/domains/{service_id}/ts/h/limit/{max_entries}:
-        get:
-            description: |
-                Get data for the max_entries seconds preceding the latest timestamp available for a service, up to a maximum of 120 entries.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getALimitedNumberOfRealtimeDomainDataEntries
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: The max_entries identifier
-                  in: path
-                  name: max_entries
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get a limited number of real-time domain data entries
-            tags:
-                - Domain metrics
-    /v1/origins/{service_id}/ts/{start_timestamp}:
-        get:
-            description: |
-                Get real-time origin data for the specified reporting period. Specify 0 to get a single entry for the last complete second. The Timestamp field included in the response provides the time index of the latest entry in the dataset and can be provided as the start_timestamp of the next request for a seamless continuation of the dataset from one request to the next.
-                Due to processing latency, the earliest entry in the response dataset may be earlier than start_timestamp by the value of AggregateDelay.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getRealtimeOriginDataFromSpecificTime
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: The start_timestamp identifier
-                  in: path
-                  name: start_timestamp
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get real-time origin data from specific time
-            tags:
-                - Origin metrics
-    /v1/origins/{service_id}/ts/h:
-        get:
-            description: |
-                Get data for the 120 seconds preceding the latest timestamp available for a service.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getRealtimeOriginDataForTheLast120Seconds
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get real-time origin data for the last 120 seconds
-            tags:
-                - Origin metrics
-    /v1/origins/{service_id}/ts/h/limit/{max_entries}:
-        get:
-            description: |
-                Get data for the max_entries seconds preceding the latest timestamp available for a service, up to a maximum of 120 entries.
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getALimitedNumberOfRealtimeOriginDataEntries
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    type: string
-                - description: The max_entries identifier
-                  in: path
-                  name: max_entries
-                  required: true
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get a limited number of real-time origin data entries
-            tags:
-                - Origin metrics
 security:
     - fastly_api_key: []
 servers:

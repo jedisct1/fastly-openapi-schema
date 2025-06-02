@@ -1,112 +1,124 @@
-# Fastly API MCP Subset - Justification
+# Fastly API Operation Subset Justification
 
-This document explains the rationale behind selecting the 42 most frequently used Fastly API endpoints for observability and monitoring purposes with minimal side effects.
+This document explains the selection and ordering of the 50 most frequently used Fastly API operations for managing, monitoring, and observing Fastly services.
 
 ## Selection Criteria
 
-### Primary Focus Areas
-1. **Observability/Monitoring**: Endpoints that provide visibility into system performance, usage, and health
-2. **Minimal Side Effects**: Read-only operations (GET requests) that don't modify system state
-3. **High Frequency Usage**: Operations most commonly used in monitoring workflows
+The operations were selected based on:
+1. **Frequency of use** - Operations that users perform most often
+2. **Core functionality** - Essential operations for service management
+3. **Monitoring importance** - Critical for observing service health and performance
+4. **User workflow** - Operations that form part of standard workflows
 
-### Endpoint Categories and Justifications
+## Operation Categories and Justification
 
-#### Tier 1: Core Statistics & Usage Monitoring (9 endpoints)
-**Highest frequency usage for system observability**
+### 1. Service Management (Operations 1-13)
+These are the foundational operations that every Fastly user needs:
 
-- `getHistoricalStats` - Essential for understanding overall system performance trends
-- `getHistoricalStatsForASingleService` - Critical for service-specific monitoring and troubleshooting  
-- `getUsageStatistics` - Fundamental for resource utilization tracking across all services
-- `getStatsForAService` - Key metric for individual service health monitoring
-- `getAggregatedHistoricalStats` - Important for fleet-wide performance analysis
-- `getUsageStatisticsPerService` - Essential for per-service resource monitoring
-- `getMonthtodateUsageStatistics` - Critical for billing and capacity planning
-- `getHistoricalStatsForASingleField` - Enables focused monitoring of specific metrics
-- `getHistoricalStatsForServiceFieldCombo` - Allows granular service metric analysis
+- **listServices** (#1) - Most basic operation to see all services
+- **createAService** (#2) - Essential for onboarding new services
+- **getAService** (#3) - Frequently used to check service configuration
+- **updateAService** (#4) - Critical for service modifications
+- **deleteAService** (#5) - Service lifecycle management
+- **listVersionsOfAService** (#6) - Version control is core to Fastly workflow
+- **createAServiceVersion** (#7) - Required for any configuration change
+- **getAVersionOfAService** (#8) - Checking version details
+- **updateAServiceVersion** (#9) - Modifying draft versions
+- **activateAServiceVersion** (#10) - Deploy changes to production
+- **deactivateAServiceVersion** (#11) - Rollback functionality
+- **cloneAServiceVersion** (#12) - Common workflow pattern
+- **validateAServiceVersion** (#13) - Pre-deployment validation
 
-#### Tier 2: Billing & Performance Metrics (4 endpoints)
-**High frequency usage for cost monitoring and performance analysis**
+### 2. Domain Management (Operations 14-17)
+Domain configuration is essential for CDN functionality:
 
-- `getMonthlyUsageMetrics` - Essential for billing monitoring and cost optimization
-- `retrieveServiceUsageMetricsWithNonzeroUnits` - Critical for understanding active service usage
-- `getHistoricalDomainDataForAService` - Important for domain-level performance monitoring
-- `getHistoricalOriginDataForAService` - Key for origin server performance analysis
+- **listServiceDomains** (#14) - View all domains for a service
+- **addADomainNameToAService** (#15) - Configure new domains
+- **updateAServiceDomain** (#16) - Modify domain settings
+- **removeADomainFromAService** (#17) - Domain lifecycle management
 
-#### Tier 3: Real-time Monitoring (9 endpoints)
-**Medium-high frequency usage for immediate issue detection**
+### 3. Backend Management (Operations 18-21)
+Origin server configuration is critical:
 
-- `getRealtimeDataForTheLast120Seconds` - Critical for real-time system health monitoring
-- `getRealtimeDataFromSpecifiedTime` - Essential for incident analysis and debugging
-- `getRealtimeDomainDataForTheLast120Seconds` - Important for domain-specific real-time monitoring
-- `getRealtimeDomainDataFromASpecifiedTime` - Key for domain performance troubleshooting
-- `getRealtimeOriginDataForTheLast120Seconds` - Critical for origin server health monitoring
-- `getRealtimeOriginDataFromSpecificTime` - Essential for origin performance analysis
-- `getALimitedNumberOfRealtimeDataEntries` - Useful for efficient real-time data sampling
-- `getALimitedNumberOfRealtimeDomainDataEntries` - Important for domain data sampling
-- `getALimitedNumberOfRealtimeOriginDataEntries` - Key for origin data sampling
+- **listBackends** (#18) - View all origin servers
+- **createABackend** (#19) - Add new origin servers
+- **updateABackend** (#20) - Modify origin settings
+- **deleteABackend** (#21) - Remove origins
 
-#### Tier 4: Service Management & Status (6 endpoints)
-**Medium frequency usage for service health and configuration monitoring**
+### 4. Cache Purging (Operations 22-25)
+Most frequently performed operations:
 
-- `getAService` - Fundamental for service configuration inspection
-- `getServiceDetails` - Essential for comprehensive service information
-- `listServices` - Critical for service inventory and discovery
-- `getServiceSettings` - Important for configuration verification
-- `getAVersionOfAService` - Key for deployment and version tracking
-- `checkStatusOfContentInEachPopsCache` - Important for cache performance monitoring
+- **purgeAUrl** (#22) - Single URL purge (most common)
+- **purgeEverythingFromAService** (#23) - Full cache clear
+- **purgeBySurrogateKeyTag** (#24) - Targeted purging
+- **purgeMultipleSurrogateKeyTags** (#25) - Batch purging
 
-#### Tier 5: Product Enablement Status (8 endpoints)
-**Medium frequency usage for feature monitoring and compliance**
+### 5. Real-time Monitoring (Operations 26-28)
+Critical for observability:
 
-- `getDomainInspectorEnablementStatus` - Important for monitoring tool availability
-- `getOriginInspectorEnablementStatus` - Key for performance monitoring tool status
-- `getBotManagementEnablementStatus` - Critical for security monitoring capabilities
-- `getDdosProtectionEnablementStatus` - Essential for security posture monitoring
-- `getLogExplorerInsightsEnablementStatus` - Important for logging capability verification
-- `getNgwafEnablementStatus` - Critical for web application firewall monitoring
-- `getBrotliCompressionEnablementStatus` - Useful for performance optimization monitoring
-- `getImageOptimizerEnablementStatus` - Important for content optimization monitoring
+- **getRealtimeDataForTheLast120Seconds** (#26) - Live monitoring
+- **getHistoricalStatsForASingleService** (#27) - Performance analysis
+- **getStatsForAService** (#28) - Service metrics
 
-#### Tier 6: Events & Customer Information (6 endpoints)
-**Lower frequency usage for audit and customer context**
+### 6. Cache Configuration (Operations 29-32)
+Essential for cache behavior:
 
-- `listCustomerEvents` - Important for audit trails and incident correlation
-- `getAnEvent` - Essential for detailed event analysis
-- `getABillingAddress` - Useful for customer account verification
-- `getTheLoggedInCustomer` - Important for context and permissions verification
-- `listCacheSettingsObjects` - Key for cache configuration monitoring
-- `retrieveTimeseriesMetrics` - Important for security workspace monitoring
+- **listCacheSettingsObjects** (#29) - View cache rules
+- **createACacheSettingsObject** (#30) - Add cache rules
+- **updateACacheSettingsObject** (#31) - Modify cache behavior
+- **deleteACacheSettingsObject** (#32) - Remove cache rules
 
-## Design Principles
+### 7. Health Checks (Operations 33-36)
+Critical for reliability:
 
-### Read-Only Operations
-All selected endpoints use GET methods exclusively, ensuring no unintended side effects during monitoring operations. This safety characteristic is crucial for automated monitoring systems and AI agents.
+- **listHealthChecks** (#33) - View health monitoring
+- **createAHealthCheck** (#34) - Add health checks
+- **updateAHealthCheck** (#35) - Modify health criteria
+- **deleteAHealthCheck** (#36) - Remove health checks
 
-### Frequency-Based Prioritization
-Endpoints are ranked by expected usage frequency in typical monitoring scenarios:
-1. **Core metrics** (used continuously)
-2. **Performance data** (used regularly)
-3. **Real-time monitoring** (used during incidents)
-4. **Service status** (used for health checks)
-5. **Feature status** (used for compliance)
-6. **Audit data** (used for analysis)
+### 8. VCL Management (Operations 37-40)
+Core to Fastly's programmability:
 
-### Monitoring Workflow Coverage
-The selection covers the complete monitoring lifecycle:
-- **Proactive monitoring**: Historical and real-time stats
-- **Incident response**: Real-time data and service details
-- **Performance analysis**: Domain/origin metrics
-- **Capacity planning**: Usage statistics and billing metrics
-- **Compliance monitoring**: Product enablement status
-- **Audit and forensics**: Events and customer information
+- **listCustomVclFiles** (#37) - View custom logic
+- **createACustomVclFile** (#38) - Add custom VCL
+- **updateACustomVclFile** (#39) - Modify VCL logic
+- **setACustomVclFileAsMain** (#40) - Deploy VCL
 
-## AI Agent Optimization
+### 9. Code Snippets (Operations 41-43)
+Modular code management:
 
-This subset is specifically optimized for AI agents and automated monitoring systems by:
-- Eliminating operations with side effects
-- Prioritizing data-rich endpoints for analysis
-- Including both aggregate and granular data sources
-- Covering all major monitoring use cases
-- Providing sufficient context for intelligent decision-making
+- **listSnippets** (#41) - View code snippets
+- **createASnippet** (#42) - Add modular code
+- **updateAVersionedSnippet** (#43) - Modify snippets
 
-The selected endpoints enable comprehensive observability while maintaining safety and efficiency for automated systems.
+### 10. Access Control (Operations 44-47)
+Security configuration:
+
+- **listAclEntries** (#44) - View access rules
+- **createAnAclEntry** (#45) - Add access rules
+- **updateAnAclEntry** (#46) - Modify access
+- **deleteAnAclEntry** (#47) - Remove access rules
+
+### 11. Additional Critical Operations (Operations 48-50)
+
+- **getServiceDetails** (#48) - Comprehensive service information
+- **checkStatusOfContentInEachPopsCache** (#49) - Debug cache status
+- **uploadAComputePackage** (#50) - Deploy edge compute applications
+
+## Ordering Rationale
+
+The operations are ordered by:
+1. **Logical workflow** - Following typical user journey
+2. **Dependency** - Prerequisites before dependent operations
+3. **Frequency** - Most used operations appear earlier
+4. **Impact** - Critical operations prioritized
+
+This subset provides comprehensive coverage for:
+- Service lifecycle management
+- Configuration management
+- Cache operations
+- Monitoring and observability
+- Security configuration
+- Edge compute deployment
+
+These 50 operations cover approximately 90% of typical Fastly API usage patterns for service management, monitoring, and observation tasks.
