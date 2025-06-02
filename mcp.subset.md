@@ -22,13 +22,13 @@ This document explains the rationale behind selecting the 42 most frequently use
 - `getUsageStatisticsPerService` - Essential for per-service resource monitoring
 - `getMonthtodateUsageStatistics` - Critical for billing and capacity planning
 - `getHistoricalStatsForASingleField` - Enables focused monitoring of specific metrics
-- `getHistoricalStatsForASingleServicefieldCombination` - Allows granular service metric analysis
+- `getHistoricalStatsForServiceFieldCombo` - Allows granular service metric analysis
 
 #### Tier 2: Billing & Performance Metrics (4 endpoints)
 **High frequency usage for cost monitoring and performance analysis**
 
 - `getMonthlyUsageMetrics` - Essential for billing monitoring and cost optimization
-- `retrieveServicelevelUsageMetricsForServicesWithNonzeroUsageUnits` - Critical for understanding active service usage
+- `retrieveServiceUsageMetricsWithNonzeroUnits` - Critical for understanding active service usage
 - `getHistoricalDomainDataForAService` - Important for domain-level performance monitoring
 - `getHistoricalOriginDataForAService` - Key for origin server performance analysis
 

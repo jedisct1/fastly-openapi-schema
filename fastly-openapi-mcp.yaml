@@ -40,7 +40,7 @@ paths:
             description: |
                 Returns product usage, broken down by service.
                 > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Billing](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
-            operationId: retrieveServicelevelUsageMetricsForServicesWithNonzeroUsageUnits
+            operationId: retrieveServiceUsageMetricsWithNonzeroUnits
             parameters:
                 - description: Pagination cursor for retrieving the next set of results. Use the cursor value from a previous response to continue pagination.
                   in: query
@@ -1689,7 +1689,7 @@ paths:
             description: |
                 Fetches the specified field from the historical stats for a given service.
                 > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getHistoricalStatsForASingleServicefieldCombination
+            operationId: getHistoricalStatsForServiceFieldCombo
             parameters:
                 - description: The service_id identifier
                   in: path

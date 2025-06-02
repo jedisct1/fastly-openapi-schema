@@ -280,7 +280,7 @@ paths:
               description: Request body for Update a billing address
   /billing/v3/service-usage-metrics:
     get:
-      operationId: retrieveServicelevelUsageMetricsForServicesWithNonzeroUsageUnits
+      operationId: retrieveServiceUsageMetricsWithNonzeroUnits
       summary: Retrieve service-level usage metrics for services with non-zero usage units
       description: 'Returns product usage, broken down by service.
 
@@ -13357,7 +13357,7 @@ paths:
       - fastly_api_key: []
   /stats/service/{service_id}/field/{field}:
     get:
-      operationId: getHistoricalStatsForASingleServicefieldCombination
+      operationId: getHistoricalStatsForServiceFieldCombo
       summary: Get historical stats for a single service/field combination
       description: 'Fetches the specified field from the historical stats for a given service.
 
@@ -27450,7 +27450,7 @@ paths:
       - fastly_api_key: []
   /service/{service_id}/vcl/diff/from/{from_version_id}/to/{to_version_id}:
     get:
-      operationId: getAComparisonOfTheVclChangesBetweenTwoServiceVersions
+      operationId: compareVclChangesBetweenServiceVersions
       summary: Get a comparison of the VCL changes between two service versions
       description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/vcl-services/diff/#vcl-diff-service-versions)**\n\
         \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
