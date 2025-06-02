@@ -838,20 +838,22 @@ paths:
                   required: true
                   schema:
                     type: string
-                - description: 'Query parameter: end_time'
+                - description: End time in ISO 8601 format
                   in: query
                   name: end_time
                   schema:
+                    format: date-time
                     type: string
                 - description: 'Query parameter: month'
                   in: query
                   name: month
                   schema:
                     type: string
-                - description: 'Query parameter: start_time'
+                - description: Start time in ISO 8601 format
                   in: query
                   name: start_time
                   schema:
+                    format: date-time
                     type: string
                 - description: 'Query parameter: year'
                   in: query
@@ -2666,20 +2668,22 @@ paths:
                   name: by
                   schema:
                     type: string
-                - description: 'Query parameter: from'
+                - description: Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
                   in: query
                   name: from
                   schema:
+                    format: date-time
                     type: string
                 - description: 'Query parameter: region'
                   in: query
                   name: region
                   schema:
                     type: string
-                - description: 'Query parameter: to'
+                - description: End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
                   in: query
                   name: to
                   schema:
+                    format: date-time
                     type: string
             responses:
                 "200":

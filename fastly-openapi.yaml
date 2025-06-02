@@ -827,31 +827,36 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: filter[created_at][gt]'
+          format: date-time
+        description: 'Filter events created after this date (ISO 8601 format)'
       - name: filter[created_at][gte]
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: filter[created_at][gte]'
+          format: date-time
+        description: 'Filter events created on or after this date (ISO 8601 format)'
       - name: filter[created_at][lt]
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: filter[created_at][lt]'
+          format: date-time
+        description: 'Filter events created before this date (ISO 8601 format)'
       - name: filter[created_at][lte]
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: filter[created_at][lte]'
+          format: date-time
+        description: 'Filter events created on or before this date (ISO 8601 format)'
       - name: filter[created_at]
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: filter[created_at]'
+          format: date-time
+        description: 'Filter events created at this exact date and time (ISO 8601 format)'
       - name: filter[customer_id]
         in: query
         required: false
@@ -1132,13 +1137,15 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: billing_end_date'
+          format: date
+        description: 'End date for billing period in ISO 8601 format (YYYY-MM-DD)'
       - name: billing_start_date
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: billing_start_date'
+          format: date
+        description: 'Start date for billing period in ISO 8601 format (YYYY-MM-DD)'
       - name: cursor
         in: query
         required: false
@@ -12869,7 +12876,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end'
+          format: date-time
+        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: group_by
         in: query
         required: false
@@ -12899,7 +12907,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -12957,7 +12966,8 @@ paths:
         required: true
         schema:
           type: string
-        description: The start_timestamp identifier
+          format: date-time
+        description: Start timestamp in ISO 8601 format
       responses:
         '200':
           description: OK
@@ -13109,7 +13119,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13121,7 +13132,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13180,7 +13192,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13192,7 +13205,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13244,7 +13258,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13256,7 +13271,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13314,7 +13330,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13326,7 +13343,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13390,7 +13408,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13402,7 +13421,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13449,13 +13469,15 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: to
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13502,13 +13524,15 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: to
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13665,8 +13689,8 @@ paths:
         in: path
         required: true
         schema:
-          type: string
-        description: The timestamp_in_seconds identifier
+          type: integer
+        description: Unix timestamp in seconds
       responses:
         '200':
           description: OK
@@ -13820,7 +13844,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end_time'
+          format: date-time
+        description: 'End time in ISO 8601 format'
       - name: month
         in: query
         required: false
@@ -13832,7 +13857,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start_time'
+          format: date-time
+        description: 'Start time in ISO 8601 format'
       - name: year
         in: query
         required: false
@@ -13909,7 +13935,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end'
+          format: date-time
+        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: group_by
         in: query
         required: false
@@ -13945,7 +13972,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -14003,7 +14031,8 @@ paths:
         required: true
         schema:
           type: string
-        description: The start_timestamp identifier
+          format: date-time
+        description: Start timestamp in ISO 8601 format
       responses:
         '200':
           description: OK
@@ -14413,13 +14442,15 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: after'
+          format: date-time
+        description: 'Return records created after this time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: before
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: before'
+          format: date-time
+        description: 'Return records created before this time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: cursor
         in: query
         required: false
@@ -14734,7 +14765,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end'
+          format: date-time
+        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: limit
         in: query
         required: false
@@ -14758,7 +14790,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: visualization
         in: query
         required: false
@@ -14817,7 +14850,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end'
+          format: date-time
+        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: filter
         in: query
         required: false
@@ -14860,7 +14894,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: Retrieves aggregated log records.
@@ -14907,7 +14942,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end'
+          format: date-time
+        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: filter
         in: query
         required: false
@@ -14937,7 +14973,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: Retrieves log records.
@@ -14984,7 +15021,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end'
+          format: date-time
+        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: filter
         in: query
         required: false
@@ -15020,7 +15058,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: Retrieves time series results based on log data.
@@ -18153,7 +18192,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: ip
         in: query
         required: false
@@ -18191,7 +18231,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '400':
           description: Bad Request
@@ -18988,7 +19029,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: end'
+          format: date-time
+        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: granularity
         in: query
         required: false
@@ -19006,7 +19048,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: start'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '400':
           description: Bad Request
@@ -25858,7 +25901,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: from'
+          format: date-time
+        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: limit
         in: query
         required: false
@@ -25882,7 +25926,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: to'
+          format: date-time
+        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
