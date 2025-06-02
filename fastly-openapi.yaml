@@ -146,6 +146,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '201':
@@ -197,6 +198,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '204':
@@ -243,6 +245,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -461,6 +464,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -506,6 +510,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -555,6 +560,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       - name: contact_id
         in: path
@@ -607,6 +613,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -690,6 +697,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -732,6 +740,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -780,6 +789,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -2085,6 +2095,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: acl_id
         in: path
@@ -2166,6 +2177,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: acl_id
         in: path
@@ -2225,6 +2237,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: acl_id
         in: path
@@ -2283,6 +2296,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: acl_id
         in: path
@@ -2341,6 +2355,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: acl_id
         in: path
@@ -2406,6 +2421,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: acl_id
         in: path
@@ -2462,12 +2478,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -2516,12 +2535,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -2575,12 +2597,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: acl_name
         in: path
@@ -2633,12 +2658,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: acl_name
         in: path
@@ -2698,12 +2726,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: acl_name
         in: path
@@ -3461,6 +3492,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "x4xCwxxJxGCx123Rx5xTx"
         description: The customer_id identifier
       responses:
         '200':
@@ -3678,12 +3710,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: dictionary_id
         in: path
@@ -3737,6 +3772,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: dictionary_id
         in: path
@@ -3818,6 +3854,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: dictionary_id
         in: path
@@ -3877,6 +3914,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: dictionary_id
         in: path
@@ -3935,6 +3973,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: dictionary_id
         in: path
@@ -3999,6 +4038,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: dictionary_id
         in: path
@@ -4057,6 +4097,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: dictionary_id
         in: path
@@ -4122,6 +4163,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: dictionary_id
         in: path
@@ -4181,12 +4223,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -4233,12 +4278,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -4292,12 +4340,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: dictionary_name
         in: path
@@ -4350,12 +4401,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: dictionary_name
         in: path
@@ -4414,12 +4468,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: dictionary_name
         in: path
@@ -4956,12 +5013,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5008,12 +5068,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5067,12 +5130,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_azureblob_name
         in: path
@@ -5125,12 +5191,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_azureblob_name
         in: path
@@ -5189,12 +5258,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_azureblob_name
         in: path
@@ -5248,12 +5320,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5300,12 +5375,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5359,12 +5437,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_bigquery_name
         in: path
@@ -5417,12 +5498,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_bigquery_name
         in: path
@@ -5481,12 +5565,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_bigquery_name
         in: path
@@ -5540,12 +5627,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5592,12 +5682,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5651,12 +5744,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_cloudfiles_name
         in: path
@@ -5709,12 +5805,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_cloudfiles_name
         in: path
@@ -5773,12 +5872,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_cloudfiles_name
         in: path
@@ -5832,12 +5934,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5884,12 +5989,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -5943,12 +6051,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_datadog_name
         in: path
@@ -6001,12 +6112,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_datadog_name
         in: path
@@ -6065,12 +6179,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_datadog_name
         in: path
@@ -6124,12 +6241,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -6176,12 +6296,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -6235,12 +6358,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_digitalocean_name
         in: path
@@ -6293,12 +6419,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_digitalocean_name
         in: path
@@ -6357,12 +6486,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_digitalocean_name
         in: path
@@ -6416,12 +6548,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -6468,12 +6603,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -6527,12 +6665,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_elasticsearch_name
         in: path
@@ -6585,12 +6726,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_elasticsearch_name
         in: path
@@ -6649,12 +6793,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_elasticsearch_name
         in: path
@@ -6708,12 +6855,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -6760,12 +6910,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -6819,12 +6972,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_ftp_name
         in: path
@@ -6877,12 +7033,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_ftp_name
         in: path
@@ -6941,12 +7100,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_ftp_name
         in: path
@@ -7000,12 +7162,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7052,12 +7217,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7111,12 +7279,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_gcs_name
         in: path
@@ -7169,12 +7340,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_gcs_name
         in: path
@@ -7233,12 +7407,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_gcs_name
         in: path
@@ -7292,12 +7469,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7344,12 +7524,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7403,12 +7586,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_google_pubsub_name
         in: path
@@ -7461,12 +7647,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_google_pubsub_name
         in: path
@@ -7525,12 +7714,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_google_pubsub_name
         in: path
@@ -7584,12 +7776,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7636,12 +7831,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7696,12 +7894,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_grafanacloudlogs_name
         in: path
@@ -7754,12 +7955,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_grafanacloudlogs_name
         in: path
@@ -7818,12 +8022,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_grafanacloudlogs_name
         in: path
@@ -7877,12 +8084,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7929,12 +8139,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -7988,12 +8201,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_heroku_name
         in: path
@@ -8046,12 +8262,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_heroku_name
         in: path
@@ -8110,12 +8329,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_heroku_name
         in: path
@@ -8169,12 +8391,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -8221,12 +8446,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -8280,12 +8508,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_honeycomb_name
         in: path
@@ -8338,12 +8569,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_honeycomb_name
         in: path
@@ -8402,12 +8636,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_honeycomb_name
         in: path
@@ -8461,12 +8698,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -8513,12 +8753,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -8572,12 +8815,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_https_name
         in: path
@@ -8630,12 +8876,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_https_name
         in: path
@@ -8694,12 +8943,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_https_name
         in: path
@@ -8753,12 +9005,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -8805,12 +9060,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -8864,12 +9122,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_kafka_name
         in: path
@@ -8922,12 +9183,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_kafka_name
         in: path
@@ -8986,12 +9250,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_kafka_name
         in: path
@@ -9046,12 +9313,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -9099,12 +9369,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -9159,12 +9432,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_kinesis_name
         in: path
@@ -9218,12 +9494,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_kinesis_name
         in: path
@@ -9283,12 +9562,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_kinesis_name
         in: path
@@ -9342,12 +9624,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -9394,12 +9679,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -9453,12 +9741,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_loggly_name
         in: path
@@ -9511,12 +9802,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_loggly_name
         in: path
@@ -9575,12 +9869,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_loggly_name
         in: path
@@ -9634,12 +9931,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -9686,12 +9986,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -9745,12 +10048,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_logshuttle_name
         in: path
@@ -9803,12 +10109,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_logshuttle_name
         in: path
@@ -9867,12 +10176,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_logshuttle_name
         in: path
@@ -9926,12 +10238,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -9978,12 +10293,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -10037,12 +10355,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_newrelic_name
         in: path
@@ -10095,12 +10416,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_newrelic_name
         in: path
@@ -10159,12 +10483,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_newrelic_name
         in: path
@@ -10218,12 +10545,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -10270,12 +10600,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -10329,12 +10662,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_newrelicotlp_name
         in: path
@@ -10387,12 +10723,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_newrelicotlp_name
         in: path
@@ -10451,12 +10790,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_newrelicotlp_name
         in: path
@@ -10510,12 +10852,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -10562,12 +10907,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -10621,12 +10969,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_openstack_name
         in: path
@@ -10679,12 +11030,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_openstack_name
         in: path
@@ -10743,12 +11097,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_openstack_name
         in: path
@@ -10802,12 +11159,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -10854,12 +11214,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -10913,12 +11276,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_papertrail_name
         in: path
@@ -10971,12 +11337,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_papertrail_name
         in: path
@@ -11035,12 +11404,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_papertrail_name
         in: path
@@ -11094,12 +11466,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -11146,12 +11521,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -11205,12 +11583,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_s3_name
         in: path
@@ -11263,12 +11644,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_s3_name
         in: path
@@ -11327,12 +11711,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_s3_name
         in: path
@@ -11386,12 +11773,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -11438,12 +11828,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -11497,12 +11890,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_scalyr_name
         in: path
@@ -11555,12 +11951,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_scalyr_name
         in: path
@@ -11619,12 +12018,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_scalyr_name
         in: path
@@ -11678,12 +12080,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -11730,12 +12135,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -11789,12 +12197,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_sftp_name
         in: path
@@ -11847,12 +12258,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_sftp_name
         in: path
@@ -11911,12 +12325,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_sftp_name
         in: path
@@ -11970,12 +12387,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -12022,12 +12442,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -12081,12 +12504,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_splunk_name
         in: path
@@ -12139,12 +12565,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_splunk_name
         in: path
@@ -12203,12 +12632,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_splunk_name
         in: path
@@ -12262,12 +12694,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -12314,12 +12749,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -12373,12 +12811,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_sumologic_name
         in: path
@@ -12431,12 +12872,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_sumologic_name
         in: path
@@ -12495,12 +12939,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_sumologic_name
         in: path
@@ -12554,12 +13001,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -12606,12 +13056,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -12665,12 +13118,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_syslog_name
         in: path
@@ -12723,12 +13179,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_syslog_name
         in: path
@@ -12787,12 +13246,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: logging_syslog_name
         in: path
@@ -12846,6 +13308,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: cursor
         in: query
@@ -12908,7 +13371,7 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -12960,6 +13423,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: start_timestamp
         in: path
@@ -13013,6 +13477,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -13060,6 +13525,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: max_entries
         in: path
@@ -13113,14 +13579,17 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: by'
+          enum: [hour, minute, day]
+          example: day
+        description: 'Time granularity for aggregation. Accepts "hour", "minute", or "day"'
       - name: from
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13133,7 +13602,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13186,14 +13656,17 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: by'
+          enum: [hour, minute, day]
+          example: day
+        description: 'Time granularity for aggregation. Accepts "hour", "minute", or "day"'
       - name: from
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13206,7 +13679,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13252,14 +13726,17 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: by'
+          enum: [hour, minute, day]
+          example: day
+        description: 'Time granularity for aggregation. Accepts "hour", "minute", or "day"'
       - name: from
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13272,7 +13749,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13318,20 +13796,24 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: by
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: by'
+          enum: [hour, minute, day]
+          example: day
+        description: 'Time granularity for aggregation. Accepts "hour", "minute", or "day"'
       - name: from
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13344,7 +13826,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13390,6 +13873,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: field
         in: path
@@ -13402,14 +13886,17 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: by'
+          enum: [hour, minute, day]
+          example: day
+        description: 'Time granularity for aggregation. Accepts "hour", "minute", or "day"'
       - name: from
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: region
         in: query
         required: false
@@ -13422,7 +13909,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13470,14 +13958,16 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: to
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13525,14 +14015,16 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: to
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -13684,6 +14176,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: timestamp_in_seconds
         in: path
@@ -13736,6 +14229,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -13783,6 +14277,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: max_entries
         in: path
@@ -13838,6 +14333,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: end_time
         in: query
@@ -13911,6 +14407,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: cursor
         in: query
@@ -13973,7 +14470,7 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -14025,6 +14522,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: start_timestamp
         in: path
@@ -14078,6 +14576,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -14125,6 +14624,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: max_entries
         in: path
@@ -14791,7 +15291,7 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: visualization
         in: query
         required: false
@@ -14895,7 +15395,7 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: Retrieves aggregated log records.
@@ -14974,7 +15474,7 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: Retrieves log records.
@@ -15059,7 +15559,7 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: Retrieves time series results based on log data.
@@ -15678,6 +16178,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -15724,6 +16225,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -15776,6 +16278,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -15864,6 +16367,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -15910,6 +16414,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -15962,6 +16467,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -16050,6 +16556,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16096,6 +16603,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16148,6 +16656,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -16195,6 +16704,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16241,6 +16751,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16335,6 +16846,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16381,6 +16893,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16433,6 +16946,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -16521,6 +17035,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16567,6 +17082,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16619,6 +17135,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -16707,6 +17224,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16753,6 +17271,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16805,6 +17324,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -16893,6 +17413,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16939,6 +17460,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -16991,6 +17513,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -17079,6 +17602,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17125,6 +17649,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17177,6 +17702,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -17224,6 +17750,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17270,6 +17797,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17491,6 +18019,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17537,6 +18066,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17589,6 +18119,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -17677,6 +18208,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17723,6 +18255,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -17775,6 +18308,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '204':
@@ -18193,7 +18727,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: ip
         in: query
         required: false
@@ -18232,7 +18767,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '400':
           description: Bad Request
@@ -19049,7 +19585,7 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '400':
           description: Bad Request
@@ -19089,12 +19625,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -19141,12 +19680,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -19200,12 +19742,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: backend_name
         in: path
@@ -19258,12 +19803,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: backend_name
         in: path
@@ -19322,12 +19870,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: backend_name
         in: path
@@ -19384,12 +19935,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -19438,12 +19992,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: domain_name
         in: path
@@ -19497,12 +20054,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -19549,12 +20109,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -19608,12 +20171,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: domain_name
         in: path
@@ -19666,12 +20232,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: domain_name
         in: path
@@ -19730,12 +20299,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: domain_name
         in: path
@@ -19789,12 +20361,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -19841,12 +20416,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -19900,12 +20478,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: healthcheck_name
         in: path
@@ -19958,12 +20539,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: healthcheck_name
         in: path
@@ -20022,12 +20606,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: healthcheck_name
         in: path
@@ -20082,12 +20669,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -20137,12 +20727,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -20196,12 +20789,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -20248,12 +20844,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: expect
         in: header
@@ -20313,12 +20912,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -20365,12 +20967,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -20424,12 +21029,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: id
         in: path
@@ -20482,12 +21090,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: id
         in: path
@@ -20546,12 +21157,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: id
         in: path
@@ -20713,6 +21327,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version
         in: query
@@ -20813,6 +21428,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -20856,6 +21472,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -20905,6 +21522,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -20949,6 +21567,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -20995,6 +21614,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -21040,6 +21660,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -21092,12 +21713,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -21143,12 +21767,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -21201,12 +21828,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -21253,12 +21883,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -21311,12 +21944,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: environment_name
         in: path
@@ -21375,12 +22011,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -21433,12 +22072,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: environment_name
         in: path
@@ -21497,12 +22139,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -21555,12 +22200,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -25902,7 +26550,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-01T00:00:00Z"
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: limit
         in: query
         required: false
@@ -25927,7 +26576,8 @@ paths:
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          example: "2024-01-31T23:59:59Z"
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       responses:
         '200':
           description: OK
@@ -26384,6 +27034,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -26494,6 +27145,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '200':
@@ -26548,6 +27200,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: surrogate_key
         in: path
@@ -26609,6 +27262,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: fastly-soft-purge
         in: header
@@ -26674,12 +27328,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -26726,12 +27383,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -26930,12 +27590,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -26979,12 +27642,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -27038,12 +27704,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: cache_settings_name
         in: path
@@ -27096,12 +27765,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: cache_settings_name
         in: path
@@ -27160,12 +27832,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: cache_settings_name
         in: path
@@ -27219,12 +27894,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -27271,12 +27949,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -27330,12 +28011,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: condition_name
         in: path
@@ -27388,12 +28072,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: condition_name
         in: path
@@ -27452,12 +28139,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: condition_name
         in: path
@@ -27507,6 +28197,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: from_version_id
         in: path
@@ -27574,12 +28265,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -27626,12 +28320,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -27685,12 +28382,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: gzip_name
         in: path
@@ -27743,12 +28443,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: gzip_name
         in: path
@@ -27807,12 +28510,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: gzip_name
         in: path
@@ -27866,12 +28572,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -27918,12 +28627,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -27977,12 +28689,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: header_name
         in: path
@@ -28035,12 +28750,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: header_name
         in: path
@@ -28099,12 +28817,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: header_name
         in: path
@@ -28158,12 +28879,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28210,12 +28934,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28268,12 +28995,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28321,12 +29051,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28373,12 +29106,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28577,12 +29313,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28629,12 +29368,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28688,12 +29430,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: request_settings_name
         in: path
@@ -28746,12 +29491,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: request_settings_name
         in: path
@@ -28810,12 +29558,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: request_settings_name
         in: path
@@ -28869,12 +29620,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28921,12 +29675,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -28980,12 +29737,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: response_object_name
         in: path
@@ -29038,12 +29798,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: response_object_name
         in: path
@@ -29102,12 +29865,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: response_object_name
         in: path
@@ -29161,12 +29927,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -29215,12 +29984,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -29274,6 +30046,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: id
         in: path
@@ -29326,6 +30099,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: id
         in: path
@@ -29385,12 +30159,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -29437,12 +30214,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -29496,12 +30276,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: name
         in: path
@@ -29554,12 +30337,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: name
         in: path
@@ -29618,12 +30404,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: name
         in: path
@@ -29677,12 +30466,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -29729,12 +30521,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -29788,12 +30583,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -29841,12 +30639,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: vcl_name
         in: path
@@ -29905,12 +30706,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: vcl_name
         in: path
@@ -29969,12 +30773,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: vcl_name
         in: path
@@ -30029,12 +30836,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: vcl_name
         in: path
@@ -30088,12 +30898,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: vcl_name
         in: path
@@ -30147,12 +30960,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -30201,12 +31017,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -30254,12 +31073,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: vcl_name
         in: path
@@ -30321,6 +31143,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       responses:
         '400':
@@ -30411,12 +31234,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: director_name
         in: path
@@ -30476,12 +31302,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: director_name
         in: path
@@ -30548,12 +31377,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: director_name
         in: path
@@ -30613,12 +31445,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -30665,12 +31500,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -30724,12 +31562,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: director_name
         in: path
@@ -30782,12 +31623,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: director_name
         in: path
@@ -30846,12 +31690,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: director_name
         in: path
@@ -30905,12 +31752,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -30957,12 +31807,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       responses:
         '200':
@@ -31016,12 +31869,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: pool_name
         in: path
@@ -31074,12 +31930,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: pool_name
         in: path
@@ -31138,12 +31997,15 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: version_id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          minimum: 1
+          example: 1
         description: The version_id identifier
       - name: pool_name
         in: path
@@ -31197,6 +32059,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: pool_id
         in: path
@@ -31250,6 +32113,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: pool_id
         in: path
@@ -31308,6 +32172,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: pool_id
         in: path
@@ -31372,6 +32237,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: pool_id
         in: path
@@ -31431,6 +32297,7 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: pool_id
         in: path

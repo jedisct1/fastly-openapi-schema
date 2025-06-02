@@ -239,6 +239,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
             responses:
                 "200":
@@ -282,6 +283,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
             responses:
                 "200":
@@ -323,6 +325,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
             requestBody:
                 content:
@@ -373,6 +376,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The acl_id identifier
                   in: path
@@ -448,6 +452,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The acl_id identifier
                   in: path
@@ -504,6 +509,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The acl_id identifier
                   in: path
@@ -559,6 +565,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The acl_id identifier
                   in: path
@@ -621,6 +628,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: 'Query parameter: version'
                   in: query
@@ -670,6 +678,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: fastly-soft-purge header
                   in: header
@@ -730,6 +739,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The surrogate_key identifier
                   in: path
@@ -787,6 +797,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
             requestBody:
                 content:
@@ -837,6 +848,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: End time in ISO 8601 format
                   in: query
@@ -903,6 +915,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
             responses:
                 "200":
@@ -946,6 +959,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
             requestBody:
                 content:
@@ -996,13 +1010,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -1045,13 +1062,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -1101,13 +1121,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -1157,13 +1180,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -1206,13 +1232,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -1262,13 +1291,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The backend_name identifier
                   in: path
                   name: backend_name
@@ -1317,13 +1349,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The backend_name identifier
                   in: path
                   name: backend_name
@@ -1379,13 +1414,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -1426,13 +1464,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -1482,13 +1523,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The cache_settings_name identifier
                   in: path
                   name: cache_settings_name
@@ -1537,13 +1581,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The cache_settings_name identifier
                   in: path
                   name: cache_settings_name
@@ -1599,13 +1646,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -1655,13 +1705,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -1711,13 +1764,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -1760,13 +1816,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -1816,13 +1875,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The domain_name identifier
                   in: path
                   name: domain_name
@@ -1871,13 +1933,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The domain_name identifier
                   in: path
                   name: domain_name
@@ -1933,13 +1998,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -1982,13 +2050,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -2038,13 +2109,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The healthcheck_name identifier
                   in: path
                   name: healthcheck_name
@@ -2093,13 +2167,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The healthcheck_name identifier
                   in: path
                   name: healthcheck_name
@@ -2155,13 +2232,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: expect header
                   in: header
                   name: expect
@@ -2216,13 +2296,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -2265,13 +2348,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -2321,13 +2407,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The name identifier
                   in: path
                   name: name
@@ -2383,13 +2472,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -2433,13 +2525,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             responses:
                 "200":
                     content:
@@ -2482,13 +2577,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
             requestBody:
                 content:
                     application/json:
@@ -2538,13 +2636,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The vcl_name identifier
                   in: path
                   name: vcl_name
@@ -2600,13 +2701,16 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
                 - description: The version_id identifier
                   in: path
                   name: version_id
                   required: true
                   schema:
-                    type: string
+                    example: 1
+                    minimum: 1
+                    type: integer
                 - description: The vcl_name identifier
                   in: path
                   name: vcl_name
@@ -2662,16 +2766,23 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
-                - description: 'Query parameter: by'
+                - description: Time granularity for aggregation. Accepts "hour", "minute", or "day"
                   in: query
                   name: by
                   schema:
+                    enum:
+                        - hour
+                        - minute
+                        - day
+                    example: day
                     type: string
-                - description: Start time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
                   in: query
                   name: from
                   schema:
+                    example: "2024-01-01T00:00:00Z"
                     format: date-time
                     type: string
                 - description: 'Query parameter: region'
@@ -2679,10 +2790,11 @@ paths:
                   name: region
                   schema:
                     type: string
-                - description: End time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
                   in: query
                   name: to
                   schema:
+                    example: "2024-01-31T23:59:59Z"
                     format: date-time
                     type: string
             responses:
@@ -2728,6 +2840,7 @@ paths:
                   name: service_id
                   required: true
                   schema:
+                    example: SU1Z0isxPaozGVKXdv0eY
                     type: string
             responses:
                 "200":
