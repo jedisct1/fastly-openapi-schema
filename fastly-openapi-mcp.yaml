@@ -746,10 +746,11 @@ paths:
                   name: page[size]
                   schema:
                     type: string
-                - description: 'Query parameter: sort'
+                - description: Field on which to sort. Defaults to "created" if not specified.
                   in: query
                   name: sort
                   schema:
+                    default: created
                     type: string
             responses:
                 "200":
@@ -1076,10 +1077,14 @@ paths:
             description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#list-services)**\n\n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\") permissions.\n"
             operationId: listServices
             parameters:
-                - description: 'Query parameter: direction'
+                - description: Direction in which to sort results. Accepts "ascend" for ascending order or "descend" for descending order.
                   in: query
                   name: direction
                   schema:
+                    default: ascend
+                    enum:
+                        - ascend
+                        - descend
                     type: string
                 - description: 'Query parameter: page'
                   in: query
@@ -1091,10 +1096,11 @@ paths:
                   name: per_page
                   schema:
                     type: string
-                - description: 'Query parameter: sort'
+                - description: Field on which to sort. Defaults to "created" if not specified.
                   in: query
                   name: sort
                   schema:
+                    default: created
                     type: string
             responses:
                 "200":

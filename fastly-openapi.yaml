@@ -899,7 +899,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -2089,7 +2090,9 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: direction'
+          enum: ["ascend", "descend"]
+          default: "ascend"
+        description: 'Direction in which to sort results. Accepts "ascend" for ascending order or "descend" for descending order.'
       - name: page
         in: query
         required: false
@@ -2107,7 +2110,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -3738,7 +3742,9 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: direction'
+          enum: ["ascend", "descend"]
+          default: "ascend"
+        description: 'Direction in which to sort results. Accepts "ascend" for ascending order or "descend" for descending order.'
       - name: page
         in: query
         required: false
@@ -3756,7 +3762,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -14172,7 +14179,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: Listing all definitions
@@ -14441,7 +14449,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       - name: status
         in: query
         required: false
@@ -14838,7 +14847,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       - name: source
         in: query
         required: false
@@ -15112,13 +15122,15 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       - name: type
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: type'
+          enum: ["slack", "datadog", "pagerduty", "jira", "opsgenie", "victorops", "pivotaltracker", "microsoftTeams", "microsoftTeamsWorkflow", "mailingList", "generic"]
+        description: 'Filter integrations by type. Valid integration types include messaging platforms, monitoring tools, and incident management systems.'
       responses:
         '200':
           description: Requested integrations
@@ -18562,7 +18574,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: action'
+          enum: ["block", "allow", "exclude", "browserChallenge", "verifyToken"]
+        description: 'Filter rules by action type. Valid values are "block", "allow", "exclude", "browserChallenge", and "verifyToken".'
       - name: enabled
         in: query
         required: false
@@ -18586,7 +18599,7 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: types'
+        description: 'Filter rules by type. Comma-separated list of rule types to include in the results.'
       responses:
         '400':
           description: Bad Request
@@ -20546,7 +20559,9 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: direction'
+          enum: ["ascend", "descend"]
+          default: "ascend"
+        description: 'Direction in which to sort results. Accepts "ascend" for ascending order or "descend" for descending order.'
       - name: page
         in: query
         required: false
@@ -20564,7 +20579,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -23580,7 +23596,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -23865,7 +23882,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -24565,7 +24583,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -24933,7 +24952,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: OK
@@ -26083,7 +26103,8 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: sort'
+          default: "created"
+        description: 'Field on which to sort. Defaults to "created" if not specified.'
       responses:
         '200':
           description: A list of domains.
@@ -27459,7 +27480,9 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: format'
+          enum: ["text", "html", "json"]
+          default: "text"
+        description: 'Response format for the diff output. Text provides plain diff, HTML adds formatting, JSON provides structured data.'
       responses:
         '200':
           description: OK
