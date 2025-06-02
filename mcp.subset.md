@@ -1,124 +1,112 @@
-# MCP Subset Selection Justification
+# Fastly API MCP Subset - Justification
 
-This document justifies the selection of 42 Fastly API endpoints optimized for MCP servers used by AI LLM coding agents.
+This document explains the rationale behind selecting the 42 most frequently used Fastly API endpoints for observability and monitoring purposes with minimal side effects.
 
 ## Selection Criteria
 
-The endpoints were selected based on their importance for AI agents performing common Fastly management tasks:
+### Primary Focus Areas
+1. **Observability/Monitoring**: Endpoints that provide visibility into system performance, usage, and health
+2. **Minimal Side Effects**: Read-only operations (GET requests) that don't modify system state
+3. **High Frequency Usage**: Operations most commonly used in monitoring workflows
 
-1. **Essential CRUD Operations**: Complete lifecycle management capabilities
-2. **Developer Workflow Efficiency**: Operations that enable automated deployment and configuration
-3. **Production Readiness**: Monitoring, debugging, and maintenance capabilities
-4. **Security & Compliance**: Basic security configuration requirements
-5. **Content Delivery Core**: Essential CDN functionality
+### Endpoint Categories and Justifications
 
-## Selected Endpoints by Category
+#### Tier 1: Core Statistics & Usage Monitoring (9 endpoints)
+**Highest frequency usage for system observability**
 
-### Core Service Management (8 endpoints)
-- `listServices` - Discover and inventory existing services
-- `createAService` - Provision new services programmatically
-- `getAService` - Retrieve service details and configuration
-- `updateAService` - Modify service settings and metadata
-- `deleteAService` - Clean up and decommission services
-- `listVersionsOfAService` - Track configuration history
-- `createAServiceVersion` - Enable configuration changes
-- `getAVersionOfAService` - Inspect version-specific configuration
+- `getHistoricalStats` - Essential for understanding overall system performance trends
+- `getHistoricalStatsForASingleService` - Critical for service-specific monitoring and troubleshooting  
+- `getUsageStatistics` - Fundamental for resource utilization tracking across all services
+- `getStatsForAService` - Key metric for individual service health monitoring
+- `getAggregatedHistoricalStats` - Important for fleet-wide performance analysis
+- `getUsageStatisticsPerService` - Essential for per-service resource monitoring
+- `getMonthtodateUsageStatistics` - Critical for billing and capacity planning
+- `getHistoricalStatsForASingleField` - Enables focused monitoring of specific metrics
+- `getHistoricalStatsForASingleServicefieldCombination` - Allows granular service metric analysis
 
-**Justification**: These form the foundation of any Fastly automation, enabling AI agents to manage the complete service lifecycle from creation to deletion.
+#### Tier 2: Billing & Performance Metrics (4 endpoints)
+**High frequency usage for cost monitoring and performance analysis**
 
-### Service Configuration - Backends & Domains (8 endpoints)
-- `listBackends` - Inventory origin servers
-- `createABackend` - Configure origin connections
-- `describeABackend` - Inspect backend configuration
-- `updateABackend` - Modify origin settings
-- `deleteABackend` - Remove unused backends
-- `listServiceDomains` - Inventory served domains
-- `addADomainNameToAService` - Configure new domains
-- `describeADomain` - Verify domain configuration
+- `getMonthlyUsageMetrics` - Essential for billing monitoring and cost optimization
+- `retrieveServicelevelUsageMetricsForServicesWithNonzeroUsageUnits` - Critical for understanding active service usage
+- `getHistoricalDomainDataForAService` - Important for domain-level performance monitoring
+- `getHistoricalOriginDataForAService` - Key for origin server performance analysis
 
-**Justification**: Backend and domain management are critical for content delivery configuration. AI agents need these to establish the basic routing and origin connectivity.
+#### Tier 3: Real-time Monitoring (9 endpoints)
+**Medium-high frequency usage for immediate issue detection**
 
-### Version Management & Deployment (6 endpoints)
-- `updateAServiceVersion` - Modify configuration drafts
-- `validateAServiceVersion` - Pre-deployment validation
-- `activateAServiceVersion` - Deploy configurations to production
-- `deactivateAServiceVersion` - Rollback capabilities
-- `cloneAServiceVersion` - Create configuration branches
-- `lockAServiceVersion` - Prevent accidental changes
+- `getRealtimeDataForTheLast120Seconds` - Critical for real-time system health monitoring
+- `getRealtimeDataFromSpecifiedTime` - Essential for incident analysis and debugging
+- `getRealtimeDomainDataForTheLast120Seconds` - Important for domain-specific real-time monitoring
+- `getRealtimeDomainDataFromASpecifiedTime` - Key for domain performance troubleshooting
+- `getRealtimeOriginDataForTheLast120Seconds` - Critical for origin server health monitoring
+- `getRealtimeOriginDataFromSpecificTime` - Essential for origin performance analysis
+- `getALimitedNumberOfRealtimeDataEntries` - Useful for efficient real-time data sampling
+- `getALimitedNumberOfRealtimeDomainDataEntries` - Important for domain data sampling
+- `getALimitedNumberOfRealtimeOriginDataEntries` - Key for origin data sampling
 
-**Justification**: These enable safe, controlled deployments with validation and rollback capabilities - essential for production automation by AI agents.
+#### Tier 4: Service Management & Status (6 endpoints)
+**Medium frequency usage for service health and configuration monitoring**
 
-### VCL Configuration (6 endpoints)
-- `listCustomVclFiles` - Inventory custom logic
-- `createACustomVclFile` - Deploy custom edge logic
-- `getACustomVclFile` - Inspect VCL content
-- `updateACustomVclFile` - Modify edge behavior
-- `deleteACustomVclFile` - Clean up unused VCL
-- `setACustomVclFileAsMain` - Activate custom logic
+- `getAService` - Fundamental for service configuration inspection
+- `getServiceDetails` - Essential for comprehensive service information
+- `listServices` - Critical for service inventory and discovery
+- `getServiceSettings` - Important for configuration verification
+- `getAVersionOfAService` - Key for deployment and version tracking
+- `checkStatusOfContentInEachPopsCache` - Important for cache performance monitoring
 
-**Justification**: VCL is Fastly's primary customization mechanism. AI agents need these endpoints to implement complex edge logic and custom behaviors.
+#### Tier 5: Product Enablement Status (8 endpoints)
+**Medium frequency usage for feature monitoring and compliance**
 
-### Content Delivery Essentials (4 endpoints)
-- `purgeAUrl` - Invalidate specific content
-- `purgeEverythingFromAService` - Full cache invalidation
-- `purgeBySurrogateKeyTag` - Targeted cache invalidation
-- `listCacheSettingsObjects` - Inspect caching configuration
+- `getDomainInspectorEnablementStatus` - Important for monitoring tool availability
+- `getOriginInspectorEnablementStatus` - Key for performance monitoring tool status
+- `getBotManagementEnablementStatus` - Critical for security monitoring capabilities
+- `getDdosProtectionEnablementStatus` - Essential for security posture monitoring
+- `getLogExplorerInsightsEnablementStatus` - Important for logging capability verification
+- `getNgwafEnablementStatus` - Critical for web application firewall monitoring
+- `getBrotliCompressionEnablementStatus` - Useful for performance optimization monitoring
+- `getImageOptimizerEnablementStatus` - Important for content optimization monitoring
 
-**Justification**: Cache management is core to CDN operations. These endpoints provide both surgical and broad cache invalidation capabilities.
+#### Tier 6: Events & Customer Information (6 endpoints)
+**Lower frequency usage for audit and customer context**
 
-### Basic Monitoring & Stats (4 endpoints)
-- `getStatsForAService` - Service performance metrics
-- `getHistoricalStatsForASingleService` - Trend analysis
-- `getRealtimeDomainDataForTheLast120Seconds` - Real-time monitoring
-- `getHistoricalDomainDataForAService` - Domain-specific analytics
+- `listCustomerEvents` - Important for audit trails and incident correlation
+- `getAnEvent` - Essential for detailed event analysis
+- `getABillingAddress` - Useful for customer account verification
+- `getTheLoggedInCustomer` - Important for context and permissions verification
+- `listCacheSettingsObjects` - Key for cache configuration monitoring
+- `retrieveTimeseriesMetrics` - Important for security workspace monitoring
 
-**Justification**: AI agents need visibility into service performance to make informed optimization decisions and detect issues.
+## Design Principles
 
-### Security Fundamentals (4 endpoints)
-- `createATlsConfiguration` - Configure SSL/TLS
-- `getATlsConfiguration` - Inspect TLS settings
-- `createANewServiceAcl` - Set up access control
-- `createAnAclEntry` - Manage access rules
+### Read-Only Operations
+All selected endpoints use GET methods exclusively, ensuring no unintended side effects during monitoring operations. This safety characteristic is crucial for automated monitoring systems and AI agents.
 
-**Justification**: Basic security configuration is essential for production services. These endpoints enable AI agents to implement fundamental security controls.
+### Frequency-Based Prioritization
+Endpoints are ranked by expected usage frequency in typical monitoring scenarios:
+1. **Core metrics** (used continuously)
+2. **Performance data** (used regularly)
+3. **Real-time monitoring** (used during incidents)
+4. **Service status** (used for health checks)
+5. **Feature status** (used for compliance)
+6. **Audit data** (used for analysis)
 
-### Additional Configuration (2 endpoints)
-- `createACacheSettingsObject` - Configure caching behavior
-- `createAHeaderObject` - Manipulate HTTP headers
+### Monitoring Workflow Coverage
+The selection covers the complete monitoring lifecycle:
+- **Proactive monitoring**: Historical and real-time stats
+- **Incident response**: Real-time data and service details
+- **Performance analysis**: Domain/origin metrics
+- **Capacity planning**: Usage statistics and billing metrics
+- **Compliance monitoring**: Product enablement status
+- **Audit and forensics**: Events and customer information
 
-**Justification**: These provide additional configuration flexibility for common customization needs.
+## AI Agent Optimization
 
-## Rationale for 42 Endpoint Limit
+This subset is specifically optimized for AI agents and automated monitoring systems by:
+- Eliminating operations with side effects
+- Prioritizing data-rich endpoints for analysis
+- Including both aggregate and granular data sources
+- Covering all major monitoring use cases
+- Providing sufficient context for intelligent decision-making
 
-The selection of 42 endpoints balances comprehensive functionality with practical constraints:
-
-1. **Coverage**: Sufficient endpoints to handle most common Fastly management scenarios
-2. **Complexity**: Manageable scope for AI agents to understand and utilize effectively
-3. **Focus**: Prioritizes high-impact, frequently-used operations over specialized features
-4. **Efficiency**: Reduces API surface area while maintaining essential capabilities
-
-## Use Cases Enabled
-
-With these 42 endpoints, AI agents can:
-
-- ✅ Set up new services from scratch
-- ✅ Configure domains and SSL certificates
-- ✅ Implement custom edge logic with VCL
-- ✅ Manage backend origins and load balancing
-- ✅ Deploy and rollback configurations safely
-- ✅ Monitor service performance and health
-- ✅ Implement basic security controls
-- ✅ Manage content caching and purging
-- ✅ Troubleshoot common issues
-
-## Excluded Categories
-
-The following endpoint categories were deprioritized for this subset:
-
-- **Billing & Account Management**: Typically handled by humans, not automation
-- **Advanced Logging**: Beyond basic monitoring needs
-- **Specialized Security**: WAF, bot detection (advanced use cases)
-- **Edge Storage**: Specialized data storage features
-- **Advanced Analytics**: Detailed reporting beyond basic metrics
-
-This focused subset provides AI agents with the core capabilities needed for effective Fastly service management while maintaining simplicity and avoiding rarely-used specialized features.
+The selected endpoints enable comprehensive observability while maintaining safety and efficiency for automated systems.

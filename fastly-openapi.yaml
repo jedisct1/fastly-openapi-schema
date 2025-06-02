@@ -92,7 +92,8 @@ paths:
         required: true
         schema:
           type: string
-        description: The customer_id identifier
+          example: "x4xCwxxJxGCx123Rx5xTx"
+        description: Alphanumeric string identifying the customer account
       responses:
         '200':
           description: OK
@@ -100,7 +101,18 @@ paths:
             application/json:
               schema:
                 type: object
-                description: Response for 200 OK
+                description: Billing address information for the customer
+                example:
+                  type: "billing_address"
+                  id: "x4xCwxxJxGCx123Rx5xTx"
+                  attributes:
+                    address_1: "123 Main Street"
+                    address_2: "Suite 100"
+                    city: "San Francisco"
+                    state: "CA"
+                    postal_code: "94105"
+                    country: "US"
+                    type: "billing"
         '400':
           description: Bad Request
           content:
@@ -284,43 +296,56 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: cursor'
+          example: "eyJpZCI6IjEyMzQ1Njc4OTAifQ=="
+        description: 'Pagination cursor for retrieving the next set of results. Use the cursor value from a previous response to continue pagination.'
       - name: end_month
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: end_month'
+          pattern: '^\d{4}-\d{2}$'
+          example: "2024-12"
+        description: 'End month for usage data query in YYYY-MM format. Must be in the past or current month.'
       - name: limit
         in: query
         required: false
         schema:
-          type: string
-        description: 'Query parameter: limit'
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+          example: 50
+        description: 'Maximum number of usage records to return per page. Used for pagination to control response size.'
       - name: product_id
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: product_id'
+          example: "cdn_usage"
+        description: 'Filter usage data by specific Fastly product ID. Common values include cdn_usage, compute_requests, bandwidth.'
       - name: service
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: service'
+          example: "SU1Z0isxPaozGVKXdv0eY"
+        description: 'Filter usage data by specific service ID. Service IDs are alphanumeric strings that identify a Fastly service.'
       - name: start_month
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: start_month'
+          pattern: '^\d{4}-\d{2}$'
+          example: "2024-01"
+        description: 'Start month for usage data query in YYYY-MM format. Cannot be more than 12 months in the past.'
       - name: usage_type_name
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: usage_type_name'
+          enum: ["requests", "bandwidth", "compute_requests", "compute_execution_time", "compute_ram_used", "image_optimizer_requests", "video_on_demand_requests"]
+          example: "requests"
+        description: 'Filter usage data by specific usage type. Determines what metric to retrieve (requests, bandwidth, compute usage, etc.).'
       responses:
         '200':
           description: A response containing usage elements.
@@ -328,7 +353,24 @@ paths:
             application/json:
               schema:
                 type: object
-                description: Response for 200 A response containing usage elements.
+                description: Paginated usage data with metrics and cursor for next page
+                example:
+                  data:
+                    - usage_type: "requests"
+                      unit: "requests"
+                      quantity: 1250000
+                      raw_quantity: 1250000
+                      product_id: "cdn_usage"
+                      last_updated_at: "2024-01-31T23:59:59Z"
+                    - usage_type: "bandwidth"
+                      unit: "bytes"
+                      quantity: 524288000000
+                      raw_quantity: 524288000000
+                      product_id: "cdn_usage"
+                      last_updated_at: "2024-01-31T23:59:59Z"
+                  meta:
+                    next_cursor: "eyJpZCI6IjEyMzQ1Njc4OTEifQ=="
+                    total: 25
         '400':
           description: Bad Request
           content:
@@ -14405,7 +14447,9 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: status'
+          enum: ["triggered", "resolved", "acknowledged", "suppressed"]
+          example: "triggered"
+        description: 'Filter alerts by their current status. Used to find alerts in specific states.'
       responses:
         '200':
           description: Requested history
@@ -18127,7 +18171,9 @@ paths:
         required: false
         schema:
           type: string
-        description: 'Query parameter: status'
+          enum: ["detected", "mitigated", "resolved", "blocked"]
+          example: "detected"
+        description: 'Filter security events by their status. Used to find events in specific security states.'
       - name: to
         in: query
         required: false
@@ -25432,25 +25478,31 @@ paths:
         required: true
         schema:
           type: string
+          example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
       - name: from_version_id
         in: path
         required: true
         schema:
-          type: string
-        description: The from_version_id identifier
+          type: integer
+          example: 1
+        description: The source version number to compare from
       - name: to_version_id
         in: path
         required: true
         schema:
-          type: string
-        description: The to_version_id identifier
+          type: integer
+          example: 2
+        description: The target version number to compare to
       - name: format
         in: query
         required: false
         schema:
           type: string
-        description: 'Query parameter: format'
+          enum: ["text", "html", "json"]
+          default: "text"
+          example: "json"
+        description: 'Response format for the diff output. Text provides plain diff, HTML adds formatting, JSON provides structured data.'
       responses:
         '200':
           description: OK
