@@ -136,8 +136,7 @@ paths:
     post:
       operationId: addABillingAddressToACustomer
       summary: Add a billing address to a customer
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/billing-address/#add-billing-addr)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Creates a new account billing address for customer billing management."
       tags:
       - Account
       parameters:
@@ -550,8 +549,7 @@ paths:
     delete:
       operationId: deleteAContact
       summary: Delete a contact
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/contact/#delete-contact)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Removes account contact for account management."
       tags:
       - Account
       parameters:
@@ -647,8 +645,7 @@ paths:
     get:
       operationId: getTheLoggedInCustomer
       summary: Get the logged in customer
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/customer/#get-logged-in-customer)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Retrieves account customer for account management."
       tags:
       - Account
       parameters: []
@@ -730,8 +727,7 @@ paths:
     put:
       operationId: updateACustomer
       summary: Update a customer
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/customer/#update-customer)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Updates account customer for account management."
       tags:
       - Account
       parameters:
@@ -779,8 +775,7 @@ paths:
     delete:
       operationId: deleteACustomer
       summary: Delete a customer
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/customer/#delete-customer)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Removes account customer for account management."
       tags:
       - Account
       parameters:
@@ -1045,9 +1040,7 @@ paths:
     post:
       operationId: createAnInvitation
       summary: Create an invitation
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/invitations/#create-invitation)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Superuser](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new account invitations for account management."
       tags:
       - Account
       parameters: []
@@ -1089,9 +1082,7 @@ paths:
     delete:
       operationId: deleteAnInvitation
       summary: Delete an invitation
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/invitations/#delete-invitation)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Superuser](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes account invitations for account management."
       tags:
       - Account
       parameters:
@@ -1288,8 +1279,7 @@ paths:
     get:
       operationId: showServiceAuthorization
       summary: Show service authorization
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/service-authorization/#show-service-authorization)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Returns details for account service authorization for access control and permissions."
       tags:
       - Account
       parameters:
@@ -1330,8 +1320,7 @@ paths:
     delete:
       operationId: deleteServiceAuthorization
       summary: Delete service authorization
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/service-authorization/#delete-service-authorization)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Removes account service authorization for access control and permissions."
       tags:
       - Account
       parameters:
@@ -1372,8 +1361,7 @@ paths:
     patch:
       operationId: updateServiceAuthorization
       summary: Update service authorization
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/service-authorization/#update-service-authorization)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Updates account service authorization for access control and permissions."
       tags:
       - Account
       parameters:
@@ -1421,8 +1409,7 @@ paths:
     get:
       operationId: listServiceAuthorizations
       summary: List service authorizations
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/service-authorization/#list-service-authorization)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Returns a list of account service authorization for access control and permissions."
       tags:
       - Account
       parameters:
@@ -1469,8 +1456,7 @@ paths:
     post:
       operationId: createServiceAuthorization
       summary: Create service authorization
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/service-authorization/#create-service-authorization)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Creates a new account service authorization for access control and permissions."
       tags:
       - Account
       parameters: []
@@ -1511,8 +1497,7 @@ paths:
     delete:
       operationId: deleteServiceAuthorizations
       summary: Delete service authorizations
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/service-authorization/#delete-service-authorization2)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Removes account service authorization for access control and permissions."
       tags:
       - Account
       parameters: []
@@ -1547,8 +1532,7 @@ paths:
     patch:
       operationId: updateServiceAuthorizations
       summary: Update service authorizations
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/service-authorization/#update-service-authorization2)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Updates account service authorization for access control and permissions."
       tags:
       - Account
       parameters: []
@@ -1681,8 +1665,7 @@ paths:
     get:
       operationId: listStars
       summary: List stars
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/star/#list-service-stars)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Returns a list of account star in the Fastly service configuration."
       tags:
       - Account
       parameters: []
@@ -1901,9 +1884,7 @@ paths:
     delete:
       operationId: deleteAUser
       summary: Delete a user
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/user/#delete-user)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Superuser](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes account user for account management."
       tags:
       - Account
       parameters:
@@ -1945,9 +1926,7 @@ paths:
     post:
       operationId: createAUser
       summary: Create a user
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/account/user/#create-user)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Superuser](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new account user for account management."
       tags:
       - Account
       parameters: []
@@ -2467,9 +2446,7 @@ paths:
     get:
       operationId: listServiceAcls
       summary: List ACLs
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/acls/acl/#list-acls)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of acls acl for access control list management."
       tags:
       - Access control lists
       parameters:
@@ -2814,9 +2791,7 @@ paths:
     post:
       operationId: createANewResourceAcl
       summary: Create a new ACL
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/acls/acls/#compute-acl-create-acls)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new acls acls for access control list management."
       tags:
       - Access control lists
       parameters: []
@@ -2858,9 +2833,7 @@ paths:
     get:
       operationId: describeAResourceAcl
       summary: Describe an ACL
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/acls/acls/#compute-acl-list-acls-s-acl_id)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Describe an ACL. This operation manages resources related to acls acls."
       tags:
       - Access control lists
       parameters:
@@ -2901,9 +2874,7 @@ paths:
     delete:
       operationId: deleteAResourceAcl
       summary: Delete an ACL
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/acls/acls/#compute-acl-delete-s-acl_id)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes acls acls for access control list management."
       tags:
       - Access control lists
       parameters:
@@ -2998,9 +2969,7 @@ paths:
     get:
       operationId: listAnAcl
       summary: List an ACL
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/acls/acls/#compute-acl-list-acl-entries)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of acls acls for access control list management."
       tags:
       - Access control lists
       parameters:
@@ -4556,9 +4525,7 @@ paths:
     post:
       operationId: createADnsConfiguration
       summary: Create a DNS configuration
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ip-configuration/spp/dns-configuration/#create-spp-dns-config)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new ip configuration spp dns configuration."
       tags:
       - Subscriber Provided Prefix (SPP)
       parameters: []
@@ -4692,9 +4659,7 @@ paths:
     patch:
       operationId: updateADnsConfiguration
       summary: Update a DNS configuration
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ip-configuration/spp/dns-configuration/#update-spp-dns-config)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Updates ip configuration spp dns configuration."
       tags:
       - Subscriber Provided Prefix (SPP)
       parameters:
@@ -4806,9 +4771,7 @@ paths:
     post:
       operationId: createATlsConfiguration
       summary: Create a TLS configuration
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ip-configuration/spp/tls-configuration/#create-spp-tls-config)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new ip configuration spp tls configuration."
       tags:
       - Subscriber Provided Prefix (SPP)
       parameters: []
@@ -4948,9 +4911,7 @@ paths:
     patch:
       operationId: updateATlsConfiguration
       summary: Update a TLS configuration
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/tls/configuration/#update-tls-config)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Updates tls configuration."
       tags:
       - TLS
       parameters:
@@ -15022,9 +14983,7 @@ paths:
     get:
       operationId: listAllCustomDashboards
       summary: List all custom dashboards
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/observability/custom-dashboards/#list-dashboards)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of observability custom dashboards."
       tags:
       - Observability
       parameters: []
@@ -15059,9 +15018,7 @@ paths:
     post:
       operationId: createANewDashboard
       summary: Create a new dashboard
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/observability/custom-dashboards/#create-dashboard)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new observability custom dashboards."
       tags:
       - Observability
       parameters: []
@@ -15103,9 +15060,7 @@ paths:
     get:
       operationId: retrieveADashboardById
       summary: Retrieve a dashboard by ID
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/observability/custom-dashboards/#get-dashboard)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Retrieve a dashboard by ID. This operation manages resources related to observability custom-dashboards."
       tags:
       - Observability
       parameters:
@@ -15146,9 +15101,7 @@ paths:
     delete:
       operationId: deleteAnExistingDashboard
       summary: Delete an existing dashboard
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/observability/custom-dashboards/#delete-dashboard)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes observability custom dashboards."
       tags:
       - Observability
       parameters:
@@ -15189,9 +15142,7 @@ paths:
     patch:
       operationId: updateAnExistingDashboard
       summary: Update an existing dashboard
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/observability/custom-dashboards/#update-dashboard)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Updates observability custom dashboards."
       tags:
       - Observability
       parameters:
@@ -18434,9 +18385,7 @@ paths:
     post:
       operationId: createAWorkspace
       summary: Create a workspace
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/security/security/#createWorkspace)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new security security."
       tags:
       - Security
       parameters: []
@@ -21205,9 +21154,7 @@ paths:
     get:
       operationId: listServices
       summary: List services
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#list-services)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of services service in the Fastly service configuration."
       tags:
       - Services
       parameters:
@@ -21269,9 +21216,7 @@ paths:
     post:
       operationId: createAService
       summary: Create a service
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#create-service)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new services service in the Fastly service configuration."
       tags:
       - Services
       parameters: []
@@ -21461,9 +21406,7 @@ paths:
     put:
       operationId: updateAService
       summary: Update a service
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#update-service)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Updates services service in the Fastly service configuration."
       tags:
       - Services
       parameters:
@@ -21511,9 +21454,7 @@ paths:
     delete:
       operationId: deleteAService
       summary: Delete a service
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#delete-service)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes services service in the Fastly service configuration."
       tags:
       - Services
       parameters:
@@ -21556,9 +21497,7 @@ paths:
     get:
       operationId: listTheDomainsWithinAService
       summary: List the domains within a service
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/service/#list-service-domains)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of services service in the Fastly service configuration."
       tags:
       - Services
       parameters:
@@ -22622,9 +22561,7 @@ paths:
     get:
       operationId: listConfigStores
       summary: List config stores
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/config-store/#list-config-stores)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of services resources config store in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -22665,9 +22602,7 @@ paths:
     post:
       operationId: createAConfigStore
       summary: Create a config store
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/config-store/#create-config-store)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new services resources config store in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters: []
@@ -22755,9 +22690,7 @@ paths:
     put:
       operationId: updateAConfigStore
       summary: Update a config store
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/config-store/#update-config-store)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Updates services resources config store in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -22804,9 +22737,7 @@ paths:
     delete:
       operationId: deleteAConfigStore
       summary: Delete a config store
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/config-store/#delete-config-store)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes services resources config store in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -23147,9 +23078,7 @@ paths:
     delete:
       operationId: deleteAnItem
       summary: Delete an item
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/kv-store-item/#kv-store-delete-item)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes services resources kv store item in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -23256,9 +23185,7 @@ paths:
     get:
       operationId: listAllKvStores
       summary: List all KV stores
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/kv-store/#kv-store-list)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of services resources kv store in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -23305,9 +23232,7 @@ paths:
     post:
       operationId: createAKvStore
       summary: Create a KV store
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/kv-store/#kv-store-create)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new services resources kv store in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -23449,9 +23374,7 @@ paths:
     get:
       operationId: listAccessKeys
       summary: List access keys
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/object-storage-access-keys/#list-access-keys)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Returns a list of services resources object storage access keys in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters: []
@@ -23486,9 +23409,7 @@ paths:
     post:
       operationId: createAnAccessKey
       summary: Create an access key
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/object-storage-access-keys/#create-access-key)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new services resources object storage access keys in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters: []
@@ -23576,9 +23497,7 @@ paths:
     delete:
       operationId: deleteAnAccessKey
       summary: Delete an access key
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/object-storage-access-keys/#delete-access-key)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes services resources object storage access keys in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -23960,9 +23879,7 @@ paths:
     get:
       operationId: getAllSecretStores
       summary: Get all secret stores
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/services/resources/secret-store/#get-secret-stores)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Retrieves services resources secret store in the Fastly service configuration."
       tags:
       - Edge data storage
       parameters:
@@ -25307,9 +25224,7 @@ paths:
     post:
       operationId: createATlsCertificate
       summary: Create a TLS certificate
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/tls/custom-certs/certificates/#create-tls-cert)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new tls custom certs certificates."
       tags:
       - TLS
       parameters: []
@@ -25735,9 +25650,7 @@ paths:
     post:
       operationId: createATlsPrivateKey
       summary: Create a TLS private key
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/tls/custom-certs/private-keys/#create-tls-key)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new tls custom certs private keys."
       tags:
       - TLS
       parameters: []
@@ -26077,9 +25990,7 @@ paths:
     patch:
       operationId: updateAMutualAuthentication
       summary: Update a Mutual Authentication
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/tls/mutual-tls/authentication/#patch-mutual-authentication)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Updates tls mutual tls authentication for access control and permissions."
       tags:
       - Mutual TLS
       parameters:
@@ -26488,9 +26399,7 @@ paths:
     get:
       operationId: getARuleById
       summary: Get a rule by ID
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ddos-protection/#ddos-protection-rule-get)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Retrieves ddos protection."
       tags:
       - Fastly DDoS Protection Events
       parameters:
@@ -26532,9 +26441,7 @@ paths:
     get:
       operationId: getEvents
       summary: Get events
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ddos-protection/#ddos-protection-event-list)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Retrieves ddos protection."
       tags:
       - Fastly DDoS Protection Events
       parameters:
@@ -26610,9 +26517,7 @@ paths:
     get:
       operationId: getEventById
       summary: Get event by ID
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ddos-protection/#ddos-protection-event-get)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Retrieves ddos protection."
       tags:
       - Fastly DDoS Protection Events
       parameters:
@@ -26654,9 +26559,7 @@ paths:
     get:
       operationId: getAllRulesForAnEvent
       summary: Get all rules for an event
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ddos-protection/#ddos-protection-event-rule-list)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Retrieves ddos protection."
       tags:
       - Fastly DDoS Protection Events
       parameters:
@@ -26710,9 +26613,7 @@ paths:
     get:
       operationId: getTrafficStatsForARule
       summary: Get traffic stats for a rule
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/ddos-protection/#ddos-protection-traffic-stats-rule-get)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Retrieves ddos protection."
       tags:
       - Fastly DDoS Protection Events
       parameters:
@@ -26831,9 +26732,7 @@ paths:
     post:
       operationId: createADomain
       summary: Create a domain
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/domains/domains-on-fastly/#create-udm-domain)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new domains domains on fastly."
       tags:
       - Domains on Fastly
       parameters: []
@@ -26921,9 +26820,7 @@ paths:
     delete:
       operationId: deleteADomain
       summary: Delete a domain
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/domains/domains-on-fastly/#delete-udm-domain)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Removes domains domains on fastly."
       tags:
       - Domains on Fastly
       parameters:
@@ -26964,9 +26861,7 @@ paths:
     patch:
       operationId: updateAManagedDomain
       summary: Update a domain
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/domains/domains-on-fastly/#update-udm-domain)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [TLS management](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Updates domains domains on fastly."
       tags:
       - Domains on Fastly
       parameters:
@@ -27631,9 +27526,7 @@ paths:
     post:
       operationId: createACacheSettingsObject
       summary: Create a cache settings object
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/vcl-services/cache-settings/#create-cache-settings)**\n\
-        \n> **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions\"\
-        ) permissions.\n"
+      description: "Creates a new vcl services cache settings in the Fastly service configuration."
       tags:
       - VCL objects
       parameters:
@@ -28187,8 +28080,7 @@ paths:
     get:
       operationId: compareVclChangesBetweenServiceVersions
       summary: Get a comparison of the VCL changes between two service versions
-      description: "**[\U0001F517 latest documentation](https://developer.fastly.com/reference/api/vcl-services/diff/#vcl-diff-service-versions)**\n\
-        \n> **Authorization**: Requires [API token](/reference/api/auth-tokens).\n"
+      description: "Get a comparison of the VCL changes between two service versions. This operation manages resources related to vcl-services diff."
       tags:
       - VCL objects
       parameters:

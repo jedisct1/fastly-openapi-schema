@@ -1,124 +1,170 @@
-# Fastly API Operation Subset Justification
+# Fastly API Subset for MCP - Top 40 Endpoints
 
-This document explains the selection and ordering of the 50 most frequently used Fastly API operations for managing, monitoring, and observing Fastly services.
+This document justifies the selection of the 40 most frequently used Fastly API endpoints, with emphasis on metrics, monitoring, and observability.
 
 ## Selection Criteria
 
-The operations were selected based on:
-1. **Frequency of use** - Operations that users perform most often
-2. **Core functionality** - Essential operations for service management
-3. **Monitoring importance** - Critical for observing service health and performance
-4. **User workflow** - Operations that form part of standard workflows
+1. **Metrics & Monitoring Focus** - Real-time and historical performance data
+2. **Observability** - Logging, insights, and analytics capabilities  
+3. **Frequency of use** - Based on typical customer workflows
+4. **Criticality** - Essential for monitoring CDN operations
+5. **Day-to-day operations** - Common monitoring and troubleshooting tasks
 
-## Operation Categories and Justification
+## Endpoint Justification (Sorted by Importance)
 
-### 1. Service Management (Operations 1-13)
-These are the foundational operations that every Fastly user needs:
+### 1. `getRealtimeDataForTheLast120Seconds`
+**Critical** - Primary real-time monitoring endpoint. Provides immediate visibility into CDN performance with 120-second rolling window.
 
-- **listServices** (#1) - Most basic operation to see all services
-- **createAService** (#2) - Essential for onboarding new services
-- **getAService** (#3) - Frequently used to check service configuration
-- **updateAService** (#4) - Critical for service modifications
-- **deleteAService** (#5) - Service lifecycle management
-- **listVersionsOfAService** (#6) - Version control is core to Fastly workflow
-- **createAServiceVersion** (#7) - Required for any configuration change
-- **getAVersionOfAService** (#8) - Checking version details
-- **updateAServiceVersion** (#9) - Modifying draft versions
-- **activateAServiceVersion** (#10) - Deploy changes to production
-- **deactivateAServiceVersion** (#11) - Rollback functionality
-- **cloneAServiceVersion** (#12) - Common workflow pattern
-- **validateAServiceVersion** (#13) - Pre-deployment validation
+### 2. `getHistoricalStats`  
+**Critical** - Core analytics endpoint for historical performance data. Essential for trend analysis and reporting.
 
-### 2. Domain Management (Operations 14-17)
-Domain configuration is essential for CDN functionality:
+### 3. `getStatsForAService`
+**Critical** - Service-specific monitoring. Most frequently used endpoint for performance tracking per service.
 
-- **listServiceDomains** (#14) - View all domains for a service
-- **addADomainNameToAService** (#15) - Configure new domains
-- **updateAServiceDomain** (#16) - Modify domain settings
-- **removeADomainFromAService** (#17) - Domain lifecycle management
+### 4. `retrieveLogRecords`
+**Critical** - Log explorer functionality. Essential for debugging and detailed observability analysis.
 
-### 3. Backend Management (Operations 18-21)
-Origin server configuration is critical:
+### 5. `purgeAUrl`
+**Critical** - Most common cache invalidation operation. Used constantly when content needs updating.
 
-- **listBackends** (#18) - View all origin servers
-- **createABackend** (#19) - Add new origin servers
-- **updateABackend** (#20) - Modify origin settings
-- **deleteABackend** (#21) - Remove origins
+### 6. `purgeBySurrogateKeyTag`
+**Critical** - Advanced purging by tags. Enables efficient cache invalidation for related content.
 
-### 4. Cache Purging (Operations 22-25)
-Most frequently performed operations:
+### 7. `listServices`
+**Critical** - Discovery endpoint for all services. First step in any monitoring workflow.
 
-- **purgeAUrl** (#22) - Single URL purge (most common)
-- **purgeEverythingFromAService** (#23) - Full cache clear
-- **purgeBySurrogateKeyTag** (#24) - Targeted purging
-- **purgeMultipleSurrogateKeyTags** (#25) - Batch purging
+### 8. `getServiceDetails`
+**Critical** - Detailed service information including configuration. Used for service inspection.
 
-### 5. Real-time Monitoring (Operations 26-28)
-Critical for observability:
+### 9. `activateAServiceVersion`
+**Critical** - Makes configuration changes live. Required after any service modifications.
 
-- **getRealtimeDataForTheLast120Seconds** (#26) - Live monitoring
-- **getHistoricalStatsForASingleService** (#27) - Performance analysis
-- **getStatsForAService** (#28) - Service metrics
+### 10. `createAService`
+**Critical** - Service creation. Foundation for setting up new CDN services to monitor.
 
-### 6. Cache Configuration (Operations 29-32)
-Essential for cache behavior:
+### 11. `getMonthlyUsageMetrics`
+**High** - Usage analytics for billing and cost optimization. Important for resource management.
 
-- **listCacheSettingsObjects** (#29) - View cache rules
-- **createACacheSettingsObject** (#30) - Add cache rules
-- **updateACacheSettingsObject** (#31) - Modify cache behavior
-- **deleteACacheSettingsObject** (#32) - Remove cache rules
+### 12. `retrieveServiceUsageMetricsWithNonzeroUnits`
+**High** - Detailed usage metrics per service. Critical for cost allocation and optimization.
 
-### 7. Health Checks (Operations 33-36)
-Critical for reliability:
+### 13. `listHealthChecks`
+**High** - Health check monitoring configuration. Essential for backend availability tracking.
 
-- **listHealthChecks** (#33) - View health monitoring
-- **createAHealthCheck** (#34) - Add health checks
-- **updateAHealthCheck** (#35) - Modify health criteria
-- **deleteAHealthCheck** (#36) - Remove health checks
+### 14. `createAHealthCheck`
+**High** - Sets up backend health monitoring. Proactive reliability management.
 
-### 8. VCL Management (Operations 37-40)
-Core to Fastly's programmability:
+### 15. `purgeEverythingFromAService`
+**High** - Full cache clear operation. Used for major updates or troubleshooting.
 
-- **listCustomVclFiles** (#37) - View custom logic
-- **createACustomVclFile** (#38) - Add custom VCL
-- **updateACustomVclFile** (#39) - Modify VCL logic
-- **setACustomVclFileAsMain** (#40) - Deploy VCL
+### 16. `getRealtimeDomainDataForTheLast120Seconds`
+**High** - Domain-specific real-time metrics. Granular performance monitoring per domain.
 
-### 9. Code Snippets (Operations 41-43)
-Modular code management:
+### 17. `getRealtimeOriginDataForTheLast120Seconds`
+**High** - Origin server real-time metrics. Critical for backend performance monitoring.
 
-- **listSnippets** (#41) - View code snippets
-- **createASnippet** (#42) - Add modular code
-- **updateAVersionedSnippet** (#43) - Modify snippets
+### 18. `listServiceDomains`
+**High** - Lists all domains for monitoring scope. Essential for domain-level analytics.
 
-### 10. Access Control (Operations 44-47)
-Security configuration:
+### 19. `addADomainNameToAService`
+**High** - Adds domains to monitor. Expands monitoring coverage.
 
-- **listAclEntries** (#44) - View access rules
-- **createAnAclEntry** (#45) - Add access rules
-- **updateAnAclEntry** (#46) - Modify access
-- **deleteAnAclEntry** (#47) - Remove access rules
+### 20. `listBackends`
+**High** - Backend inventory for monitoring. Shows all origins to track.
 
-### 11. Additional Critical Operations (Operations 48-50)
+### 21. `createABackend`
+**High** - Adds origins to monitor. Extends backend monitoring coverage.
 
-- **getServiceDetails** (#48) - Comprehensive service information
-- **checkStatusOfContentInEachPopsCache** (#49) - Debug cache status
-- **uploadAComputePackage** (#50) - Deploy edge compute applications
+### 22. `updateABackend`
+**High** - Backend configuration changes. Affects monitoring parameters.
 
-## Ordering Rationale
+### 23. `retrieveLogInsights`
+**High** - Advanced log analytics. Provides aggregated insights from log data.
 
-The operations are ordered by:
-1. **Logical workflow** - Following typical user journey
-2. **Dependency** - Prerequisites before dependent operations
-3. **Frequency** - Most used operations appear earlier
-4. **Impact** - Critical operations prioritized
+### 24. `retrieveLogDataAsTimeSeries`
+**High** - Time-series log visualization. Essential for trend analysis in logs.
 
-This subset provides comprehensive coverage for:
-- Service lifecycle management
-- Configuration management
-- Cache operations
-- Monitoring and observability
-- Security configuration
-- Edge compute deployment
+### 25. `listVersionsOfAService`
+**High** - Version history for change correlation. Links configuration changes to performance.
 
-These 50 operations cover approximately 90% of typical Fastly API usage patterns for service management, monitoring, and observation tasks.
+### 26. `createAServiceVersion`
+**High** - New version creation. Tracked for change management in monitoring.
+
+### 27. `getUsageStatistics`
+**High** - General usage stats. Overall platform utilization metrics.
+
+### 28. `getAggregatedHistoricalStats`
+**High** - Aggregated performance data. High-level analytics across services.
+
+### 29. `enableLogExplorerInsights`
+**High** - Activates advanced log analytics. Enhanced observability features.
+
+### 30. `createAnAzureBlobStorageLogEndpoint`
+**Medium** - Azure logging integration. Popular cloud storage for logs.
+
+### 31. `createABigqueryLogEndpoint`
+**Medium** - BigQuery integration for log analytics. Advanced data warehousing.
+
+### 32. `createADatadogLogEndpoint`
+**Medium** - Datadog integration. Popular APM and monitoring platform.
+
+### 33. `createASplunkLogEndpoint`
+**Medium** - Splunk integration. Enterprise log management platform.
+
+### 34. `listCustomerEvents`
+**Medium** - Audit trail and event history. Important for compliance and troubleshooting.
+
+### 35. `createAToken`
+**Medium** - API authentication for monitoring tools. Enables programmatic access.
+
+### 36. `listServiceAcls`
+**Medium** - ACL monitoring. Security configuration visibility.
+
+### 37. `createANewServiceAcl`
+**Medium** - ACL setup. Security implementation affecting traffic.
+
+### 38. `checkStatusOfContentInEachPopsCache`
+**Medium** - POP-level cache status. Detailed cache distribution monitoring.
+
+### 39. `cloneAServiceVersion`
+**Medium** - Version cloning for safe changes. Tracked in change management.
+
+### 40. `validateAServiceVersion`
+**Medium** - Configuration validation. Prevents errors before activation.
+
+## Common Monitoring & Observability Workflows
+
+These endpoints support the most critical monitoring and observability workflows:
+
+1. **Real-time Monitoring**: real-time data (120s) → domain metrics → origin metrics
+2. **Historical Analysis**: historical stats → aggregated stats → usage metrics
+3. **Log Analysis**: retrieve logs → log insights → time-series visualization
+4. **Performance Troubleshooting**: service stats → health checks → cache status
+5. **Usage Tracking**: monthly usage → service usage → billing metrics
+6. **Logging Integration**: Datadog/Splunk/BigQuery/Azure endpoints → enable insights
+
+## Metrics & Observability Priority
+
+This selection prioritizes monitoring and observability endpoints:
+
+**Real-time Monitoring** (Top Priority):
+- Global real-time data (120-second window)
+- Domain-specific real-time metrics
+- Origin server real-time performance
+
+**Historical Analytics**:
+- Service-level historical stats
+- Aggregated performance data
+- Usage and billing metrics
+
+**Log Analysis & Insights**:
+- Log record retrieval
+- Time-series log visualization
+- Aggregated log insights
+
+**Health & Performance**:
+- Health check monitoring
+- Cache status verification
+- Service configuration validation
+
+This focused selection provides comprehensive observability coverage while including essential service management operations needed to set up and maintain the monitoring infrastructure.
