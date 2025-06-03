@@ -14276,7 +14276,7 @@ paths:
       summary: Get stats for a service
       description: 'Get the stats from a service for a block of time. This lists all stats by PoP location,
         starting with AMS. This call requires parameters to select block of time to query. Use either
-        a timestamp range (using start_time and end_time) or a specified month/year combo (using month
+        a timestamp range (using from and to) or a specified month/year combo (using month
         and year).
 
         > **Authorization**: Requires [API token](/reference/api/auth-tokens).
@@ -14292,26 +14292,26 @@ paths:
           type: string
           example: "SU1Z0isxPaozGVKXdv0eY"
         description: The service_id identifier
-      - name: end_time
+      - name: to
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'End time in ISO 8601 format'
+        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: month
         in: query
         required: false
         schema:
           type: string
         description: 'Query parameter: month'
-      - name: start_time
+      - name: from
         in: query
         required: false
         schema:
           type: string
           format: date-time
-        description: 'Start time in ISO 8601 format'
+        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
       - name: year
         in: query
         required: false
