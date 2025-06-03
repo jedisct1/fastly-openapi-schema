@@ -1,5 +1,159 @@
 components:
     schemas:
+        BillingAddressAttributes:
+            properties:
+                address_1:
+                    description: The first address line.
+                    type: string
+                address_2:
+                    description: The second address line.
+                    nullable: true
+                    type: string
+                city:
+                    description: The city name.
+                    nullable: true
+                    type: string
+                country:
+                    description: ISO 3166-1 two-letter country code.
+                    type: string
+                customer_id:
+                    description: Customer ID
+                    type: string
+                locality:
+                    description: Other locality.
+                    nullable: true
+                    type: string
+                postal_code:
+                    description: Postal code (ZIP code for US addresses).
+                    type: string
+                state:
+                    description: The state or province name.
+                    nullable: true
+                    type: string
+            type: object
+        BillingAddressRequest:
+            properties:
+                data:
+                    $ref: '#/components/schemas/BillingAddressRequestData'
+                skip_verification:
+                    description: When set to true, the address will be saved without verification
+                    type: boolean
+            type: object
+        BillingAddressRequestData:
+            properties:
+                attributes:
+                    $ref: '#/components/schemas/BillingAddressAttributes'
+                type:
+                    $ref: '#/components/schemas/TypeBillingAddress'
+            type: object
+        Contact:
+            properties:
+                contact_type:
+                    description: The type of contact.
+                    type: string
+                customer_id:
+                    description: The alphanumeric string representing the customer for this customer contact.
+                    nullable: true
+                    type: string
+                email:
+                    description: The email of this contact, when a user_id is not provided.
+                    nullable: true
+                    type: string
+                name:
+                    description: The name of this contact, when user_id is not provided.
+                    nullable: true
+                    type: string
+                phone:
+                    description: The phone number for this contact. Required for primary, technical, and security contact types.
+                    nullable: true
+                    type: string
+                user_id:
+                    description: The alphanumeric string representing the user for this customer contact.
+                    nullable: true
+                    type: string
+            type: object
+        Customer:
+            properties:
+                billing_contact_id:
+                    description: The alphanumeric string representing the primary billing contact.
+                    nullable: true
+                    type: string
+                billing_network_type:
+                    description: Customer's current network revenue type.
+                    type: string
+                billing_ref:
+                    description: Used for adding purchased orders to customer's account.
+                    nullable: true
+                    type: string
+                can_configure_wordpress:
+                    description: Whether this customer can view or edit wordpress.
+                    nullable: true
+                    type: boolean
+                can_reset_passwords:
+                    description: Whether this customer can reset passwords.
+                    type: boolean
+                can_upload_vcl:
+                    description: Whether this customer can upload VCL.
+                    type: boolean
+                force_2fa:
+                    description: Specifies whether 2FA is forced or not forced on the customer account. Logs out non-2FA users once 2FA is force enabled.
+                    type: boolean
+                force_sso:
+                    description: Specifies whether SSO is forced or not forced on the customer account.
+                    type: boolean
+                has_account_panel:
+                    description: Specifies whether the account has access or does not have access to the account panel.
+                    type: boolean
+                has_improved_events:
+                    description: Specifies whether the account has access or does not have access to the improved events.
+                    type: boolean
+                has_improved_ssl_config:
+                    description: Whether this customer can view or edit the SSL config.
+                    type: boolean
+                has_openstack_logging:
+                    description: Specifies whether the account has enabled or not enabled openstack logging.
+                    type: boolean
+                has_pci:
+                    description: Specifies whether the account can edit PCI for a service.
+                    type: boolean
+                has_pci_passwords:
+                    description: Specifies whether PCI passwords are required for the account.
+                    type: boolean
+                ip_whitelist:
+                    description: The range of IP addresses authorized to access the customer account.
+                    type: string
+                legal_contact_id:
+                    description: The alphanumeric string identifying the account's legal contact.
+                    nullable: true
+                    type: string
+                name:
+                    description: The name of the customer, generally the company name.
+                    type: string
+                owner_id:
+                    description: The alphanumeric string identifying the account owner.
+                    type: string
+                phone_number:
+                    description: The phone number associated with the account.
+                    type: string
+                postal_address:
+                    description: The postal address associated with the account.
+                    nullable: true
+                    type: string
+                pricing_plan:
+                    description: The pricing plan this customer is under.
+                    type: string
+                pricing_plan_id:
+                    description: The alphanumeric string identifying the pricing plan.
+                    type: string
+                security_contact_id:
+                    description: The alphanumeric string identifying the account's security contact.
+                    nullable: true
+                    type: string
+                technical_contact_id:
+                    description: The alphanumeric string identifying the account's technical contact.
+                    nullable: true
+                    type: string
+            type: object
         Error:
             properties:
                 code:
@@ -10,6 +164,30 @@ components:
                     type: string
             required:
                 - error
+            type: object
+        TypeBillingAddress:
+            default: billing_address
+            description: Resource type
+            enum:
+                - billing_address
+            type: string
+        UpdateBillingAddressRequest:
+            properties:
+                data:
+                    $ref: '#/components/schemas/UpdateBillingAddressRequestData'
+                skip_verification:
+                    description: When set to true, the address will be saved without verification
+                    type: boolean
+            type: object
+        UpdateBillingAddressRequestData:
+            properties:
+                attributes:
+                    $ref: '#/components/schemas/BillingAddressAttributes'
+                id:
+                    description: Alphanumeric string identifying the billing address.
+                    type: string
+                type:
+                    $ref: '#/components/schemas/TypeBillingAddress'
             type: object
     securitySchemes:
         fastly_api_key:
@@ -353,12 +531,12 @@ paths:
                   in: query
                   name: page[number]
                   schema:
-                    type: string
+                    type: integer
                 - description: 'Query parameter: page[size]'
                   in: query
                   name: page[size]
                   schema:
-                    type: string
+                    type: integer
                 - description: Field on which to sort. Defaults to "created" if not specified.
                   in: query
                   name: sort
@@ -689,12 +867,12 @@ paths:
                   in: query
                   name: page
                   schema:
-                    type: string
+                    type: integer
                 - description: 'Query parameter: per_page'
                   in: query
                   name: per_page
                   schema:
-                    type: string
+                    type: integer
                 - description: Field on which to sort. Defaults to "created" if not specified.
                   in: query
                   name: sort

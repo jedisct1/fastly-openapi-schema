@@ -179,8 +179,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              description: Request body for Add a billing address to a customer
+              $ref: '#/components/schemas/BillingAddressRequest'
     delete:
       operationId: deleteABillingAddress
       summary: Delete a billing address
@@ -278,8 +277,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              description: Request body for Update a billing address
+              $ref: '#/components/schemas/UpdateBillingAddressRequest'
   /billing/v3/service-usage-metrics:
     get:
       operationId: retrieveServiceUsageMetricsWithNonzeroUnits
@@ -543,8 +541,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              description: Request body for Add a new customer contact
+              $ref: '#/components/schemas/Contact'
   /customer/{customer_id}/contacts/{contact_id}:
     delete:
       operationId: deleteAContact
@@ -770,8 +767,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              description: Request body for Update a customer
+              $ref: '#/components/schemas/Customer'
     delete:
       operationId: deleteACustomer
       summary: Delete a customer
@@ -896,13 +892,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       - name: sort
         in: query
@@ -1001,13 +997,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       responses:
         '200':
@@ -1417,13 +1413,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       responses:
         '200':
@@ -2094,13 +2090,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: per_page
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: per_page'
       - name: sort
         in: query
@@ -3088,13 +3084,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: per_page
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: per_page'
       responses:
         '200':
@@ -3282,13 +3278,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: per_page
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: per_page'
       responses:
         '200':
@@ -3761,13 +3757,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: per_page
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: per_page'
       - name: sort
         in: query
@@ -4732,13 +4728,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       responses:
         '200':
@@ -18359,7 +18355,7 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       responses:
         '400':
@@ -18576,7 +18572,7 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: q
         in: query
@@ -18694,7 +18690,7 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: signal
         in: query
@@ -19118,7 +19114,7 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: types
         in: query
@@ -19370,7 +19366,7 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       responses:
         '400':
@@ -21170,13 +21166,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page'
       - name: per_page
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: per_page'
       - name: sort
         in: query
@@ -24191,13 +24187,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       - name: sort
         in: query
@@ -24477,13 +24473,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       - name: sort
         in: query
@@ -24901,13 +24897,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       responses:
         '200':
@@ -25178,13 +25174,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       - name: sort
         in: query
@@ -25545,13 +25541,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       - name: sort
         in: query
@@ -25611,13 +25607,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       responses:
         '200':
@@ -25805,13 +25801,13 @@ paths:
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[number]'
       - name: page[size]
         in: query
         required: false
         schema:
-          type: string
+          type: integer
         description: 'Query parameter: page[size]'
       responses:
         '200':
@@ -32250,3 +32246,181 @@ components:
           description: Error code
       required:
       - error
+    TypeBillingAddress:
+      type: string
+      description: Resource type
+      enum:
+      - billing_address
+      default: billing_address
+    BillingAddressAttributes:
+      type: object
+      properties:
+        address_1:
+          type: string
+          description: The first address line.
+        address_2:
+          type: string
+          nullable: true
+          description: The second address line.
+        city:
+          type: string
+          nullable: true
+          description: The city name.
+        country:
+          type: string
+          description: ISO 3166-1 two-letter country code.
+        locality:
+          type: string
+          nullable: true
+          description: Other locality.
+        postal_code:
+          type: string
+          description: Postal code (ZIP code for US addresses).
+        state:
+          type: string
+          nullable: true
+          description: The state or province name.
+        customer_id:
+          type: string
+          description: Customer ID
+    BillingAddressRequestData:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/TypeBillingAddress'
+        attributes:
+          $ref: '#/components/schemas/BillingAddressAttributes'
+    BillingAddressRequest:
+      type: object
+      properties:
+        skip_verification:
+          type: boolean
+          description: When set to true, the address will be saved without verification
+        data:
+          $ref: '#/components/schemas/BillingAddressRequestData'
+    UpdateBillingAddressRequestData:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/TypeBillingAddress'
+        id:
+          type: string
+          description: Alphanumeric string identifying the billing address.
+        attributes:
+          $ref: '#/components/schemas/BillingAddressAttributes'
+    UpdateBillingAddressRequest:
+      type: object
+      properties:
+        skip_verification:
+          type: boolean
+          description: When set to true, the address will be saved without verification
+        data:
+          $ref: '#/components/schemas/UpdateBillingAddressRequestData'
+    Contact:
+      type: object
+      properties:
+        user_id:
+          type: string
+          nullable: true
+          description: The alphanumeric string representing the user for this customer contact.
+        contact_type:
+          type: string
+          description: The type of contact.
+        name:
+          type: string
+          nullable: true
+          description: The name of this contact, when user_id is not provided.
+        email:
+          type: string
+          nullable: true
+          description: The email of this contact, when a user_id is not provided.
+        phone:
+          type: string
+          nullable: true
+          description: The phone number for this contact. Required for primary, technical, and security contact types.
+        customer_id:
+          type: string
+          nullable: true
+          description: The alphanumeric string representing the customer for this customer contact.
+    Customer:
+      type: object
+      properties:
+        billing_contact_id:
+          type: string
+          nullable: true
+          description: The alphanumeric string representing the primary billing contact.
+        billing_network_type:
+          type: string
+          description: Customer's current network revenue type.
+        billing_ref:
+          type: string
+          nullable: true
+          description: Used for adding purchased orders to customer's account.
+        can_configure_wordpress:
+          type: boolean
+          nullable: true
+          description: Whether this customer can view or edit wordpress.
+        can_reset_passwords:
+          type: boolean
+          description: Whether this customer can reset passwords.
+        can_upload_vcl:
+          type: boolean
+          description: Whether this customer can upload VCL.
+        force_2fa:
+          type: boolean
+          description: Specifies whether 2FA is forced or not forced on the customer account. Logs out non-2FA users once 2FA is force enabled.
+        force_sso:
+          type: boolean
+          description: Specifies whether SSO is forced or not forced on the customer account.
+        has_account_panel:
+          type: boolean
+          description: Specifies whether the account has access or does not have access to the account panel.
+        has_improved_events:
+          type: boolean
+          description: Specifies whether the account has access or does not have access to the improved events.
+        has_improved_ssl_config:
+          type: boolean
+          description: Whether this customer can view or edit the SSL config.
+        has_openstack_logging:
+          type: boolean
+          description: Specifies whether the account has enabled or not enabled openstack logging.
+        has_pci:
+          type: boolean
+          description: Specifies whether the account can edit PCI for a service.
+        has_pci_passwords:
+          type: boolean
+          description: Specifies whether PCI passwords are required for the account.
+        ip_whitelist:
+          type: string
+          description: The range of IP addresses authorized to access the customer account.
+        legal_contact_id:
+          type: string
+          nullable: true
+          description: The alphanumeric string identifying the account's legal contact.
+        name:
+          type: string
+          description: The name of the customer, generally the company name.
+        owner_id:
+          type: string
+          description: The alphanumeric string identifying the account owner.
+        phone_number:
+          type: string
+          description: The phone number associated with the account.
+        postal_address:
+          type: string
+          nullable: true
+          description: The postal address associated with the account.
+        pricing_plan:
+          type: string
+          description: The pricing plan this customer is under.
+        pricing_plan_id:
+          type: string
+          description: The alphanumeric string identifying the pricing plan.
+        security_contact_id:
+          type: string
+          nullable: true
+          description: The alphanumeric string identifying the account's security contact.
+        technical_contact_id:
+          type: string
+          nullable: true
+          description: The alphanumeric string identifying the account's technical contact.
