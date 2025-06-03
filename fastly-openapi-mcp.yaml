@@ -165,6 +165,178 @@ components:
             required:
                 - error
             type: object
+        Results:
+            description: The results of stats queries, may be grouped by service depending on endpoint, and aggregated over the appropriate time span.
+            properties:
+                bandwidth:
+                    description: Total bytes delivered (resp_header_bytes + resp_body_bytes + bereq_header_bytes + bereq_body_bytes + compute_resp_header_bytes + compute_resp_body_bytes + compute_bereq_header_bytes + compute_bereq_body_bytes + websocket_resp_header_bytes + websocket_resp_body_bytes + websocket_bereq_header_bytes + websocket_bereq_body_bytes + fanout_resp_header_bytes + fanout_resp_body_bytes + fanout_bereq_header_bytes + fanout_bereq_body_bytes).
+                    format: int64
+                    type: integer
+                bereq_body_bytes:
+                    description: Total body bytes sent to origin.
+                    format: int64
+                    type: integer
+                bereq_header_bytes:
+                    description: Total header bytes sent to origin.
+                    format: int64
+                    type: integer
+                body_size:
+                    description: Total body bytes delivered (alias for resp_body_bytes).
+                    format: int64
+                    type: integer
+                edge_hit_requests:
+                    description: Number of requests sent by end users to Fastly that resulted in a hit at the edge.
+                    format: int64
+                    type: integer
+                edge_miss_requests:
+                    description: Number of requests sent by end users to Fastly that resulted in a miss at the edge.
+                    format: int64
+                    type: integer
+                edge_requests:
+                    description: Number of requests sent by end users to Fastly.
+                    format: int64
+                    type: integer
+                edge_resp_body_bytes:
+                    description: Total body bytes delivered from Fastly to the end user.
+                    format: int64
+                    type: integer
+                edge_resp_header_bytes:
+                    description: Total header bytes delivered from Fastly to the end user.
+                    format: int64
+                    type: integer
+                errors:
+                    description: Number of cache errors.
+                    format: int64
+                    type: integer
+                header_size:
+                    description: Total header bytes delivered (alias for resp_header_bytes).
+                    format: int64
+                    type: integer
+                hit_ratio:
+                    description: Ratio of cache hits to cache misses (between 0 and 1).
+                    format: float
+                    nullable: true
+                    type: number
+                hits:
+                    description: Number of cache hits.
+                    format: int64
+                    type: integer
+                hits_time:
+                    description: Total amount of time spent processing cache hits (in seconds).
+                    format: float
+                    type: number
+                miss:
+                    description: Number of cache misses.
+                    format: int64
+                    type: integer
+                miss_time:
+                    description: Total amount of time spent processing cache misses (in seconds).
+                    format: float
+                    type: number
+                origin_cache_fetches:
+                    description: The total number of completed requests made to backends (origins) that returned cacheable content.
+                    format: int64
+                    type: integer
+                origin_fetch_body_bytes:
+                    description: Total request body bytes sent to origin.
+                    format: int64
+                    type: integer
+                origin_fetch_header_bytes:
+                    description: Total request header bytes sent to origin.
+                    format: int64
+                    type: integer
+                origin_fetch_resp_body_bytes:
+                    description: Total body bytes received from origin.
+                    format: int64
+                    type: integer
+                origin_fetch_resp_header_bytes:
+                    description: Total header bytes received from origin.
+                    format: int64
+                    type: integer
+                origin_fetches:
+                    description: Number of requests sent to origin.
+                    format: int64
+                    type: integer
+                origin_revalidations:
+                    description: Number of responses received from origin with a 304 status code in response to an If-Modified-Since or If-None-Match request. Under regular scenarios, a revalidation will imply a cache hit. However, if using Fastly Image Optimizer or segmented caching this may result in a cache miss.
+                    format: int64
+                    type: integer
+                pass:
+                    description: Number of requests that passed through the CDN without being cached.
+                    format: int64
+                    type: integer
+                pass_time:
+                    description: Total amount of time spent processing cache passes (in seconds).
+                    format: float
+                    type: number
+                pipe:
+                    description: Optional. Pipe operations performed (legacy feature).
+                    format: int64
+                    type: integer
+                req_body_bytes:
+                    description: Total body bytes received.
+                    format: int64
+                    type: integer
+                req_header_bytes:
+                    description: Total header bytes received.
+                    format: int64
+                    type: integer
+                requests:
+                    description: Number of requests processed.
+                    format: int64
+                    type: integer
+                resp_body_bytes:
+                    description: Total body bytes delivered (edge_resp_body_bytes + shield_resp_body_bytes).
+                    format: int64
+                    type: integer
+                resp_header_bytes:
+                    description: Total header bytes delivered (edge_resp_header_bytes + shield_resp_header_bytes).
+                    format: int64
+                    type: integer
+                restarts:
+                    description: Number of restarts performed.
+                    format: int64
+                    type: integer
+                shield:
+                    description: Number of requests from edge to the shield POP.
+                    format: int64
+                    type: integer
+                synth:
+                    description: Number of requests that returned a synthetic response (i.e., response objects created with the synthetic VCL statement).
+                    format: int64
+                    type: integer
+                tls:
+                    description: Number of requests that were received over TLS.
+                    format: int64
+                    type: integer
+                tls_v10:
+                    description: Number of requests received over TLS 1.0.
+                    format: int64
+                    type: integer
+                tls_v11:
+                    description: Number of requests received over TLS 1.1.
+                    format: int64
+                    type: integer
+                tls_v12:
+                    description: Number of requests received over TLS 1.2.
+                    format: int64
+                    type: integer
+                tls_v13:
+                    description: Number of requests received over TLS 1.3.
+                    format: int64
+                    type: integer
+                uncacheable:
+                    description: Number of requests that were designated uncachable.
+                    format: int64
+                    type: integer
+            type: object
+        Stats:
+            properties:
+                stats:
+                    additionalProperties:
+                        $ref: '#/components/schemas/Results'
+                    type: object
+            type: object
         TypeBillingAddress:
             default: billing_address
             description: Resource type
@@ -1109,73 +1281,6 @@ paths:
             summary: Purge everything from a service
             tags:
                 - Purging
-    /service/{service_id}/stats/summary:
-        get:
-            description: |
-                Get the stats from a service for a block of time. This lists all stats by PoP location, starting with AMS. This call requires parameters to select block of time to query. Use either a timestamp range (using from and to) or a specified month/year combo (using month and year).
-                > **Authorization**: Requires [API token](/reference/api/auth-tokens).
-            operationId: getStatsForAService
-            parameters:
-                - description: The service_id identifier
-                  in: path
-                  name: service_id
-                  required: true
-                  schema:
-                    example: SU1Z0isxPaozGVKXdv0eY
-                    type: string
-                - description: End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
-                  in: query
-                  name: to
-                  schema:
-                    format: date-time
-                    type: string
-                - description: 'Query parameter: month'
-                  in: query
-                  name: month
-                  schema:
-                    type: string
-                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
-                  in: query
-                  name: from
-                  schema:
-                    format: date-time
-                    type: string
-                - description: 'Query parameter: year'
-                  in: query
-                  name: year
-                  schema:
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                description: Response for 200 OK
-                                type: object
-                    description: OK
-                "400":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Bad Request
-                "401":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Unauthorized
-                "500":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-                    description: Internal Server Error
-            security:
-                - fastly_api_key: []
-            summary: Get stats for a service
-            tags:
-                - Metrics and stats
     /service/{service_id}/version:
         get:
             description: |

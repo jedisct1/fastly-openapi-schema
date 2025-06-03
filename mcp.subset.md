@@ -18,9 +18,6 @@ This document justifies the selection of the 40 most frequently used Fastly API 
 ### 2. `getHistoricalStats`  
 **Critical** - Core analytics endpoint for historical performance data. Essential for trend analysis and reporting.
 
-### 3. `getStatsForAService`
-**Critical** - Service-specific monitoring. Most frequently used endpoint for performance tracking per service.
-
 ### 4. `retrieveLogRecords`
 **Critical** - Log explorer functionality. Essential for debugging and detailed observability analysis.
 

@@ -1,6 +1,5 @@
 getRealtimeDataForTheLast120Seconds
 getHistoricalStats
-getStatsForAService
 retrieveLogRecords
 purgeAUrl
 purgeBySurrogateKeyTag
