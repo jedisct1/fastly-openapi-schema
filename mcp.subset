@@ -37,3 +37,4 @@ listAwsS3LogEndpoints
 listServiceAcls
 describeABackend
 getTrafficStatsForARule
+purgeMultipleSurrogateKeyTags

@@ -1,6 +1,6 @@
-# Fastly OpenAPI Subset - Most Useful 39 Endpoints
+# Fastly OpenAPI Subset - Most Useful 40 Endpoints
 
-This document provides justification for the selection of 39 most useful Fastly API endpoints for day-to-day management and observability. The endpoints are prioritized based on their practical utility for monitoring services, diagnosing issues, optimizing performance, and managing configurations.
+This document provides justification for the selection of 40 most useful Fastly API endpoints for day-to-day management and observability. The endpoints are prioritized based on their practical utility for monitoring services, diagnosing issues, optimizing performance, and managing configurations.
 
 ## Selection Criteria
 
@@ -185,12 +185,16 @@ The endpoints were selected based on:
 **Purpose**: Get traffic stats for security rules  
 **Justification**: Security rule performance monitoring. Essential for understanding the effectiveness of security rules and optimizing security configurations.
 
+#### 40. `purgeMultipleSurrogateKeyTags`
+**Purpose**: Purge multiple surrogate keys at once  
+**Justification**: Batch cache invalidation. Critical for efficiently invalidating related content using multiple surrogate keys in a single operation, reducing API calls and improving operational efficiency.
+
 ## Endpoint Categories Summary
 
 - **Real-time Monitoring**: 4 endpoints (3, 8, 12, plus domain data)
 - **Historical Analytics**: 6 endpoints (1, 2, 6, 7, 11, 23)
 - **Service Management**: 6 endpoints (4, 5, 15, 16, 17, 18, 19, 20)
-- **Cache Management**: 4 endpoints (9, 10, 21, 22, 26)
+- **Cache Management**: 5 endpoints (9, 10, 21, 22, 26, 40)
 - **Usage & Billing**: 2 endpoints (13, 14)
 - **Logging & Observability**: 7 endpoints (24, 25, 29, 30, 34, 35, 36)
 - **Security & Events**: 4 endpoints (31, 32, 33, 37, 39)
