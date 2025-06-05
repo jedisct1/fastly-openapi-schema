@@ -1,167 +1,213 @@
-# Fastly API Subset for MCP - Top 40 Endpoints
+# Fastly OpenAPI Subset - Most Useful 39 Endpoints
 
-This document justifies the selection of the 40 most frequently used Fastly API endpoints, with emphasis on metrics, monitoring, and observability.
+This document provides justification for the selection of 39 most useful Fastly API endpoints for day-to-day management and observability. The endpoints are prioritized based on their practical utility for monitoring services, diagnosing issues, optimizing performance, and managing configurations.
 
 ## Selection Criteria
 
-1. **Metrics & Monitoring Focus** - Real-time and historical performance data
-2. **Observability** - Logging, insights, and analytics capabilities  
-3. **Frequency of use** - Based on typical customer workflows
-4. **Criticality** - Essential for monitoring CDN operations
-5. **Day-to-day operations** - Common monitoring and troubleshooting tasks
+The endpoints were selected based on:
+- **Observability**: Essential for monitoring service health and performance
+- **Troubleshooting**: Critical for diagnosing and resolving issues
+- **Performance Optimization**: Important for cache management and optimization
+- **Service Management**: Core functionality for managing services and configurations
+- **Usage Frequency**: How often operators would use these endpoints in daily operations
 
-## Endpoint Justification (Sorted by Importance)
+## Selected Endpoints (Sorted by Importance)
 
-### 1. `getRealtimeDataForTheLast120Seconds`
-**Critical** - Primary real-time monitoring endpoint. Provides immediate visibility into CDN performance with 120-second rolling window.
+### Tier 1: Critical Monitoring & Analytics (1-12)
 
-### 2. `getHistoricalStats`  
-**Critical** - Core analytics endpoint for historical performance data. Essential for trend analysis and reporting.
+#### 1. `getHistoricalStats`
+**Purpose**: Get historical stats for all services, grouped by service ID  
+**Justification**: Primary endpoint for understanding overall service performance trends. Essential for capacity planning, performance analysis, and identifying patterns across all services.
 
-### 4. `retrieveLogRecords`
-**Critical** - Log explorer functionality. Essential for debugging and detailed observability analysis.
+#### 2. `getHistoricalStatsForASingleService`
+**Purpose**: Get historical stats for a specific service  
+**Justification**: Deep-dive analytics for individual service performance. Critical for troubleshooting service-specific issues and optimizing individual service configurations.
 
-### 5. `purgeAUrl`
-**Critical** - Most common cache invalidation operation. Used constantly when content needs updating.
+#### 3. `getRealtimeDataForTheLast120Seconds`
+**Purpose**: Get real-time data for the last 120 seconds  
+**Justification**: Essential for live monitoring and immediate incident response. Provides real-time visibility into service health and performance metrics.
 
-### 6. `purgeBySurrogateKeyTag`
-**Critical** - Advanced purging by tags. Enables efficient cache invalidation for related content.
+#### 4. `getServiceDetails`
+**Purpose**: Get detailed information about a service  
+**Justification**: Comprehensive service configuration overview. Critical for understanding current service setup and troubleshooting configuration issues.
 
-### 7. `listServices`
-**Critical** - Discovery endpoint for all services. First step in any monitoring workflow.
+#### 5. `listServices`
+**Purpose**: List all services in your account  
+**Justification**: Service inventory management. Essential starting point for any monitoring or management task across multiple services.
 
-### 8. `getServiceDetails`
-**Critical** - Detailed service information including configuration. Used for service inspection.
+#### 6. `getStatsForAService`
+**Purpose**: Get detailed stats for a service by PoP location  
+**Justification**: Geographic performance analysis. Critical for understanding regional performance variations and optimizing global content delivery.
 
-### 9. `activateAServiceVersion`
-**Critical** - Makes configuration changes live. Required after any service modifications.
+#### 7. `getHistoricalDomainDataForAService`
+**Purpose**: Get historical domain metrics with filtering by domain, region, or POP  
+**Justification**: Domain-level performance analysis. Essential for understanding how different domains perform and identifying domain-specific issues.
 
-### 10. `createAService`
-**Critical** - Service creation. Foundation for setting up new CDN services to monitor.
+#### 8. `getRealtimeDomainDataForTheLast120Seconds`
+**Purpose**: Get real-time domain data for the last 120 seconds  
+**Justification**: Live domain monitoring. Critical for immediate detection of domain-specific performance issues or traffic anomalies.
 
-### 11. `getMonthlyUsageMetrics`
-**High** - Usage analytics for billing and cost optimization. Important for resource management.
+#### 9. `checkStatusOfContentInEachPopsCache`
+**Purpose**: Check cache status of content across all POPs  
+**Justification**: Cache debugging and optimization. Essential for understanding cache hit rates and identifying caching issues across the global network.
 
-### 12. `retrieveServiceUsageMetricsWithNonzeroUnits`
-**High** - Detailed usage metrics per service. Critical for cost allocation and optimization.
+#### 10. `purgeAUrl`
+**Purpose**: Instant purge of a specific URL  
+**Justification**: Content invalidation for immediate updates. Critical for pushing urgent content changes and resolving cache-related issues.
 
-### 13. `listHealthChecks`
-**High** - Health check monitoring configuration. Essential for backend availability tracking.
+#### 11. `getHistoricalOriginDataForAService`
+**Purpose**: Get historical origin metrics with filtering  
+**Justification**: Origin server performance analysis. Essential for understanding backend performance and identifying origin-related bottlenecks.
 
-### 14. `createAHealthCheck`
-**High** - Sets up backend health monitoring. Proactive reliability management.
+#### 12. `getRealtimeOriginDataForTheLast120Seconds`
+**Purpose**: Get real-time origin data for last 120 seconds  
+**Justification**: Live origin monitoring. Critical for immediate detection of backend issues and origin server problems.
 
-### 15. `purgeEverythingFromAService`
-**High** - Full cache clear operation. Used for major updates or troubleshooting.
+### Tier 2: Usage & Billing Monitoring (13-14)
 
-### 16. `getRealtimeDomainDataForTheLast120Seconds`
-**High** - Domain-specific real-time metrics. Granular performance monitoring per domain.
+#### 13. `retrieveServiceUsageMetricsWithNonzeroUnits`
+**Purpose**: Get service-level usage metrics for services with non-zero usage  
+**Justification**: Cost monitoring and resource usage tracking. Essential for understanding billing implications and optimizing resource allocation.
 
-### 17. `getRealtimeOriginDataForTheLast120Seconds`
-**High** - Origin server real-time metrics. Critical for backend performance monitoring.
+#### 14. `getUsageStatisticsPerService`
+**Purpose**: Get usage statistics broken down by service  
+**Justification**: Per-service cost analysis. Critical for understanding which services consume the most resources and optimizing cost efficiency.
 
-### 18. `listServiceDomains`
-**High** - Lists all domains for monitoring scope. Essential for domain-level analytics.
+### Tier 3: Service Management & Configuration (15-20)
 
-### 19. `addADomainNameToAService`
-**High** - Adds domains to monitor. Expands monitoring coverage.
+#### 15. `listServiceVersions`
+**Purpose**: List all versions of a service  
+**Justification**: Version management and rollback capabilities. Essential for understanding deployment history and managing service configurations.
 
-### 20. `listBackends`
-**High** - Backend inventory for monitoring. Shows all origins to track.
+#### 16. `getAServiceVersion`
+**Purpose**: Get details of a specific version  
+**Justification**: Version-specific configuration analysis. Critical for comparing configurations and troubleshooting version-specific issues.
 
-### 21. `createABackend`
-**High** - Adds origins to monitor. Extends backend monitoring coverage.
+#### 17. `activateAServiceVersion`
+**Purpose**: Activate a service version  
+**Justification**: Deployment management. Essential for pushing configuration changes and managing service deployments.
 
-### 22. `updateABackend`
-**High** - Backend configuration changes. Affects monitoring parameters.
+#### 18. `listBackends`
+**Purpose**: List backends for a service version  
+**Justification**: Backend configuration management. Critical for understanding origin server setup and troubleshooting backend connectivity.
 
-### 23. `retrieveLogInsights`
-**High** - Advanced log analytics. Provides aggregated insights from log data.
+#### 19. `listServiceDomains`
+**Purpose**: List domains for a service version  
+**Justification**: Domain configuration management. Essential for understanding service routing and troubleshooting DNS-related issues.
 
-### 24. `retrieveLogDataAsTimeSeries`
-**High** - Time-series log visualization. Essential for trend analysis in logs.
+#### 20. `listHealthChecks`
+**Purpose**: List all health checks for a service version  
+**Justification**: Health monitoring configuration. Critical for understanding service health monitoring setup and troubleshooting health check issues.
 
-### 25. `listVersionsOfAService`
-**High** - Version history for change correlation. Links configuration changes to performance.
+### Tier 4: Cache Management & Performance (21-28)
 
-### 26. `createAServiceVersion`
-**High** - New version creation. Tracked for change management in monitoring.
+#### 21. `purgeEverythingFromAService`
+**Purpose**: Purge all content from a service  
+**Justification**: Complete cache invalidation. Essential for major content updates and resolving widespread cache issues.
 
-### 27. `getUsageStatistics`
-**High** - General usage stats. Overall platform utilization metrics.
+#### 22. `purgeBySurrogateKeyTag`
+**Purpose**: Purge content by surrogate key  
+**Justification**: Selective cache invalidation. Critical for targeted content updates and fine-grained cache management.
 
-### 28. `getAggregatedHistoricalStats`
-**High** - Aggregated performance data. High-level analytics across services.
+#### 23. `getAggregatedHistoricalStats`
+**Purpose**: Get aggregated historical stats across services  
+**Justification**: Cross-service performance analysis. Essential for understanding overall account performance and identifying trends.
 
-### 29. `enableLogExplorerInsights`
-**High** - Activates advanced log analytics. Enhanced observability features.
+#### 24. `retrieveLogInsights`
+**Purpose**: Retrieve statistics from sampled log records  
+**Justification**: Log-based analytics and insights. Critical for understanding user behavior and identifying performance patterns from log data.
 
-### 30. `createAnAzureBlobStorageLogEndpoint`
-**Medium** - Azure logging integration. Popular cloud storage for logs.
+#### 25. `retrieveAggregatedLogResults`
+**Purpose**: Retrieve aggregated log results  
+**Justification**: Log aggregation and analysis. Essential for understanding traffic patterns and identifying issues through log analysis.
 
-### 31. `createABigqueryLogEndpoint`
-**Medium** - BigQuery integration for log analytics. Advanced data warehousing.
+#### 26. `listCacheSettingsObjects`
+**Purpose**: List cache settings objects  
+**Justification**: Cache configuration management. Critical for understanding caching rules and optimizing cache performance.
 
-### 32. `createADatadogLogEndpoint`
-**Medium** - Datadog integration. Popular APM and monitoring platform.
+#### 27. `validateDnsConfigurationForAllDomainsOnAService`
+**Purpose**: Validate DNS configuration for all domains  
+**Justification**: DNS health checking. Essential for ensuring proper domain configuration and preventing DNS-related outages.
 
-### 33. `createASplunkLogEndpoint`
-**Medium** - Splunk integration. Enterprise log management platform.
+#### 28. `listGzipConfigurations`
+**Purpose**: List gzip configurations for performance optimization  
+**Justification**: Compression optimization. Critical for understanding content compression settings and optimizing bandwidth usage.
 
-### 34. `listCustomerEvents`
-**Medium** - Audit trail and event history. Important for compliance and troubleshooting.
+### Tier 5: Detailed Logging & Analysis (29-30)
 
-### 35. `createAToken`
-**Medium** - API authentication for monitoring tools. Enables programmatic access.
+#### 29. `retrieveLogRecords`
+**Purpose**: Retrieve individual log records  
+**Justification**: Detailed log inspection. Essential for debugging specific requests and understanding individual user interactions.
 
-### 36. `listServiceAcls`
-**Medium** - ACL monitoring. Security configuration visibility.
+#### 30. `retrieveLogDataAsTimeSeries`
+**Purpose**: Retrieve log data as time series  
+**Justification**: Time-based log analysis. Critical for understanding temporal patterns and correlating events with performance metrics.
 
-### 37. `createANewServiceAcl`
-**Medium** - ACL setup. Security implementation affecting traffic.
+### Tier 6: Event Monitoring & Security (31-33)
 
-### 38. `checkStatusOfContentInEachPopsCache`
-**Medium** - POP-level cache status. Detailed cache distribution monitoring.
+#### 31. `listCustomerEvents`
+**Purpose**: List events for debugging and monitoring  
+**Justification**: Event-driven monitoring. Essential for understanding system events and troubleshooting configuration changes.
 
-### 39. `cloneAServiceVersion`
-**Medium** - Version cloning for safe changes. Tracked in change management.
+#### 32. `getAnEvent`
+**Purpose**: Get details of a specific event  
+**Justification**: Detailed event analysis. Critical for understanding the context and impact of specific system events.
 
-### 40. `validateAServiceVersion`
-**Medium** - Configuration validation. Prevents errors before activation.
+#### 33. `getDdosProtectionEnablementStatus`
+**Purpose**: Check DDoS protection status  
+**Justification**: Security monitoring. Essential for understanding security posture and ensuring DDoS protection is properly configured.
 
-## Common Monitoring & Observability Workflows
+### Tier 7: Log Streaming Configuration (34-36)
 
-These endpoints support the most critical monitoring and observability workflows:
+#### 34. `listDatadogLogEndpoints`
+**Purpose**: List Datadog log streaming configurations  
+**Justification**: Observability platform integration. Critical for monitoring teams using Datadog for centralized logging and metrics.
 
-1. **Real-time Monitoring**: real-time data (120s) → domain metrics → origin metrics
-2. **Historical Analysis**: historical stats → aggregated stats → usage metrics
-3. **Log Analysis**: retrieve logs → log insights → time-series visualization
-4. **Performance Troubleshooting**: service stats → health checks → cache status
-5. **Usage Tracking**: monthly usage → service usage → billing metrics
-6. **Logging Integration**: Datadog/Splunk/BigQuery/Azure endpoints → enable insights
+#### 35. `listSplunkLogEndpoints`
+**Purpose**: List Splunk log streaming configurations  
+**Justification**: Enterprise logging integration. Essential for organizations using Splunk for security and operational monitoring.
 
-## Metrics & Observability Priority
+#### 36. `listAwsS3LogEndpoints`
+**Purpose**: List S3 log storage configurations  
+**Justification**: Log archival and storage. Critical for long-term log retention and compliance requirements.
 
-This selection prioritizes monitoring and observability endpoints:
+### Tier 8: Access Control & Advanced Diagnostics (37-39)
 
-**Real-time Monitoring** (Top Priority):
-- Global real-time data (120-second window)
-- Domain-specific real-time metrics
-- Origin server real-time performance
+#### 37. `listServiceAcls`
+**Purpose**: List access control lists  
+**Justification**: Security configuration management. Essential for understanding access restrictions and troubleshooting security-related issues.
 
-**Historical Analytics**:
-- Service-level historical stats
-- Aggregated performance data
-- Usage and billing metrics
+#### 38. `describeABackend`
+**Purpose**: Get backend details  
+**Justification**: Backend troubleshooting. Critical for diagnosing backend connectivity issues and understanding origin server configuration.
 
-**Log Analysis & Insights**:
-- Log record retrieval
-- Time-series log visualization
-- Aggregated log insights
+#### 39. `getTrafficStatsForARule`
+**Purpose**: Get traffic stats for security rules  
+**Justification**: Security rule performance monitoring. Essential for understanding the effectiveness of security rules and optimizing security configurations.
 
-**Health & Performance**:
-- Health check monitoring
-- Cache status verification
-- Service configuration validation
+## Endpoint Categories Summary
 
-This focused selection provides comprehensive observability coverage while including essential service management operations needed to set up and maintain the monitoring infrastructure.
+- **Real-time Monitoring**: 4 endpoints (3, 8, 12, plus domain data)
+- **Historical Analytics**: 6 endpoints (1, 2, 6, 7, 11, 23)
+- **Service Management**: 6 endpoints (4, 5, 15, 16, 17, 18, 19, 20)
+- **Cache Management**: 4 endpoints (9, 10, 21, 22, 26)
+- **Usage & Billing**: 2 endpoints (13, 14)
+- **Logging & Observability**: 7 endpoints (24, 25, 29, 30, 34, 35, 36)
+- **Security & Events**: 4 endpoints (31, 32, 33, 37, 39)
+- **Configuration Management**: 6 endpoints (18, 19, 20, 26, 27, 28, 38)
+
+## Use Cases
+
+### Daily Operations Team
+Primary endpoints: 1-12, 21-22, 31-32 for monitoring and immediate response
+
+### DevOps/SRE Team  
+Primary endpoints: 1-20, 24-30 for performance optimization and troubleshooting
+
+### Security Team
+Primary endpoints: 31-33, 37, 39 for security monitoring and incident response
+
+### Cost Management
+Primary endpoints: 13-14, 34-36 for usage tracking and optimization
+
+This selection provides comprehensive coverage for monitoring, troubleshooting, optimizing, and managing Fastly services while maintaining focus on the most practically useful endpoints for day-to-day operations.
