@@ -644,36 +644,31 @@ paths:
                 > **Authorization**: Requires [API token](/reference/api/auth-tokens).
             operationId: listCustomerEvents
             parameters:
-                - description: Filter events created after this date (ISO 8601 format)
+                - description: Filter events created after this date (UNIX timestamp)
                   in: query
                   name: filter[created_at][gt]
                   schema:
-                    format: date-time
-                    type: string
-                - description: Filter events created on or after this date (ISO 8601 format)
+                    type: integer
+                - description: Filter events created on or after this date (UNIX timestamp)
                   in: query
                   name: filter[created_at][gte]
                   schema:
-                    format: date-time
-                    type: string
-                - description: Filter events created before this date (ISO 8601 format)
+                    type: integer
+                - description: Filter events created before this date (UNIX timestamp)
                   in: query
                   name: filter[created_at][lt]
                   schema:
-                    format: date-time
-                    type: string
-                - description: Filter events created on or before this date (ISO 8601 format)
+                    type: integer
+                - description: Filter events created on or before this date (UNIX timestamp)
                   in: query
                   name: filter[created_at][lte]
                   schema:
-                    format: date-time
-                    type: string
-                - description: Filter events created at this exact date and time (ISO 8601 format)
+                    type: integer
+                - description: Filter events created at this exact date and time (UNIX timestamp)
                   in: query
                   name: filter[created_at]
                   schema:
-                    format: date-time
-                    type: string
+                    type: integer
                 - description: 'Query parameter: filter[customer_id]'
                   in: query
                   name: filter[customer_id]
@@ -753,12 +748,11 @@ paths:
                 > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
             operationId: retrieveLogRecords
             parameters:
-                - description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+                - description: 'Query parameter: end. UNIX timestamp'
                   in: query
                   name: end
                   schema:
-                    format: date-time
-                    type: string
+                    type: integer
                 - description: 'Query parameter: filter'
                   in: query
                   name: filter
@@ -779,12 +773,11 @@ paths:
                   name: service_id
                   schema:
                     type: string
-                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: Start time. UNIX timestamp
                   in: query
                   name: start
                   schema:
-                    format: date-time
-                    type: string
+                    type: integer
             responses:
                 "200":
                     content:
@@ -833,12 +826,11 @@ paths:
                   name: domain
                   schema:
                     type: string
-                - description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+                - description: 'Query parameter: end. UNIX timestamp'
                   in: query
                   name: end
                   schema:
-                    format: date-time
-                    type: string
+                    type: integer
                 - description: 'Query parameter: limit'
                   in: query
                   name: limit
@@ -854,12 +846,11 @@ paths:
                   name: service_id
                   schema:
                     type: string
-                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: Start time. UNIX timestamp
                   in: query
                   name: start
                   schema:
-                    format: date-time
-                    type: string
+                    type: integer
                 - description: 'Query parameter: visualization'
                   in: query
                   name: visualization
@@ -903,12 +894,11 @@ paths:
                 > **Authorization**: [API token](/reference/api/auth-tokens) with at least [Engineer](https://docs.fastly.com/en/guides/configuring-user-roles-and-permissions") permissions.
             operationId: retrieveLogDataAsTimeSeries
             parameters:
-                - description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+                - description: 'Query parameter: end. UNIX timestamp'
                   in: query
                   name: end
                   schema:
-                    format: date-time
-                    type: string
+                    type: integer
                 - description: 'Query parameter: filter'
                   in: query
                   name: filter
@@ -934,12 +924,11 @@ paths:
                   name: source
                   schema:
                     type: string
-                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: Start time. UNIX timestamp
                   in: query
                   name: start
                   schema:
-                    format: date-time
-                    type: string
+                    type: integer
             responses:
                 "200":
                     content:
@@ -2307,25 +2296,23 @@ paths:
                         - day
                     example: day
                     type: string
-                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: Start time. UNIX timestamp
                   in: query
                   name: from
                   schema:
-                    example: "2024-01-01T00:00:00Z"
-                    format: date-time
-                    type: string
+                    example: 1.7040672e+09
+                    type: integer
                 - description: 'Query parameter: region'
                   in: query
                   name: region
                   schema:
                     type: string
-                - description: End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: End time. UNIX timestamp
                   in: query
                   name: to
                   schema:
-                    example: "2024-01-31T23:59:59Z"
-                    format: date-time
-                    type: string
+                    example: 1.706745599e+09
+                    type: integer
             responses:
                 "200":
                     content:
@@ -2374,25 +2361,23 @@ paths:
                         - day
                     example: day
                     type: string
-                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: Start time. UNIX timestamp
                   in: query
                   name: from
                   schema:
-                    example: "2024-01-01T00:00:00Z"
-                    format: date-time
-                    type: string
+                    example: 1.7040672e+09
+                    type: integer
                 - description: 'Query parameter: region'
                   in: query
                   name: region
                   schema:
                     type: string
-                - description: End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: End time. UNIX timestamp
                   in: query
                   name: to
                   schema:
-                    example: "2024-01-31T23:59:59Z"
-                    format: date-time
-                    type: string
+                    example: 1.706745599e+09
+                    type: integer
             responses:
                 "200":
                     content:
@@ -2431,20 +2416,18 @@ paths:
                 > **Authorization**: Requires [API token](/reference/api/auth-tokens).
             operationId: getUsageStatistics
             parameters:
-                - description: Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                - description: Start time. UNIX timestamp
                   in: query
                   name: from
                   schema:
-                    example: "2024-01-01T00:00:00Z"
-                    format: date-time
-                    type: string
-                - description: End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
+                    example: 1.7040672e+09
+                    type: integer
+                - description: End time. UNIX timestamp
                   in: query
                   name: to
                   schema:
-                    example: "2024-01-31T23:59:59Z"
-                    format: date-time
-                    type: string
+                    example: 1.706745599e+09
+                    type: integer
             responses:
                 "200":
                     content:

@@ -827,37 +827,32 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Filter events created after this date (ISO 8601 format)'
+          type: integer
+        description: 'Filter events created after this date (UNIX timestamp)'
       - name: filter[created_at][gte]
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Filter events created on or after this date (ISO 8601 format)'
+          type: integer
+        description: 'Filter events created on or after this date (UNIX timestamp)'
       - name: filter[created_at][lt]
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Filter events created before this date (ISO 8601 format)'
+          type: integer
+        description: 'Filter events created before this date (UNIX timestamp)'
       - name: filter[created_at][lte]
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Filter events created on or before this date (ISO 8601 format)'
+          type: integer
+        description: 'Filter events created on or before this date (UNIX timestamp)'
       - name: filter[created_at]
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Filter events created at this exact date and time (ISO 8601 format)'
+          type: integer
+        description: 'Filter events created at this exact date and time (UNIX timestamp)'
       - name: filter[customer_id]
         in: query
         required: false
@@ -1135,14 +1130,14 @@ paths:
         schema:
           type: string
           format: date
-        description: 'End date for billing period in ISO 8601 format (YYYY-MM-DD)'
+        description: 'End date for billing period in UNIX timestamp (YYYY-MM-DD)'
       - name: billing_start_date
         in: query
         required: false
         schema:
           type: string
           format: date
-        description: 'Start date for billing period in ISO 8601 format (YYYY-MM-DD)'
+        description: 'Start date for billing period in UNIX timestamp (YYYY-MM-DD)'
       - name: cursor
         in: query
         required: false
@@ -13295,9 +13290,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Query parameter: end. UNIX timestamp'
       - name: group_by
         in: query
         required: false
@@ -13326,9 +13320,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Start time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -13386,9 +13379,8 @@ paths:
         in: path
         required: true
         schema:
-          type: string
-          format: date-time
-        description: Start timestamp in ISO 8601 format
+          type: integer
+        description: Start timestamp in UNIX timestamp
       responses:
         '200':
           description: OK
@@ -13543,10 +13535,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: region
         in: query
         required: false
@@ -13557,10 +13548,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -13620,10 +13610,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: region
         in: query
         required: false
@@ -13634,10 +13623,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -13690,10 +13678,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: region
         in: query
         required: false
@@ -13704,10 +13691,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -13767,10 +13753,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: region
         in: query
         required: false
@@ -13781,10 +13766,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -13850,10 +13834,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: region
         in: query
         required: false
@@ -13864,10 +13847,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -13913,18 +13895,16 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: to
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -13970,18 +13950,16 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: to
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -14387,9 +14365,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Query parameter: end. UNIX timestamp'
       - name: group_by
         in: query
         required: false
@@ -14424,9 +14401,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Start time. UNIX timestamp'
       responses:
         '200':
           description: OK
@@ -14484,9 +14460,8 @@ paths:
         in: path
         required: true
         schema:
-          type: string
-          format: date-time
-        description: Start timestamp in ISO 8601 format
+          type: integer
+        description: Start timestamp in UNIX timestamp
       responses:
         '200':
           description: OK
@@ -14897,16 +14872,14 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Return records created after this time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Return records created after this time in UNIX timestamp'
       - name: before
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Return records created before this time in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Return records created before this time in UNIX timestamp'
       - name: cursor
         in: query
         required: false
@@ -15210,9 +15183,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Query parameter: end. UNIX timestamp'
       - name: limit
         in: query
         required: false
@@ -15235,9 +15207,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Start time. UNIX timestamp'
       - name: visualization
         in: query
         required: false
@@ -15295,9 +15266,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Query parameter: end. UNIX timestamp'
       - name: filter
         in: query
         required: false
@@ -15339,9 +15309,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Start time. UNIX timestamp'
       responses:
         '200':
           description: Retrieves aggregated log records.
@@ -15387,9 +15356,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Query parameter: end. UNIX timestamp'
       - name: filter
         in: query
         required: false
@@ -15418,9 +15386,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Start time. UNIX timestamp'
       responses:
         '200':
           description: Retrieves log records.
@@ -15466,9 +15433,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Query parameter: end. UNIX timestamp'
       - name: filter
         in: query
         required: false
@@ -15503,9 +15469,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Start time. UNIX timestamp'
       responses:
         '200':
           description: Retrieves time series results based on log data.
@@ -18669,10 +18634,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: ip
         in: query
         required: false
@@ -18709,10 +18673,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '400':
           description: Bad Request
@@ -19508,9 +19471,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Query parameter: end. ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Query parameter: end. UNIX timestamp'
       - name: granularity
         in: query
         required: false
@@ -19527,9 +19489,8 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+        description: 'Start time. UNIX timestamp'
       responses:
         '400':
           description: Bad Request
@@ -26450,10 +26411,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
-        description: 'Start time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1704067200
+        description: 'Start time. UNIX timestamp'
       - name: limit
         in: query
         required: false
@@ -26476,10 +26436,9 @@ paths:
         in: query
         required: false
         schema:
-          type: string
-          format: date-time
-          example: "2024-01-31T23:59:59Z"
-        description: 'End time. Accepts Unix timestamps or ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)'
+          type: integer
+          example: 1706745599
+        description: 'End time. UNIX timestamp'
       responses:
         '200':
           description: OK
