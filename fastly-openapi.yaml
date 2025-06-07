@@ -3586,6 +3586,27 @@ paths:
     put:
       operationId: UpdateRateLimiter
       summary: Update a rate limiter
+      description: |
+        Update an existing rate limiter by its ID.
+
+        **IMPORTANT - Conditional Response Parameters**:
+
+        1. **Response Object Name and Action**:
+           - If `response_object_name` is provided, then `action` MUST be set to "response_object"
+           - The `response_object_name` references a pre-existing response object by name
+
+        2. **Custom Response Parameters**:
+           When defining a custom response (not using a response object), ALL of the following parameters must be provided together:
+           - `response_content` - The content to send in the response
+           - `response_content_type` - The content type of the response (e.g., "text/plain", "application/json")
+           - `response_status` - The HTTP status code to return (e.g., 429, 503)
+
+           Providing only some of these parameters will result in an error.
+
+        3. **Typical Configurations**:
+           - Use a pre-existing response object: Set `action="response_object"` and provide `response_object_name`
+           - Define a custom response: Provide all three response parameters together
+           - Use default rate limiting behavior: Don't provide any response parameters
       tags:
       - rate_limiter
       parameters:
@@ -4184,6 +4205,8 @@ paths:
     delete:
       operationId: DeleteConfigStoreItem
       summary: Delete an item from a config store
+      description: |
+        Delete a single item from a config store by specifying the item key in the path.
       tags:
       - config_store_item
       parameters:
@@ -4632,6 +4655,8 @@ paths:
     delete:
       operationId: KvStoreDeleteItem
       summary: Delete an item.
+      description: |
+        Delete a single key-value pair from a KV store by specifying the key in the path.
       tags:
       - kv_store_item
       parameters:
@@ -7336,11 +7361,11 @@ paths:
       summary: Get stats for a service
       description: |
         Get the stats from a service for a block of time. This lists all stats by PoP location, starting with AMS.
-        
+
         **IMPORTANT**: This endpoint requires parameters to select a block of time to query. Use ONE of these parameter combinations:
         - Option 1: `start_time` + `end_time` (for custom date ranges using Unix timestamps)
         - Option 2: `month` + `year` (for monthly data)
-        
+
         Do not mix parameters from different options. The API will return an error if you provide both timestamp and month/year parameters.
       tags:
       - stats
@@ -9663,6 +9688,18 @@ paths:
     put:
       operationId: UpdateDomain
       summary: Update a domain
+      description: |
+        Update an existing domain for a particular service and version.
+
+        **IMPORTANT - Either/Or Parameter Requirement**:
+
+        You must provide at least ONE of the following parameters in the request body to update a domain:
+        - `name`: The new domain name to replace the existing one
+        - `comment`: A descriptive comment about the domain
+
+        You can provide both parameters if you want to update both the name and comment simultaneously.
+
+        **Note**: The domain name in the path (`domain_name`) identifies which domain to update. The `name` parameter in the request body specifies the new name for the domain.
       tags:
       - domain
       parameters:
@@ -13358,6 +13395,21 @@ paths:
     post:
       operationId: CreateLogKafka
       summary: Create a Kafka log endpoint
+      description: |
+        Create a Kafka logging endpoint for a particular service and version.
+
+        **IMPORTANT - Conditional SASL Authentication Parameters**:
+
+        The following parameters have conditional requirements based on the `use_sasl` parameter:
+
+        **When `use_sasl=true`** (SASL authentication enabled):
+        - `auth_method` - REQUIRED: The SASL authentication method (e.g., "plain", "scram-sha-256", "scram-sha-512")
+        - `username` - REQUIRED: SASL username
+        - `password` - REQUIRED: SASL password
+
+        **When `use_sasl=false`** (SASL authentication disabled):
+        - These parameters (`auth_method`, `username`, `password`) must NOT be provided
+        - Including them will result in an error
       tags:
       - logging_kafka
       parameters:
@@ -13525,6 +13577,21 @@ paths:
     put:
       operationId: UpdateLogKafka
       summary: Update the Kafka log endpoint
+      description: |
+        Update a Kafka logging endpoint for a particular service and version.
+
+        **IMPORTANT - Conditional SASL Authentication Parameters**:
+
+        The following parameters have conditional requirements based on the `use_sasl` parameter:
+
+        **When `use_sasl=true`** (SASL authentication enabled):
+        - `auth_method` - REQUIRED: The SASL authentication method (e.g., "plain", "scram-sha-256", "scram-sha-512")
+        - `username` - REQUIRED: SASL username
+        - `password` - REQUIRED: SASL password
+
+        **When `use_sasl=false`** (SASL authentication disabled):
+        - These parameters (`auth_method`, `username`, `password`) must NOT be provided
+        - Including them will result in an error
       tags:
       - logging_kafka
       parameters:
@@ -17147,6 +17214,27 @@ paths:
     post:
       operationId: CreateRateLimiter
       summary: Create a rate limiter
+      description: |
+        Create a new rate limiter for a particular service and version.
+
+        **IMPORTANT - Conditional Response Parameters**:
+
+        1. **Response Object Name and Action**:
+           - If `response_object_name` is provided, then `action` MUST be set to "response_object"
+           - The `response_object_name` references a pre-existing response object by name
+
+        2. **Custom Response Parameters**:
+           When defining a custom response (not using a response object), ALL of the following parameters must be provided together:
+           - `response_content` - The content to send in the response
+           - `response_content_type` - The content type of the response (e.g., "text/plain", "application/json")
+           - `response_status` - The HTTP status code to return (e.g., 429, 503)
+
+           Providing only some of these parameters will result in an error.
+
+        3. **Typical Configurations**:
+           - Use a pre-existing response object: Set `action="response_object"` and provide `response_object_name`
+           - Define a custom response: Provide all three response parameters together
+           - Use default rate limiting behavior: Don't provide any response parameters
       tags:
       - rate_limiter
       parameters:
@@ -19419,6 +19507,10 @@ paths:
     post:
       operationId: CreateTLSCert
       summary: Create a TLS certificate
+      description: |
+        Create a new TLS certificate to be used for TLS configurations.
+
+        **IMPORTANT**: The request body must include the certificate data in PEM format within the `data.attributes.cert_blob` field.
       tags:
       - tls_certificates
       parameters: []
@@ -19571,6 +19663,10 @@ paths:
     patch:
       operationId: UpdateTLSCert
       summary: Update a TLS certificate
+      description: |
+        Update an existing TLS certificate.
+
+        **IMPORTANT**: To update the certificate content, include the new certificate data in PEM format within the `data.attributes.cert_blob` field.
       tags:
       - tls_certificates
       parameters:
@@ -20016,6 +20112,10 @@ paths:
     post:
       operationId: CreateTLSKey
       summary: Create a TLS private key
+      description: |
+        Create a new TLS private key to be used for TLS configurations.
+
+        **IMPORTANT**: The request body must include the private key data in PEM format within the `data.attributes.key` field.
       tags:
       - tls_private_keys
       parameters: []
@@ -35923,17 +36023,13 @@ components:
       description: requestBody model
       additionalProperties: true
     tlsPrivateKey:
-      type: object
-      description: tlsPrivateKey model
-      additionalProperties: true
+      $ref: '#/components/schemas/TLSPrivateKey'
     createDashboardRequest:
       type: object
       description: createDashboardRequest model
       additionalProperties: true
     tlsCertificate:
-      type: object
-      description: tlsCertificate model
-      additionalProperties: true
+      $ref: '#/components/schemas/TLSCertificate'
     defaultSettings:
       type: object
       description: defaultSettings model
