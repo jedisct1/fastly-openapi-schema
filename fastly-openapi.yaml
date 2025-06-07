@@ -7334,6 +7334,14 @@ paths:
     get:
       operationId: GetServiceStats
       summary: Get stats for a service
+      description: |
+        Get the stats from a service for a block of time. This lists all stats by PoP location, starting with AMS.
+        
+        **IMPORTANT**: This endpoint requires parameters to select a block of time to query. Use ONE of these parameter combinations:
+        - Option 1: `start_time` + `end_time` (for custom date ranges using Unix timestamps)
+        - Option 2: `month` + `year` (for monthly data)
+        
+        Do not mix parameters from different options. The API will return an error if you provide both timestamp and month/year parameters.
       tags:
       - stats
       parameters:
@@ -7345,18 +7353,32 @@ paths:
           type: string
       - name: start_time
         in: query
-        required: true
-        description: Timestamp (Unix seconds)
+        required: false
+        description: Unix epoch timestamp (e.g., 1608560817). Required when using timestamp range option. Limits the results to data on or after this time.
         schema:
           type: integer
-          format: int64
+          format: int32
       - name: end_time
         in: query
-        required: true
-        description: Timestamp (Unix seconds)
+        required: false
+        description: Unix epoch timestamp (e.g., 1608560817). Required when using timestamp range option. Limits the results to data on or before this time.
         schema:
           type: integer
-          format: int64
+          format: int32
+      - name: month
+        in: query
+        required: false
+        description: 2-digit month (e.g., "05" for May). Required when using month/year option.
+        schema:
+          type: string
+          pattern: '^(0[1-9]|1[0-2])$'
+      - name: year
+        in: query
+        required: false
+        description: 4-digit year (e.g., "2020"). Required when using month/year option.
+        schema:
+          type: string
+          pattern: '^\d{4}$'
       responses:
         '200':
           description: Successful response
