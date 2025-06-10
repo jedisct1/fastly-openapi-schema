@@ -567,7 +567,8 @@ async function acquireOAuth2Token(schemeName: string, scheme: any): Promise<stri
             url: tokenUrl,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`
+                'Authorization': `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
+                'User-Agent': 'fastly-mcp-server-js'
             },
             data: formData.toString()
         });
